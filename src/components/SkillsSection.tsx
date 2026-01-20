@@ -5,38 +5,38 @@ const skills = [
   {
     icon: Brain,
     title: "AI & Machine Learning",
-    description: "LLMs, RAG systems, embeddings, fine-tuning, and prompt engineering for production applications.",
-    technologies: ["OpenAI", "LangChain", "Pinecone", "HuggingFace"],
-  },
-  {
-    icon: Workflow,
-    title: "Automation",
-    description: "Building complex automated workflows that connect APIs, process data, and trigger intelligent actions.",
-    technologies: ["n8n", "Make.com", "Zapier", "Python"],
-  },
-  {
-    icon: Code,
-    title: "Full-Stack Development",
-    description: "Creating scalable web applications with modern frameworks and cloud-native architectures.",
-    technologies: ["React", "Node.js", "TypeScript", "Next.js"],
-  },
-  {
-    icon: Database,
-    title: "Data Engineering",
-    description: "Designing data pipelines, vector databases, and analytics solutions for AI applications.",
-    technologies: ["PostgreSQL", "MongoDB", "Redis", "Supabase"],
+    description: "LLMs, Fine-tuning (LoRA), RAG systems, Computer Vision (CNNs), and Deep Learning for regression/classification.",
+    technologies: ["LLaMA 3.2", "LoRA", "PyTorch", "TensorFlow", "Scikit-Learn"],
   },
   {
     icon: Cpu,
-    title: "Voice & Chat Agents",
-    description: "Developing conversational AI agents with natural language understanding and voice capabilities.",
-    technologies: ["Twilio", "Whisper", "ElevenLabs", "VAPI"],
+    title: "Voice & Conversational AI",
+    description: "Developing production-ready voice bots with SIP integration, real-time STT/TTS, and universal telephony gateways.",
+    technologies: ["LiveKit", "SIP Gateway", "Deepgram", "ElevenLabs", "Jambonz"],
+  },
+  {
+    icon: Workflow,
+    title: "Agentic Workflows",
+    description: "Orchestrating complex multi-agent systems with dynamic state management and intent-based routing.",
+    technologies: ["LangGraph", "LangChain", "Autonomous Agents", "State Management"],
+  },
+  {
+    icon: Database,
+    title: "Data Engineering & MLOps",
+    description: "Building distributed data pipelines and managing model lifecycles with industry-standard MLOps tools.",
+    technologies: ["Apache Spark", "PySpark", "MLFlow", "Docker", "PostgreSQL"],
+  },
+  {
+    icon: Code,
+    title: "Full-Stack AI Apps",
+    description: "Creating high-performance web applications and interactive dashboards for AI and data services.",
+    technologies: ["React", "FastAPI", "TypeScript", "Streamlit", "Node.js"],
   },
   {
     icon: Zap,
-    title: "API Integration",
-    description: "Seamlessly connecting third-party services, webhooks, and custom APIs for unified workflows.",
-    technologies: ["REST", "GraphQL", "WebSockets", "OAuth"],
+    title: "Cloud & Automation",
+    description: "Scalable cloud deployments and end-to-end automation for modern business workflows.",
+    technologies: ["Supabase", "Redis", "Vector Databases", "WebSockets", "OAuth"],
   },
 ];
 
@@ -44,7 +44,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="py-24 relative">
       <div className="absolute inset-0 grid-background opacity-50" />
-      
+
       <div className="container relative z-10 px-6">
         <div className="text-center mb-16">
           <h2 className="section-heading">
