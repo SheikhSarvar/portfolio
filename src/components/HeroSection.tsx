@@ -6,7 +6,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-background" />
-      
+
       {/* Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,hsl(174_84%_50%/0.12)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,hsl(270_70%_60%/0.08)_0%,transparent_70%)] pointer-events-none" />
@@ -14,12 +14,12 @@ export function HeroSection() {
       <div className="container relative z-10 px-6 text-center">
         <div className="animate-fade-in">
           <p className="text-primary font-mono text-sm mb-4 tracking-wider">
-            SENIOR AI ENGINEER
+            Data Scientist
           </p>
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-slide-up">
-          <span className="gradient-text">William Jackson</span>
+          <span className="gradient-text">Gulam Sarvar</span>
         </h1>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
@@ -39,13 +39,13 @@ export function HeroSection() {
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
           <a
-            href="#"
+            href="https://github.com/SheikhSarvar"
             className="p-3 rounded-full bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all duration-200"
           >
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="#"
+            href="https://in.linkedin.com/in/sheikh-gulam-sarvar-ab3343219"
             className="p-3 rounded-full bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all duration-200"
           >
             <Linkedin className="h-5 w-5" />

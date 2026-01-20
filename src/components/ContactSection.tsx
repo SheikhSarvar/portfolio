@@ -18,7 +18,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute inset-0 grid-background opacity-30" />
-      
+
       <div className="container relative z-10 px-6">
         <div className="text-center mb-16">
           <h2 className="section-heading">
@@ -77,11 +77,11 @@ export function ContactSection() {
               <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-primary" />
-                  william@example.com
+                  sheikhgulamsarvar@gmail.com
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-primary" />
-                  San Francisco, CA
+                  India
                 </div>
               </div>
             </div>

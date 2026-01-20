@@ -31,14 +31,14 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/20 to-transparent" />
-      
+
       <div className="container relative z-10 px-6">
         <div className="text-center mb-16">
           <h2 className="section-heading">
             <span className="gradient-text">Experience</span>
           </h2>
           <p className="section-subheading mx-auto">
-            A track record of delivering impactful AI and automation solutions.
+            A track record of delivering impactful AI Agent and automation solutions.
           </p>
         </div>
 
