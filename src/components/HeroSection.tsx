@@ -14,7 +14,6 @@ export function HeroSection() {
       <div className="container relative z-10 px-6 text-center">
         <div className="animate-fade-in">
           <p className="text-primary font-mono text-sm mb-4 tracking-wider">
-            Data Scientist
           </p>
         </div>
 
@@ -23,7 +22,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          Building intelligent automation systems and AI-powered solutions that transform how businesses operate.
+          Engineering the future through autonomous AI Agents, data-driven innovation, and production-grade automation systems.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>

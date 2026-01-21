@@ -6,7 +6,7 @@ const projects = [
   {
     title: "KickCall AI + SIP Gateway",
     description: "Enterprise voice AI platform with integrated SIP/VoIP gateways for automated support, lead qualification, and universal telephony connectivity.",
-    technologies: ["Python", "LiveKit", "GPT-4o", "SIP/VoIP", "Jambonz", "Deepgram"],
+    technologies: ["Python", "LiveKit", "GPT-4o", "SIP/VoIP", "UCaaS", "Deepgram", "ElevenLabs"],
     metrics: "Real-time responses • 50+ languages • 95% accuracy",
     link: "#",
     github: "https://github.com/BlueBash/kickcall_agents",
@@ -80,7 +80,7 @@ export function PortfolioSection() {
             <span className="gradient-text">Portfolio</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Featured projects showcasing AI engineering and automation expertise.
+            A curated showcase of end-to-end AI engineering, distributed data systems, and intelligent automation projects.
           </p>
         </div>
 

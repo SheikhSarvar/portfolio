@@ -12,7 +12,7 @@ const skills = [
     icon: Cpu,
     title: "Voice & Conversational AI",
     description: "Developing production-ready voice bots with SIP integration, real-time STT/TTS, and universal telephony gateways.",
-    technologies: ["LiveKit", "SIP Gateway", "Deepgram", "ElevenLabs", "Jambonz"],
+    technologies: ["LiveKit", "VoIP/SIP", "UCaaS", "Deepgram", "ElevenLabs", "Jambonz"],
   },
   {
     icon: Workflow,
@@ -51,7 +51,7 @@ export function SkillsSection() {
             <span className="gradient-text">Skills & Expertise</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Specialized in building AI-powered automation systems that deliver real business value.
+            Specialized in architecting autonomous AI systems and production-grade automation that deliver measurable business impact.
           </p>
         </div>
 

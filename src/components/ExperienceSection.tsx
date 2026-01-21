@@ -2,28 +2,17 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Senior AI Engineer",
-    company: "TechVentures AI",
-    period: "2022 - Present",
+    title: "Associate Data Scientist",
+    company: "Bluebash",
+    period: "2024 - Present",
     description:
-      "Leading the development of enterprise AI solutions including RAG systems, conversational agents, and automation platforms. Architected solutions serving 50K+ daily users.",
-    highlights: ["Built RAG pipeline reducing response time by 60%", "Led team of 4 engineers", "Deployed 15+ production AI systems"],
-  },
-  {
-    title: "AI Automation Specialist",
-    company: "AutoFlow Systems",
-    period: "2020 - 2022",
-    description:
-      "Designed and implemented complex automation workflows using n8n and Make.com. Created custom integrations for CRM, ERP, and marketing platforms.",
-    highlights: ["Automated 200+ business processes", "Saved clients $2M+ annually", "Built custom n8n nodes"],
-  },
-  {
-    title: "Full-Stack Developer",
-    company: "Digital Dynamics",
-    period: "2018 - 2020",
-    description:
-      "Developed web applications and APIs for various clients. Specialized in React, Node.js, and cloud deployments.",
-    highlights: ["Delivered 30+ web applications", "Implemented CI/CD pipelines", "Mentored junior developers"],
+      "Spearheading the development of Kickcall.ai, an advanced AI-driven voice automation platform. Architecting scalable systems for real-time telephonic interactions, integrating cutting-edge LLMs with traditional telephony infrastructure.",
+    highlights: [
+      "Built Kickcall.ai: A production-grade voice bot utilizing VoIP, SIP, and UCaaS for seamless phone number integration.",
+      "Engineered low-latency audio pipelines using LiveKit for orchestration, Deepgram for STT, and ElevenLabs for realistic TTS.",
+      "Implemented robust RAG architectures to provide context-aware, human-like responses in real-time conversations.",
+      "Optimized end-to-end latency to ensure natural, interruptible voice interactions across various communication channels."
+    ],
   },
 ];
 
@@ -38,7 +27,7 @@ export function ExperienceSection() {
             <span className="gradient-text">Experience</span>
           </h2>
           <p className="section-subheading mx-auto">
-            A track record of delivering impactful AI Agent and automation solutions.
+            Engineering the future through autonomous AI Agents, data-driven innovation, and production-grade automation systems.
           </p>
         </div>
 

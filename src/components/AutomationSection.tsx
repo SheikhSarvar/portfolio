@@ -64,14 +64,14 @@ export function AutomationSection() {
   return (
     <section id="automation" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
+
       <div className="container relative z-10 px-6">
         <div className="text-center mb-16">
           <h2 className="section-heading">
             <span className="gradient-text">Automation Projects</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Streamlined workflows built with n8n, Make.com, and Zapier for real business impact.
+            Optimizing enterprise efficiency through advanced orchestration with n8n, Make.com, and custom agentic frameworks.
           </p>
         </div>
 
