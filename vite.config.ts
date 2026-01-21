@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    allowedHosts: [".ngrok-free.app"],
   },
   plugins: [react()],
   resolve: {
