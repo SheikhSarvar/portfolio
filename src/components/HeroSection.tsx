@@ -14,6 +14,7 @@ export function HeroSection() {
       <div className="container relative z-10 px-6 text-center">
         <div className="animate-fade-in">
           <p className="text-primary font-mono text-sm mb-4 tracking-wider">
+            AI ENGINEER • DATA SCIENTIST • AUTOMATION ARCHITECT
           </p>
         </div>
 
@@ -26,13 +27,17 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          <Button variant="hero" size="lg">
-            <Mail className="mr-2 h-5 w-5" />
-            Get in Touch
-          </Button>
-          <Button variant="glow" size="lg">
-            View Projects
-          </Button>
+          <a href="#contact">
+            <Button variant="hero" size="lg">
+              <Mail className="mr-2 h-5 w-5" />
+              Get in Touch
+            </Button>
+          </a>
+          <a href="#portfolio">
+            <Button variant="glow" size="lg">
+              View Projects
+            </Button>
+          </a>
         </div>
 
         {/* Social Links */}

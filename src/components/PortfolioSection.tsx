@@ -17,7 +17,7 @@ const projects = [
     technologies: ["LangGraph", "OpenAI", "FastAPI", "Python"],
     metrics: "5+ specialized agents • Dynamic intent routing",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/Agent-workflow",
+    github: "https://github.com/SheikhSarvar/Agent-workflow",
   },
   {
     title: "IndustryGPT (TechBot)",
@@ -25,7 +25,7 @@ const projects = [
     technologies: ["LLaMA 3.2", "LoRA", "Hugging Face", "PyTorch"],
     metrics: "15K+ Q&A pairs • Fine-tuned on tech data",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/IndustryGPT-custom-llm",
+    github: "https://github.com/SheikhSarvar/IndustryGPT-custom-llm",
   },
   {
     title: "Voyage Analytics",
@@ -33,7 +33,7 @@ const projects = [
     technologies: ["Docker", "MLFlow", "Streamlit", "Scikit-Learn"],
     metrics: "End-to-end MLOps • Real-time predictions",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/Voyage-Analytics",
+    github: "https://github.com/SheikhSarvar/Voyage-Analytics",
   },
   {
     title: "Financial Forecasting Frontier",
@@ -41,7 +41,7 @@ const projects = [
     technologies: ["Apache Spark", "PySpark", "Structured Streaming", "Random Forest"],
     metrics: "Distributed ML • Real-time transaction processing",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/financial-forecasting",
+    github: "https://github.com/SheikhSarvar/financial-forecasting",
   },
   {
     title: "DeepFER",
@@ -49,7 +49,7 @@ const projects = [
     technologies: ["TensorFlow", "Keras", "Opencv", "Streamlit"],
     metrics: "7 emotion classes • Real-time detection",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/Deepfer-emotion-recognition",
+    github: "https://github.com/SheikhSarvar/Deepfer-emotion-recognition",
   },
   {
     title: "Retail Strategy Suite",
@@ -57,7 +57,7 @@ const projects = [
     technologies: ["XGBoost", "K-Means", "Pandas", "Matplotlib"],
     metrics: "Weekly sales forecasting • 3 cluster segments",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/demand-forecasting-retail",
+    github: "https://github.com/SheikhSarvar/demand-forecasting-retail",
   },
   {
     title: "DeepCSAT",
@@ -65,7 +65,7 @@ const projects = [
     technologies: ["ANN", "TensorFlow", "Keras", "Streamlit"],
     metrics: "ANN-based regression • CSAT score prediction",
     link: "#",
-    github: "/home/alphazero/GS/MS-Projects/e-comm-DeepCSAT",
+    github: "https://github.com/SheikhSarvar/e-comm-DeepCSAT",
   },
 ];
 

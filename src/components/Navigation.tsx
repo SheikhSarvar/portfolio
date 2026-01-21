@@ -54,9 +54,11 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button variant="glow" size="sm">
-              Get in Touch
-            </Button>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, "#contact")}>
+              <Button variant="glow" size="sm">
+                Get in Touch
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}

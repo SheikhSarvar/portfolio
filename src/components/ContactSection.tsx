@@ -25,7 +25,7 @@ export function ContactSection() {
             <span className="gradient-text">Get in Touch</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Ready to transform your business with AI automation? Let's discuss your project.
+            Let's architect the future together. Reach out to discuss autonomous AI systems, intelligent automation, or data-driven strategies.
           </p>
         </div>
 
