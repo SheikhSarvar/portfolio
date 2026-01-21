@@ -1,67 +1,51 @@
 import { Button } from "./ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-6">
       {/* Grid Background */}
-      <div className="absolute inset-0 grid-background" />
+      <div className="absolute inset-0 grid-background opacity-40" />
 
-      {/* Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,hsl(174_84%_50%/0.12)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,hsl(270_70%_60%/0.08)_0%,transparent_70%)] pointer-events-none" />
+      {/* Radial Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,hsl(174_84%_50%/0.15)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,hsl(270_70%_60%/0.1)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="container relative z-10 px-6 text-center">
-        <div className="animate-fade-in">
-          <p className="text-primary font-mono text-sm mb-4 tracking-wider">
-            AI ENGINEER • DATA SCIENTIST • AUTOMATION ARCHITECT
+      <div className="container max-w-5xl relative z-10 text-center">
+        <div className="animate-fade-in mb-6">
+          <p className="text-primary font-mono text-sm tracking-[0.2em] font-medium">
+            AGENTIC AI & LLM SYSTEMS ENGINEER
           </p>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-slide-up">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 animate-slide-up tracking-tight leading-[1.1]">
           <span className="gradient-text">Gulam Sarvar</span>
         </h1>
 
-        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          Engineering the future through autonomous AI Agents, data-driven innovation, and production-grade automation systems.
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 animate-slide-up text-foreground/90 tracking-tight" style={{ animationDelay: "0.05s" }}>
+          Data Scientist | Agentic AI & LLM Systems Engineer
+        </h2>
+
+        <p className="text-muted-foreground text-lg md:text-2xl max-w-4xl mx-auto mb-12 animate-slide-up leading-relaxed" style={{ animationDelay: "0.1s" }}>
+          Architecting high-performance <span className="text-foreground font-medium">Multi-Agent Systems</span> and <span className="text-foreground font-medium">Real-time Voice AI</span>.
+          Specializing in <span className="text-foreground font-medium">LangGraph</span>, <span className="text-foreground font-medium">LiveKit</span>, and production-scale
+          <span className="text-foreground font-medium"> RAG pipelines</span> with low-latency <span className="text-foreground font-medium">VOIP</span> integration.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          <a href="#contact">
-            <Button variant="hero" size="lg">
-              <Mail className="mr-2 h-5 w-5" />
-              Get in Touch
-            </Button>
-          </a>
+        <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
           <a href="#portfolio">
-            <Button variant="glow" size="lg">
+            <Button variant="hero" size="xl" className="px-12 text-lg h-14">
               View Projects
             </Button>
           </a>
         </div>
+      </div>
 
-        {/* Social Links */}
-        <div className="flex items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-          <a
-            href="https://github.com/SheikhSarvar"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all duration-200"
-          >
-            <Github className="h-5 w-5" />
-          </a>
-          <a
-            href="https://in.linkedin.com/in/sheikh-gulam-sarvar-ab3343219"
-            className="p-3 rounded-full bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all duration-200"
-          >
-            <Linkedin className="h-5 w-5" />
-          </a>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors">
-            <ArrowDown className="h-6 w-6" />
-          </a>
-        </div>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-float hidden md:block">
+        <a href="#about" className="text-muted-foreground/60 hover:text-primary transition-colors flex flex-col items-center gap-2">
+          <span className="text-[10px] font-mono tracking-widest uppercase">Explore</span>
+          <ArrowDown className="h-4 w-4" />
+        </a>
       </div>
     </section>
   );

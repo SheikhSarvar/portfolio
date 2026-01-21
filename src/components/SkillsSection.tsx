@@ -1,42 +1,26 @@
 import { Brain, Code, Cpu, Database, Workflow, Zap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
-const skills = [
+const skillCategories = [
   {
+    title: "Agentic AI & LLMs",
     icon: Brain,
-    title: "AI & Machine Learning",
-    description: "LLMs, Fine-tuning (LoRA), RAG systems, Computer Vision (CNNs), and Deep Learning for regression/classification.",
-    technologies: ["LLaMA 3.2", "LoRA", "PyTorch", "TensorFlow", "Scikit-Learn"],
+    skills: ["LangGraph", "LangChain", "Autonomous Agents", "Multi-Agent Workflows", "Prompt Engineering", "RAG Systems", "Hugging Face"],
   },
   {
+    title: "Voice & Real-Time Systems",
     icon: Cpu,
-    title: "Voice & Conversational AI",
-    description: "Developing production-ready voice bots with SIP integration, real-time STT/TTS, and universal telephony gateways.",
-    technologies: ["LiveKit", "VoIP/SIP", "UCaaS", "Deepgram", "ElevenLabs", "Jambonz"],
+    skills: ["LiveKit", "Pipecat", "VoIP/SIP", "Deepgram (STT)", "ElevenLabs (TTS)", "Real-time Orchestration"],
   },
   {
-    icon: Workflow,
-    title: "Agentic Workflows",
-    description: "Orchestrating complex multi-agent systems with dynamic state management and intent-based routing.",
-    technologies: ["LangGraph", "LangChain", "Autonomous Agents", "State Management"],
-  },
-  {
-    icon: Database,
-    title: "Data Engineering & MLOps",
-    description: "Building distributed data pipelines and managing model lifecycles with industry-standard MLOps tools.",
-    technologies: ["Apache Spark", "PySpark", "MLFlow", "Docker", "PostgreSQL"],
-  },
-  {
-    icon: Code,
-    title: "Full-Stack AI Apps",
-    description: "Creating high-performance web applications and interactive dashboards for AI and data services.",
-    technologies: ["React", "FastAPI", "TypeScript", "Streamlit", "Node.js"],
-  },
-  {
+    title: "Backend & MLOps",
     icon: Zap,
-    title: "Cloud & Automation",
-    description: "Scalable cloud deployments and end-to-end automation for modern business workflows.",
-    technologies: ["Supabase", "Redis", "Vector Databases", "WebSockets", "OAuth"],
+    skills: ["FastAPI", "Redis", "Docker", "LangSmith", "Langfuse", "PostgreSQL", "MLFlow"],
+  },
+  {
+    title: "ML & Data",
+    icon: Database,
+    skills: ["Apache Spark", "PySpark", "Fine-tuning (LoRA)", "Computer Vision (CNNs)", "Scikit-Learn", "PyTorch"],
   },
 ];
 
@@ -45,40 +29,37 @@ export function SkillsSection() {
     <section id="skills" className="py-24 relative">
       <div className="absolute inset-0 grid-background opacity-50" />
 
-      <div className="container relative z-10 px-6">
-        <div className="text-center mb-16">
-          <h2 className="section-heading">
+      <div className="container relative z-10 px-4 md:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="section-heading text-3xl md:text-4xl">
             <span className="gradient-text">Skills & Expertise</span>
           </h2>
-          <p className="section-subheading mx-auto">
+          <p className="section-subheading mx-auto px-4">
             Specialized in architecting autonomous AI systems and production-grade automation that deliver measurable business impact.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          {skillCategories.map((category, index) => (
             <Card
-              key={skill.title}
+              key={category.title}
               className="bg-card border-border card-glow group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <skill.icon className="h-6 w-6 text-primary" />
+              <CardHeader className="flex flex-row items-center gap-4 p-6 md:p-8">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                  <category.icon className="h-6 w-6 md:h-7 md:h-7 text-primary" />
                 </div>
-                <CardTitle className="text-lg">{skill.title}</CardTitle>
+                <CardTitle className="text-xl md:text-2xl">{category.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {skill.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {skill.technologies.map((tech) => (
+              <CardContent className="px-6 pb-6 md:px-8 md:pb-8">
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {category.skills.map((skill) => (
                     <span
-                      key={tech}
-                      className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground"
+                      key={skill}
+                      className="px-2.5 py-1 md:px-3 md:py-1.5 text-[11px] md:text-sm rounded-lg bg-secondary/50 text-foreground border border-border/50 font-medium"
                     >
-                      {tech}
+                      {skill}
                     </span>
                   ))}
                 </div>

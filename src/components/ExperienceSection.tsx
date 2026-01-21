@@ -2,16 +2,16 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Associate Data Scientist",
+    title: "Data Scientist | Agentic AI Engineer",
     company: "Bluebash",
-    period: "2024 - Present",
+    period: "Apr 2024 - Present",
     description:
-      "Spearheading the development of Kickcall.ai, an advanced AI-driven voice automation platform. Architecting scalable systems for real-time telephonic interactions, integrating cutting-edge LLMs with traditional telephony infrastructure.",
+      "Core engineer for Kickcall.ai, a production-grade AI voice platform. I architect low-latency telephony systems and autonomous multi-agent workflows for enterprise healthcare and legal automation.",
     highlights: [
-      "Built Kickcall.ai: A production-grade voice bot utilizing VoIP, SIP, and UCaaS for seamless phone number integration.",
-      "Engineered low-latency audio pipelines using LiveKit for orchestration, Deepgram for STT, and ElevenLabs for realistic TTS.",
-      "Implemented robust RAG architectures to provide context-aware, human-like responses in real-time conversations.",
-      "Optimized end-to-end latency to ensure natural, interruptible voice interactions across various communication channels."
+      "Engineered stateful multi-agent orchestrators using LangGraph, reducing decision latency by 40%.",
+      "Architected real-time VOIP signaling pipelines with LiveKit and Pipecat for natural AI voice interactions.",
+      "Developed production-ready RAG systems using vector databases (Pinecone/Milvus) for sub-second retrieval.",
+      "Implemented enterprise-level LLM observability (LangSmith) and automated evaluation frameworks."
     ],
   },
 ];
@@ -34,12 +34,12 @@ export function ExperienceSection() {
         <div className="max-w-3xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-border" />
 
             {experiences.map((exp, index) => (
-              <div key={index} className="relative pl-20 pb-12 last:pb-0">
+              <div key={index} className="relative pl-12 md:pl-20 pb-12 last:pb-0">
                 {/* Timeline Dot */}
-                <div className="absolute left-6 top-0 w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
+                <div className="absolute left-2 md:left-6 top-0 w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                 </div>
 

@@ -3,9 +3,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
+  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#portfolio", label: "Case Studies" },
   { href: "#automation", label: "Automation" },
   { href: "#contact", label: "Contact" },
 ];
@@ -39,7 +40,7 @@ export function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="text-xl font-bold gradient-text">
-            GS
+            Gulam Sarvar
           </a>
 
           {/* Desktop Navigation */}
