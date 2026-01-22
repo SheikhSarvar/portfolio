@@ -33,11 +33,19 @@ export function HeroSection() {
         </p>
 
         <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          <a href="#portfolio">
-            <Button variant="hero" size="xl" className="px-12 text-lg h-14">
-              View Projects
-            </Button>
-          </a>
+          <Button
+            variant="hero"
+            size="xl"
+            className="px-12 text-lg h-14"
+            onClick={() => {
+              const element = document.querySelector("#portfolio");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            View Projects
+          </Button>
         </div>
       </div>
 
