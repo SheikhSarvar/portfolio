@@ -50,10 +50,18 @@ export function HeroSection() {
       </div>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-float hidden md:block">
-        <a href="#about" className="text-muted-foreground/60 hover:text-primary transition-colors flex flex-col items-center gap-2">
+        <button
+          onClick={() => {
+            const element = document.querySelector("#about");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="text-muted-foreground/60 hover:text-primary transition-colors flex flex-col items-center gap-2 cursor-pointer"
+        >
           <span className="text-[10px] font-mono tracking-widest uppercase">Explore</span>
           <ArrowDown className="h-4 w-4" />
-        </a>
+        </button>
       </div>
     </section>
   );
