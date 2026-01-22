@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -13,24 +13,79 @@ const App = () => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Gulam Sarvar",
-    "jobTitle": "Agentic AI & LLM Systems Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Bluebash"
-    },
+    "alternateName": [
+      "Sheikh Sarvar",
+      "Sheikh Gulam Sarvar",
+      "Gulam Sarvar",
+      "gulamsarvar-bluebash",
+      "SheikhSarvar",
+      "Sheikh.Sarvar"
+    ],
+    "jobTitle": "Data Scientist & AI Agent & Voice Bot Developer",
+    "description": "AI Agent and Voice Bot Developer building agentic AI systems, real-time voice agents, RAG pipelines, and production-grade LLM infrastructure with strong focus on scalability, observability, and low-latency systems.",
     "url": "https://sheikhsarvar.github.io",
     "sameAs": [
-      "https://linkedin.com/in/gulam-sarvar"
+      "https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219",
+      "https://github.com/SheikhSarvar"
     ],
     "knowsAbout": [
-      "Agentic AI",
-      "LLM Systems",
-      "LangGraph",
+      "Agentic AI Systems",
+      "Multi-Agent Systems",
+      "Autonomous AI Agents",
+      "Agent Workflows",
+      "Graph-Based Agent Architecture",
+      "Large Language Models",
+      "LLM Orchestration",
+      "Tool-Calling Agents",
+      "Retrieval Augmented Generation",
+      "Advanced RAG Architectures",
+      "Semantic Search",
+      "Vector Databases",
+      "Embedding Models",
+      "Knowledge Graphs",
+      "Context Management",
+      "Voice Bots",
+      "Real-Time Voice AI",
+      "Streaming LLMs",
+      "Voice Agent Infrastructure",
       "LiveKit",
-      "VOIP",
-      "Multi-Agent Workflows",
-      "Data Science",
-      "RAG"
+      "Pipecat",
+      "Speech-to-Text",
+      "Text-to-Speech",
+      "Low-Latency AI Systems",
+      "Python",
+      "Async Python",
+      "Machine Learning",
+      "Deep Learning",
+      "MLOps",
+      "LLM Evaluation",
+      "AI Observability",
+      "Tracing and Logging for LLMs",
+      "AI Microservices",
+      "FastAPI",
+      "REST APIs",
+      "Docker",
+      "Scalable AI Infrastructure"
+    ],
+    "hasPart": [
+      {
+        "@type": "CreativeWork",
+        "name": "Kickcall.ai (Production Voice AI)",
+        "description": "Low-latency, real-time AI voice interaction platform built with LiveKit and LangGraph.",
+        "url": "https://www.kickcall.ai/"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Multi-Agent Workflow Orchestrator",
+        "description": "Stateful orchestration layer using LangGraph for multi-agent coordination and complex reasoning.",
+        "url": "https://github.com/SheikhSarvar/Agent-workflow"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "IndustryGPT (Fine-Tuned LLM)",
+        "description": "Fine-tuned LLaMA 3.2 model for specialized technical troubleshooting and diagnostics.",
+        "url": "https://github.com/SheikhSarvar/IndustryGPT-custom-llm"
+      }
     ]
   };
 
@@ -42,13 +97,13 @@ const App = () => {
         </script>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
