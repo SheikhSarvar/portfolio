@@ -37,13 +37,13 @@ export function ContactSection() {
           </a>
 
           <a
-            href="tel:+917895778196"
+            href="tel:+917895778106"
             className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-all group"
           >
             <div className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center group-hover:bg-primary/10">
               <Phone className="h-5 w-5 text-primary" />
             </div>
-            <span className="font-medium">+91 7895778196</span>
+            <span className="font-medium">+91 7895778106</span>
           </a>
 
           <div className="flex items-center gap-3 text-muted-foreground">
