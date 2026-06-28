@@ -1,14 +1,9 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Allow AI crawlers to read llms files
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Sitemap location
+Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml

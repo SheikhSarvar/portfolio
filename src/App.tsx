@@ -1,110 +1,65 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+/**
+ * App.tsx — Final complete version
+ * All phases wired. No stubs.
+ */
 
-const queryClient = new QueryClient();
+import './styles/globals.css'
 
-const App = () => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Gulam Sarvar",
-    "alternateName": [
-      "Sheikh Sarvar",
-      "Sheikh Gulam Sarvar",
-      "Gulam Sarvar",
-      "gulamsarvar-bluebash",
-      "SheikhSarvar",
-      "Sheikh.Sarvar"
-    ],
-    "jobTitle": "Data Scientist & AI Agent & Voice Bot Developer",
-    "description": "AI Agent and Voice Bot Developer building agentic AI systems, real-time voice agents, RAG pipelines, and production-grade LLM infrastructure with strong focus on scalability, observability, and low-latency systems.",
-    "url": "https://sheikhsarvar.github.io",
-    "sameAs": [
-      "https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219",
-      "https://github.com/SheikhSarvar"
-    ],
-    "knowsAbout": [
-      "Agentic AI Systems",
-      "Multi-Agent Systems",
-      "Autonomous AI Agents",
-      "Agent Workflows",
-      "Graph-Based Agent Architecture",
-      "Large Language Models",
-      "LLM Orchestration",
-      "Tool-Calling Agents",
-      "Retrieval Augmented Generation",
-      "Advanced RAG Architectures",
-      "Semantic Search",
-      "Vector Databases",
-      "Embedding Models",
-      "Knowledge Graphs",
-      "Context Management",
-      "Voice Bots",
-      "Real-Time Voice AI",
-      "Streaming LLMs",
-      "Voice Agent Infrastructure",
-      "LiveKit",
-      "Pipecat",
-      "Speech-to-Text",
-      "Text-to-Speech",
-      "Low-Latency AI Systems",
-      "Python",
-      "Async Python",
-      "Machine Learning",
-      "Deep Learning",
-      "MLOps",
-      "LLM Evaluation",
-      "AI Observability",
-      "Tracing and Logging for LLMs",
-      "AI Microservices",
-      "FastAPI",
-      "REST APIs",
-      "Docker",
-      "Scalable AI Infrastructure"
-    ],
-    "hasPart": [
-      {
-        "@type": "CreativeWork",
-        "name": "Kickcall.ai (Production Voice AI)",
-        "description": "Low-latency, real-time AI voice interaction platform built with LiveKit and LangGraph.",
-        "url": "https://www.kickcall.ai/"
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "Multi-Agent Workflow Orchestrator",
-        "description": "Stateful orchestration layer using LangGraph for multi-agent coordination and complex reasoning.",
-        "url": "https://github.com/SheikhSarvar/Agent-workflow"
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "IndustryGPT (Fine-Tuned LLM)",
-        "description": "Fine-tuned LLaMA 3.2 model for specialized technical troubleshooting and diagnostics.",
-        "url": "https://github.com/SheikhSarvar/IndustryGPT-custom-llm"
-      }
-    ]
-  };
+import { Nav }            from './components/layout/Nav'
+import { Footer }         from './components/layout/Footer'
+import { ScrollProgress } from './components/ui/ScrollProgress'
+import { StructuredData } from './components/ui/StructuredData'
+import { Hero }           from './components/sections/Hero'
+import { About }          from './components/sections/About'
+import { Skills }         from './components/sections/Skills'
+import { Experience }     from './components/sections/Experience'
+import { Projects }       from './components/sections/Projects'
+import { CaseStudies }    from './components/sections/CaseStudies'
+import { OpenSource }     from './components/sections/OpenSource'
+import { Testimonials }   from './components/sections/Testimonials'
+import { Contact }        from './components/sections/Contact'
 
+export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-        <Toaster />
-        <Sonner />
-        <HashRouter>
-          <Routes>
-            <Route path="*" element={<Index />} />
-          </Routes>
-        </HashRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+    <>
+      {/* Structured data (JSON-LD SEO) */}
+      <StructuredData />
 
-export default App;
+      {/* Scroll progress bar */}
+      <ScrollProgress />
+
+      {/* Skip to main content — keyboard accessibility */}
+      <a
+        href="#hero"
+        className={[
+          'sr-only focus:not-sr-only',
+          'fixed top-4 left-4 z-[80]',
+          'px-4 py-2 rounded-lg bg-signal-500 text-depth-900',
+          'text-sm font-semibold shadow-accent',
+          'focus:outline-none focus:ring-2 focus:ring-signal-400 focus:ring-offset-2',
+        ].join(' ')}
+      >
+        Skip to main content
+      </a>
+
+      {/* Sticky navigation */}
+      <Nav />
+
+      {/* Main content */}
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <CaseStudies />
+        <OpenSource />
+        <Testimonials />
+        <Contact />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </>
+  )
+}

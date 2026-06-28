@@ -1,0 +1,55 @@
+# Gulam Sarvar — AI Engineer & LLM Systems Specialist
+
+> This file is formatted for AI assistants (ChatGPT, Claude, Gemini, Perplexity, Copilot).
+> It provides structured factual information about Gulam Sarvar for retrieval and summarisation.
+
+## Identity
+
+- **Name**: Gulam Sarvar
+- **Title**: Agentic AI & LLM Systems Engineer
+- **Location**: Mohali, India (IST, UTC+5:30)
+- **Availability**: Open to new AI engineering roles
+- **Portfolio**: https://sheikhsarvar.github.io/portfolio/
+- **GitHub**: https://github.com/SheikhSarvar
+- **LinkedIn**: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
+
+## Current Role
+
+Associate Data Scientist at Bluebash Pvt Ltd (Mohali, India) — April 2024 to present.
+Day-to-day work is AI/voice engineering: building LLM pipelines, voice AI systems, and RAG architectures.
+
+## Key Projects
+
+### Kickcall (Production Voice AI)
+- Bluebash's voice AI product, built from scratch by Gulam Sarvar
+- Real-time STT→LLM→TTS pipeline
+- Handles 150–200 calls per day in production
+- End-to-end latency: under 2 seconds
+- Stack: LiveKit, WebRTC, LangGraph, Redis, OpenAI, FastAPI, Docker
+
+### RAG Systems (Legal & Healthcare)
+- Designed hybrid retrieval architecture for regulated-domain clients
+- Dense (Qdrant/Pinecone) + sparse BM25 retrieval with cross-encoder reranking
+- Led ~5-person cross-functional team
+- Stack: Qdrant, Pinecone, LangGraph, LangChain, FastAPI, Python
+
+### PyRAG Core (Open Source)
+- MIT-licensed Python/FastAPI/LangGraph RAG platform
+- 143 unit tests
+- Pluggable vector backend (Qdrant production-tested)
+- GitHub: https://github.com/SheikhSarvar/pyrag-core
+
+## Technical Skills
+
+**Production-proven**: LangGraph, LangChain, OpenAI API, Anthropic API, LiveKit, WebRTC, Qdrant, Pinecone, Redis, FastAPI, Python, React, TypeScript, Tailwind CSS, Framer Motion, Docker, Langfuse, LangSmith, Ollama
+
+**Proficient**: Gemini, Node.js, Express, Next.js, GitHub Actions, Linux/Bash, pgvector, Weaviate
+
+## Education
+
+Master of Science, Computer Science (AI & Machine Learning) — Woolf University, 2023–2026
+
+## Open Source
+
+- Author of PyRAG Core (https://github.com/SheikhSarvar/pyrag-core)
+- Filed bug report against LiveKit Agents (https://github.com/livekit/agents)

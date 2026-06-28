@@ -1,0 +1,130 @@
+# Gulam Sarvar — Full Profile for LLM Retrieval
+
+> Extended version of llms.txt with richer technical detail.
+> Intended for retrieval-augmented generation systems.
+
+## Personal Summary
+
+Gulam Sarvar is an AI/LLM Systems Engineer based in Mohali, India, specialising in
+production-grade agentic AI, voice AI pipelines, and retrieval-augmented generation (RAG) systems.
+He holds an MSc in Computer Science (AI & ML) from Woolf University (2026) and works as
+Associate Data Scientist at Bluebash Pvt Ltd, where his day-to-day focus is LLM engineering
+rather than classical data science.
+
+He is the author of PyRAG Core, an MIT-licensed open-source RAG platform, and has filed
+upstream bug reports against LiveKit Agents. He is currently open to new AI engineering roles.
+
+---
+
+## Production Experience
+
+### Kickcall — Voice AI Product (Bluebash, 2024–Present)
+
+Gulam Sarvar built Kickcall from scratch. It is Bluebash's commercial voice AI product.
+
+**What it does**: Handles real-time outbound and inbound phone calls using an AI agent.
+The caller speaks; the system transcribes, reasons, and responds — all within 2 seconds.
+
+**Architecture**:
+1. Audio capture via WebRTC through LiveKit
+2. Streaming speech-to-text (STT) with partial transcript accumulation
+3. LangGraph-orchestrated LLM with tool calling and session memory
+4. Redis for distributed session state across horizontally-scaled agent workers
+5. Streaming text-to-speech (TTS) with playback synchronisation
+
+**Scale**: 150–200 calls per day in live production.
+**Latency**: Under 2 seconds end-to-end (STT + LLM inference + TTS).
+
+**Stack**: LiveKit, LiveKit Agents SDK, WebRTC, LangGraph, OpenAI, Redis, FastAPI, Python, Docker.
+
+---
+
+### RAG Systems for Legal & Healthcare (Bluebash, 2024–Present)
+
+Led design and delivery of document intelligence systems for two regulated-industry clients
+(legal and healthcare). The core problem: naive dense-only RAG missed exact-match terminology
+(statute numbers, drug names, clause identifiers).
+
+**Solution**: Hybrid retrieval combining:
+- Dense vector search (Qdrant, Pinecone) for semantic similarity
+- Sparse BM25 for lexical exact-match
+- Reciprocal Rank Fusion to merge result sets
+- Cross-encoder reranking to re-score the merged top-k candidates
+- LangGraph query routing to select retrieval strategy per query type
+
+**Team**: Led ~5-person cross-functional team (frontend, cloud, backend).
+**Stack**: Qdrant, Pinecone, LangGraph, LangChain, FastAPI, Python, Docker.
+
+---
+
+## Open Source Projects
+
+### PyRAG Core
+- **Repo**: https://github.com/SheikhSarvar/pyrag-core
+- **License**: MIT
+- **Description**: A Python/FastAPI/LangGraph RAG platform with pluggable vector backends.
+- **Test coverage**: 143 unit tests.
+- **Production-tested backend**: Qdrant.
+- **Implemented but not production-tested**: Weaviate, Milvus, pgvector, Elasticsearch.
+- **Orchestration**: LangGraph for multi-step retrieval pipelines.
+
+### LiveKit Agents Bug Report
+- Filed upstream bug report against livekit/agents repository.
+- Related to reconnect/session handling edge case in voice pipeline.
+- URL: https://github.com/livekit/agents/issues
+
+---
+
+## Technical Skills Detail
+
+### AI & Agents (Production)
+- LangGraph: multi-agent workflows, stateful pipelines, tool calling, conditional edges
+- LangChain: chains, retrievers, document loaders, output parsers
+- OpenAI API: GPT-4 class models, function calling, streaming
+- Anthropic API: Claude models
+- Langfuse: LLM observability, tracing, cost tracking
+- LangSmith: evaluation, tracing
+- Ollama, LM Studio: local model serving (RTX 4060 8GB, Qwen3.5-9B)
+
+### Voice AI (Production)
+- LiveKit: WebRTC media server, Agents SDK
+- WebRTC: audio streaming, real-time transport
+- STT/TTS pipeline design and latency optimisation
+
+### Vector Databases
+- Qdrant: production — hybrid search, collections, payload filtering
+- Pinecone: production — managed vector index, metadata filtering
+- Redis: session state, caching, pub/sub
+- pgvector, Weaviate: implemented in PyRAG Core, not production-deployed
+
+### Backend
+- FastAPI: async REST APIs, dependency injection, background tasks
+- Python: async/await, Pydantic, SQLModel, asyncpg, Alembic, uv
+- PostgreSQL: relational data, pgvector extension
+- Docker: Containerisation, entrypoint scripting, multi-stage builds
+
+### Frontend
+- React 18, TypeScript, Tailwind CSS, Framer Motion
+- Next.js (proficient, not primary stack)
+
+### DevOps (limited scope)
+- Docker: primary tool — all services containerised
+- GitHub Actions: CI workflows
+- Vercel: frontend deployment
+- Note: AWS/EC2/ECS is owned by a dedicated cloud teammate; Gulam's infra role is Docker + troubleshooting, not production infra management.
+
+---
+
+## Education
+
+**Master of Science — Computer Science (AI & Machine Learning)**
+Woolf University · 2023–2026
+
+---
+
+## Contact & Links
+
+- Portfolio: https://sheikhsarvar.github.io/portfolio/
+- GitHub: https://github.com/SheikhSarvar
+- LinkedIn: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
+- PyRAG Core: https://github.com/SheikhSarvar/pyrag-core

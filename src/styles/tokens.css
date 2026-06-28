@@ -1,0 +1,203 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  DESIGN SYSTEM TOKENS — Gulam Sarvar Portfolio v2           ║
+ * ║  Palette: Near-white base · Mint-teal signal · Navy depth   ║
+ * ║  Aesthetic: Vercel precision + Linear density + Apple space  ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * TOKEN NAMING CONVENTION
+ * --color-[role]-[scale]
+ * --space-[n]        → 4px base grid
+ * --radius-[size]
+ * --font-[role]
+ * --duration-[speed]
+ * --ease-[curve]
+ */
+
+@layer base {
+  :root {
+    /* ── PALETTE ────────────────────────────────────────────────── */
+
+    /* Base (near-white, not pure white — avoids harsh contrast) */
+    --color-base-50:  #F8FAFB;   /* page bg */
+    --color-base-100: #F1F4F6;   /* surface */
+    --color-base-200: #E2E8ED;   /* border subtle */
+    --color-base-300: #C8D3DC;   /* border default */
+    --color-base-400: #8EA4B4;   /* muted text */
+    --color-base-500: #5A7389;   /* secondary text */
+    --color-base-600: #3A5468;   /* body text */
+    --color-base-700: #1E3344;   /* heading */
+    --color-base-800: #0F1E29;   /* near-black */
+    --color-base-900: #060D12;   /* deepest ink */
+
+    /* Signal — mint-teal (the "one risk" for this brief) */
+    /* Rationale: pure green is overused in AI portfolios;
+       this teal reads simultaneously as "technology" and "precision"
+       without the Silicon Valley cliché of neon green */
+    --color-signal-300: #7FFFDA;   /* glow highlight */
+    --color-signal-400: #3BFFD0;   /* vivid */
+    --color-signal-500: #00E5B4;   /* primary action — the signature */
+    --color-signal-600: #00C49A;   /* hover state */
+    --color-signal-700: #009A78;   /* pressed / active */
+    --color-signal-800: #006B54;   /* dark variant */
+
+    /* Depth — navy blue (used for hero gradient, code blocks) */
+    --color-depth-800: #0A1628;
+    --color-depth-900: #050D1A;
+    --color-depth-950: #020810;
+
+    /* Semantic aliases */
+    --color-bg:          var(--color-base-50);
+    --color-surface:     var(--color-base-100);
+    --color-border:      var(--color-base-200);
+    --color-border-strong: var(--color-base-300);
+    --color-text-muted:  var(--color-base-400);
+    --color-text-soft:   var(--color-base-500);
+    --color-text-body:   var(--color-base-700);
+    --color-text-heading: var(--color-base-800);
+    --color-accent:      var(--color-signal-500);
+    --color-accent-hover: var(--color-signal-600);
+    --color-accent-glow: var(--color-signal-300);
+
+    /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+
+    /*
+     * Display: "Syne" — geometric, slightly condensed, feels engineered.
+     *   Not Inter (too neutral), not Poppins (too friendly), not Clash Display
+     *   (too loud). Syne has the right weight of technical restraint.
+     * Body: "Inter" — deliberate choice here because the alternative would be
+     *   DM Sans or Plus Jakarta, but Inter's x-height and tabular figures
+     *   make it better for data-dense skill grids.
+     * Mono: "JetBrains Mono" — legible at small sizes, has ligatures.
+     */
+    --font-display: 'Syne', 'SF Pro Display', system-ui, sans-serif;
+    --font-body:    'Inter', 'SF Pro Text', system-ui, sans-serif;
+    --font-mono:    'JetBrains Mono', 'SF Mono', monospace;
+
+    /* Type scale (clamp: mobile → desktop) */
+    --text-xs:   clamp(0.688rem, 0.6rem + 0.4vw, 0.75rem);   /* 11→12px */
+    --text-sm:   clamp(0.813rem, 0.75rem + 0.3vw, 0.875rem);  /* 13→14px */
+    --text-base: clamp(0.938rem, 0.875rem + 0.3vw, 1rem);     /* 15→16px */
+    --text-lg:   clamp(1.063rem, 1rem + 0.3vw, 1.125rem);     /* 17→18px */
+    --text-xl:   clamp(1.188rem, 1.1rem + 0.4vw, 1.25rem);    /* 19→20px */
+    --text-2xl:  clamp(1.375rem, 1.2rem + 0.9vw, 1.5rem);     /* 22→24px */
+    --text-3xl:  clamp(1.688rem, 1.4rem + 1.5vw, 1.875rem);   /* 27→30px */
+    --text-4xl:  clamp(2rem,     1.6rem + 2vw,   2.25rem);    /* 32→36px */
+    --text-5xl:  clamp(2.5rem,   1.9rem + 3vw,   3rem);       /* 40→48px */
+    --text-6xl:  clamp(3rem,     2.2rem + 4vw,   3.75rem);    /* 48→60px */
+    --text-7xl:  clamp(3.5rem,   2.5rem + 5vw,   4.5rem);     /* 56→72px */
+
+    /* Line heights */
+    --leading-tight:  1.15;
+    --leading-snug:   1.3;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    /* Letter spacing */
+    --tracking-tight:  -0.04em;
+    --tracking-snug:   -0.02em;
+    --tracking-normal:  0em;
+    --tracking-wide:    0.05em;
+    --tracking-wider:   0.1em;
+    --tracking-widest:  0.15em;
+
+    /* ── SPACING (4px base grid) ────────────────────────────────── */
+    --space-1:   0.25rem;   /* 4px  */
+    --space-2:   0.5rem;    /* 8px  */
+    --space-3:   0.75rem;   /* 12px */
+    --space-4:   1rem;      /* 16px */
+    --space-5:   1.25rem;   /* 20px */
+    --space-6:   1.5rem;    /* 24px */
+    --space-8:   2rem;      /* 32px */
+    --space-10:  2.5rem;    /* 40px */
+    --space-12:  3rem;      /* 48px */
+    --space-16:  4rem;      /* 64px */
+    --space-20:  5rem;      /* 80px */
+    --space-24:  6rem;      /* 96px */
+    --space-32:  8rem;      /* 128px */
+    --space-section: clamp(5rem, 8vw, 8rem);   /* section vertical rhythm */
+
+    /* ── RADIUS ─────────────────────────────────────────────────── */
+    --radius-sm:   0.25rem;   /* 4px  — tags, badges */
+    --radius-md:   0.5rem;    /* 8px  — inputs, small cards */
+    --radius-lg:   0.75rem;   /* 12px — cards */
+    --radius-xl:   1rem;      /* 16px — large panels */
+    --radius-2xl:  1.5rem;    /* 24px — hero containers */
+    --radius-full: 9999px;    /* pills */
+
+    /* ── SHADOW ─────────────────────────────────────────────────── */
+    --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.06),
+                  0 2px 4px -2px rgb(0 0 0 / 0.04);
+    --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.07),
+                  0 4px 6px -4px rgb(0 0 0 / 0.04);
+    --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.08),
+                  0 8px 10px -6px rgb(0 0 0 / 0.04);
+    /* Accent glow — signature effect on interactive elements */
+    --shadow-accent: 0 0 0 1px var(--color-signal-500),
+                     0 0 20px 0 rgb(0 229 180 / 0.2);
+    --shadow-accent-strong: 0 0 0 1px var(--color-signal-500),
+                             0 0 40px 0 rgb(0 229 180 / 0.35);
+
+    /* ── ANIMATION ──────────────────────────────────────────────── */
+    --duration-instant:  80ms;
+    --duration-fast:    150ms;
+    --duration-normal:  250ms;
+    --duration-slow:    400ms;
+    --duration-slower:  600ms;
+    --duration-slowest: 900ms;
+
+    /* Easing curves */
+    --ease-out:         cubic-bezier(0.0, 0.0, 0.2, 1);
+    --ease-in:          cubic-bezier(0.4, 0.0, 1.0, 1);
+    --ease-in-out:      cubic-bezier(0.4, 0.0, 0.2, 1);
+    --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);  /* slight overshoot */
+    --ease-smooth:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* ── Z-INDEX SCALE ──────────────────────────────────────────── */
+    --z-below:     -1;
+    --z-base:       0;
+    --z-raised:    10;
+    --z-dropdown:  20;
+    --z-sticky:    30;
+    --z-overlay:   40;
+    --z-modal:     50;
+    --z-toast:     60;
+    --z-cursor:    70;
+
+    /* ── GLASS MORPHISM ─────────────────────────────────────────── */
+    /* Used sparingly — nav bar, floating cards, skill chips */
+    --glass-bg:      rgb(248 250 251 / 0.72);
+    --glass-border:  rgb(200 211 220 / 0.5);
+    --glass-blur:    16px;
+    --glass-shadow:  0 4px 24px rgb(0 0 0 / 0.06);
+  }
+
+  /* ── DARK MODE (future-proof; not default in v1) ─────────────── */
+  @media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] {
+      --color-bg:          var(--color-depth-900);
+      --color-surface:     var(--color-depth-800);
+      --color-border:      rgb(255 255 255 / 0.08);
+      --color-border-strong: rgb(255 255 255 / 0.15);
+      --color-text-muted:  var(--color-base-500);
+      --color-text-soft:   var(--color-base-400);
+      --color-text-body:   var(--color-base-200);
+      --color-text-heading: var(--color-base-50);
+      --glass-bg:          rgb(10 22 40 / 0.72);
+      --glass-border:      rgb(255 255 255 / 0.08);
+    }
+  }
+
+  /* ── REDUCED MOTION ─────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --duration-fast:    0ms;
+      --duration-normal:  0ms;
+      --duration-slow:    0ms;
+      --duration-slower:  0ms;
+      --duration-slowest: 0ms;
+      --ease-spring:      linear;
+    }
+  }
+}
