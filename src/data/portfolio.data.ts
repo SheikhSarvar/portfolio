@@ -34,7 +34,7 @@ RAG platform on GitHub.`,
     linkedin: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
     portfolio: 'https://sheikhsarvar.github.io/portfolio/',
     pyragCore: 'https://github.com/SheikhSarvar/pyrag-core',
-    email:    'TODO: add email',
+    email:    'sheikhgulamsarvar@gmail.com',
     // calendar: 'TODO: add Calendly/Cal.com link',
   },
 } as const

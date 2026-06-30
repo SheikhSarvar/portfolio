@@ -19,19 +19,44 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { NAV_ITEMS, SECTION_IDS } from '../../lib/constants'
-import { useActiveSection } from '../../hooks'
 import { identity } from '../../data/portfolio.data'
 import { staggerContainer, fadeUp } from '../../lib/motion'
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`
 
-export function Nav() {
+interface NavProps {
+  currentRoute?: string
+}
+
+export function Nav({ currentRoute: propRoute }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled,   setScrolled]   = useState(false)
   const drawerRef = useRef<HTMLDivElement>(null)
 
-  const sectionIds  = Object.values(SECTION_IDS)
-  const activeId    = useActiveSection(sectionIds)
+  const getRoute = () => {
+    const hash = window.location.hash
+    if (hash.startsWith('#/')) return hash.substring(1)
+    if (hash.startsWith('#')) {
+      const pageId = hash.substring(1)
+      if (pageId === 'hero') return '/'
+      return `/${pageId}`
+    }
+    return '/'
+  }
+
+  const [currentRoute, setCurrentRoute] = useState(getRoute)
+
+  useEffect(() => {
+    if (propRoute) {
+      setCurrentRoute(propRoute)
+      return
+    }
+    const handleHash = () => {
+      setCurrentRoute(getRoute())
+    }
+    window.addEventListener('hashchange', handleHash)
+    return () => window.removeEventListener('hashchange', handleHash)
+  }, [propRoute])
 
   // Track scroll for glass effect
   useEffect(() => {
@@ -55,12 +80,23 @@ export function Nav() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // Map href to route
+  const getRouteFromHref = (href: string) => {
+    if (href === '#' || href === '#hero') return '/'
+    if (href === `#${SECTION_IDS.projects}`) return '/project'
+    return `/${href.replace('#', '')}`
+  }
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
-    // Smooth scroll to section
-    const id = href.replace('#', '')
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const targetRoute = getRouteFromHref(href)
+    window.location.hash = `#${targetRoute}`
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
+
+  // On non-hero pages the background is always light — always use dark nav styling
+  const isOnHero = currentRoute === '/'
+  const usesDarkBg = scrolled || !isOnHero
 
   return (
     <>
@@ -68,7 +104,7 @@ export function Nav() {
         role="banner"
         className={cn(
           'fixed top-0 left-0 right-0 z-[30] transition-all duration-300',
-          scrolled
+          usesDarkBg
             ? 'glass border-b border-base-200/60 py-3'
             : 'bg-transparent py-5',
         )}
@@ -79,7 +115,7 @@ export function Nav() {
         >
           {/* Logo / wordmark */}
           <a
-            href="#hero"
+            href="#/"
             onClick={(e) => { e.preventDefault(); handleNavClick('#hero') }}
             className="flex items-center gap-2 group focus-visible:outline-offset-4"
             aria-label="Home"
@@ -100,7 +136,7 @@ export function Nav() {
             <span
               className={cn(
                 'font-display font-semibold text-sm tracking-tight',
-                scrolled ? 'text-base-800' : 'text-white',
+                usesDarkBg ? 'text-base-800' : 'text-white',
                 'transition-colors duration-200',
               )}
             >
@@ -114,22 +150,22 @@ export function Nav() {
             role="list"
           >
             {NAV_ITEMS.map(({ label, href }) => {
-              const sectionId = href.replace('#', '')
-              const isActive  = activeId === sectionId
+              const targetRoute = getRouteFromHref(href)
+              const isActive  = currentRoute === targetRoute
               return (
                 <li key={href}>
                   <a
-                    href={href}
+                    href={`#${targetRoute}`}
                     onClick={(e) => { e.preventDefault(); handleNavClick(href) }}
                     className={cn(
                       'relative px-3 py-1.5 rounded-md text-sm font-medium',
                       'transition-colors duration-150',
                       'focus-visible:outline-offset-2',
                       isActive
-                        ? scrolled
+                        ? usesDarkBg
                           ? 'text-base-800'
                           : 'text-white'
-                        : scrolled
+                        : usesDarkBg
                           ? 'text-base-500 hover:text-base-700'
                           : 'text-white/70 hover:text-white',
                     )}
@@ -167,7 +203,7 @@ export function Nav() {
               aria-label="GitHub profile"
               className={cn(
                 'p-1.5 rounded-md transition-colors duration-150',
-                scrolled
+                usesDarkBg
                   ? 'text-base-400 hover:text-base-700'
                   : 'text-white/60 hover:text-white',
               )}
@@ -181,7 +217,7 @@ export function Nav() {
               aria-label="LinkedIn profile"
               className={cn(
                 'p-1.5 rounded-md transition-colors duration-150',
-                scrolled
+                usesDarkBg
                   ? 'text-base-400 hover:text-base-700'
                   : 'text-white/60 hover:text-white',
               )}
@@ -213,7 +249,7 @@ export function Nav() {
             onClick={() => setMobileOpen((v) => !v)}
             className={cn(
               'md:hidden p-2 rounded-md transition-colors duration-150',
-              scrolled ? 'text-base-700' : 'text-white',
+              usesDarkBg ? 'text-base-700' : 'text-white',
             )}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -269,12 +305,12 @@ export function Nav() {
                 role="list"
               >
                 {NAV_ITEMS.map(({ label, href }) => {
-                  const sectionId = href.replace('#', '')
-                  const isActive  = activeId === sectionId
+                  const targetRoute = getRouteFromHref(href)
+                  const isActive  = currentRoute === targetRoute
                   return (
                     <motion.li key={href} variants={fadeUp}>
                       <a
-                        href={href}
+                        href={`#${targetRoute}`}
                         onClick={(e) => { e.preventDefault(); handleNavClick(href) }}
                         className={cn(
                           'block px-4 py-3 rounded-xl text-base font-medium',

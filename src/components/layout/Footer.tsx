@@ -34,20 +34,29 @@ export function Footer() {
               Navigation
             </p>
             <ul className="space-y-2" role="list">
-              {NAV_ITEMS.map(({ label, href }) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      document.getElementById(href.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                    className="text-sm text-base-500 hover:text-base-800 transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {NAV_ITEMS.map(({ label, href }) => {
+                const getRouteFromHref = (h: string) => {
+                  if (h === '#' || h === '#hero') return '/'
+                  if (h === '#projects') return '/project'
+                  return `/${h.replace('#', '')}`
+                }
+                const targetRoute = getRouteFromHref(href)
+                return (
+                  <li key={href}>
+                    <a
+                      href={`#${targetRoute}`}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        window.location.hash = `#${targetRoute}`
+                        window.scrollTo({ top: 0, behavior: 'instant' })
+                      }}
+                      className="text-sm text-base-500 hover:text-base-800 transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
 
@@ -77,16 +86,14 @@ export function Footer() {
                 <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
                 LinkedIn
               </a>
-              {identity.links.email !== 'TODO: add email' && (
-                <a
-                  href={`mailto:${identity.links.email}`}
-                  className="flex items-center gap-2 text-sm text-base-500 hover:text-base-800 transition-colors"
-                  aria-label="Email"
-                >
-                  <Mail className="w-3.5 h-3.5" aria-hidden="true" />
-                  Email
-                </a>
-              )}
+              <a
+                href={`mailto:${identity.links.email}`}
+                className="flex items-center gap-2 text-sm text-base-500 hover:text-base-800 transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+                Email
+              </a>
             </div>
           </div>
         </div>

@@ -1,12 +1,24 @@
 # Gulam Sarvar — Full Profile for LLM Retrieval
 
 > Extended version of llms.txt with richer technical detail.
-> Intended for retrieval-augmented generation systems.
+> Intended for retrieval-augmented generation systems and AI-powered search.
+> Summary version: https://sheikhsarvar.github.io/portfolio/llms.txt
+
+> Last updated: 2026-06-30
 
 ## Personal Summary
 
-Gulam Sarvar is an AI/LLM Systems Engineer based in Mohali, India, specialising in
-production-grade agentic AI, voice AI pipelines, and retrieval-augmented generation (RAG) systems.
+Gulam Sarvar (also known as Sheikh Gulam Sarvar and SheikhSarvar) is an AI/LLM Systems Engineer
+based in Mohali, India, specialising in production-grade agentic AI, voice AI pipelines, and
+retrieval-augmented generation (RAG) systems.
+
+**Name variants used across platforms**:
+- **Gulam Sarvar** — preferred short name, used on portfolio and professional communications
+- **Sheikh Gulam Sarvar** — full legal name, used on LinkedIn
+- **SheikhSarvar** — GitHub handle (https://github.com/SheikhSarvar)
+- **sheikhgulamsarvar** — email prefix (sheikhgulamsarvar@gmail.com)
+
+All the above names refer to the same individual.
 He holds an MSc in Computer Science (AI & ML) from Woolf University (2026) and works as
 Associate Data Scientist at Bluebash Pvt Ltd, where his day-to-day focus is LLM engineering
 rather than classical data science.
@@ -127,4 +139,5 @@ Woolf University · 2023–2026
 - Portfolio: https://sheikhsarvar.github.io/portfolio/
 - GitHub: https://github.com/SheikhSarvar
 - LinkedIn: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
+- Email: sheikhgulamsarvar@gmail.com
 - PyRAG Core: https://github.com/SheikhSarvar/pyrag-core

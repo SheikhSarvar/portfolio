@@ -1,8 +1,4 @@
-/**
- * App.tsx — Final complete version
- * All phases wired. No stubs.
- */
-
+import { useState, useEffect } from 'react'
 import './styles/globals.css'
 
 import { Nav }            from './components/layout/Nav'
@@ -20,6 +16,33 @@ import { Testimonials }   from './components/sections/Testimonials'
 import { Contact }        from './components/sections/Contact'
 
 export default function App() {
+  const getRoute = () => {
+    const hash = window.location.hash
+    if (hash.startsWith('#/')) {
+      return hash.substring(1)
+    }
+    if (hash.startsWith('#')) {
+      const pageId = hash.substring(1)
+      if (pageId === 'hero') return '/'
+      return `/${pageId}`
+    }
+    return '/'
+  }
+
+  const [currentRoute, setCurrentRoute] = useState(getRoute)
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentRoute(getRoute())
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentRoute])
+
   return (
     <>
       {/* Structured data (JSON-LD SEO) */}
@@ -30,7 +53,11 @@ export default function App() {
 
       {/* Skip to main content — keyboard accessibility */}
       <a
-        href="#hero"
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById('main-content')?.focus()
+        }}
         className={[
           'sr-only focus:not-sr-only',
           'fixed top-4 left-4 z-[80]',
@@ -43,19 +70,27 @@ export default function App() {
       </a>
 
       {/* Sticky navigation */}
-      <Nav />
+      <Nav currentRoute={currentRoute} />
 
       {/* Main content */}
-      <main id="main-content">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <CaseStudies />
-        <OpenSource />
-        <Testimonials />
-        <Contact />
+      <main id="main-content" tabIndex={-1} className="focus:outline-none min-h-[70vh]">
+        {currentRoute === '/' && <Hero />}
+        {currentRoute === '/about' && (
+          <>
+            <About />
+            <Testimonials />
+          </>
+        )}
+        {currentRoute === '/skills' && <Skills />}
+        {currentRoute === '/experience' && <Experience />}
+        {(currentRoute === '/project' || currentRoute === '/projects') && (
+          <>
+            <Projects />
+            <CaseStudies />
+            <OpenSource />
+          </>
+        )}
+        {currentRoute === '/contact' && <Contact />}
       </main>
 
       {/* Footer */}

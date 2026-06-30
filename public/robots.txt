@@ -1,9 +1,25 @@
+# robots.txt — Gulam Sarvar Portfolio
+# https://sheikhsarvar.github.io/portfolio/
+
 User-agent: *
 Allow: /
 
-# Allow AI crawlers to read llms files
+# Sitemap
+Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml
+
+# AI / LLM crawlers — structured data files
+User-agent: GPTBot
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-# Sitemap location
-Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml
+User-agent: Claude-Web
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /llms.txt
+Allow: /llms-full.txt

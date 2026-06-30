@@ -31,11 +31,8 @@ import { HERO_ROLES, SECTION_IDS } from '../../lib/constants'
 import { cn }                from '../../lib/utils'
 import { fadeUp, fadeIn, staggerContainer, scaleIn } from '../../lib/motion'
 
-const scrollToAbout = () => {
-  document.getElementById(SECTION_IDS.about)?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  })
+const navigateToAbout = () => {
+  window.location.hash = '#/about'
 }
 
 export function Hero() {
@@ -142,7 +139,7 @@ export function Hero() {
             {/* Primary */}
             <button
               type="button"
-              onClick={scrollToAbout}
+              onClick={navigateToAbout}
               className={cn(
                 'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
                 'text-sm font-semibold',
@@ -247,7 +244,7 @@ export function Hero() {
       {/* Scroll chevron */}
       <motion.button
         type="button"
-        onClick={scrollToAbout}
+        onClick={navigateToAbout}
         aria-label="Scroll to about section"
         className={cn(
           'absolute bottom-6 left-1/2 -translate-x-1/2 z-10',
