@@ -4,7 +4,7 @@ import './styles/globals.css'
 import { Nav } from './components/layout/Nav'
 import { Footer } from './components/layout/Footer'
 import { ScrollProgress } from './components/ui/ScrollProgress'
-import { StructuredData } from './components/ui/StructuredData'
+import { SiteHead } from './components/seo/SiteHead'
 import { Hero } from './components/sections/Hero'
 import { About } from './components/sections/About'
 import { Skills } from './components/sections/Skills'
@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <>
-      <StructuredData />
+      <SiteHead />
       <ScrollProgress />
 
       <a

@@ -57,7 +57,7 @@ export function Footer() {
               <a
                 href={identity.links.github}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-base-500 hover:text-base-800 transition-colors"
                 aria-label="GitHub"
               >
@@ -67,7 +67,7 @@ export function Footer() {
               <a
                 href={identity.links.linkedin}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-base-500 hover:text-base-800 transition-colors"
                 aria-label="LinkedIn"
               >
