@@ -11,6 +11,11 @@ export function StructuredData() {
     '@context':   'https://schema.org',
     '@type':      'Person',
     name:         identity.name,
+    alternateName: [
+      'Sheikh Gulam Sarvar',
+      'Sheikh Sarvar',
+      'Sarvar',
+    ],
     url:          seo.siteUrl,
     sameAs: [
       identity.links.github,

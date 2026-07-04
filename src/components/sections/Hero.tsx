@@ -29,18 +29,12 @@ import { TypewriterText }    from '../animations/TypewriterText'
 import { identity }          from '../../data/portfolio.data'
 import { HERO_ROLES, SECTION_IDS } from '../../lib/constants'
 import { cn }                from '../../lib/utils'
+import { scrollToSection }   from '../../lib/navigation'
 import { fadeUp, fadeIn, staggerContainer, scaleIn } from '../../lib/motion'
-
-const scrollToAbout = () => {
-  document.getElementById(SECTION_IDS.about)?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  })
-}
 
 export function Hero() {
   return (
-    <section
+      <section
       id={SECTION_IDS.hero}
       className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden"
       aria-label="Introduction"
@@ -142,7 +136,7 @@ export function Hero() {
             {/* Primary */}
             <button
               type="button"
-              onClick={scrollToAbout}
+              onClick={() => scrollToSection(SECTION_IDS.about)}
               className={cn(
                 'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
                 'text-sm font-semibold',
@@ -247,7 +241,7 @@ export function Hero() {
       {/* Scroll chevron */}
       <motion.button
         type="button"
-        onClick={scrollToAbout}
+        onClick={() => scrollToSection(SECTION_IDS.about)}
         aria-label="Scroll to about section"
         className={cn(
           'absolute bottom-6 left-1/2 -translate-x-1/2 z-10',

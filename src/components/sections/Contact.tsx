@@ -117,6 +117,21 @@ export function Contact() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
 
     setStatus('submitting')
+
+    const emailRecipient = identity.links.email;
+    const triggerMailtoFallback = () => {
+      const mailtoUrl = `mailto:${emailRecipient}?subject=${encodeURIComponent(`Contact from ${form.name}`)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
+      window.location.href = mailtoUrl;
+      setStatus('success');
+      setForm({ name: '', email: '', message: '' })
+    }
+
+    const isPlaceholder = FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID') || !FORMSPREE_ENDPOINT.startsWith('https://formspree.io/f/');
+    if (isPlaceholder) {
+      triggerMailtoFallback()
+      return
+    }
+
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method:  'POST',
@@ -127,10 +142,10 @@ export function Contact() {
         setStatus('success')
         setForm({ name: '', email: '', message: '' })
       } else {
-        setStatus('error')
+        triggerMailtoFallback()
       }
     } catch {
-      setStatus('error')
+      triggerMailtoFallback()
     }
   }
 
@@ -161,20 +176,18 @@ export function Contact() {
           <div className="space-y-3">
             <p className="text-[11px] font-mono uppercase tracking-widest text-base-400">Reach me at</p>
             <div className="space-y-2">
-              {identity.links.email !== 'TODO: add email' && (
-                <a
-                  href={`mailto:${identity.links.email}`}
-                  className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:shadow-card transition-all duration-150 group"
-                >
-                  <span className="w-8 h-8 rounded-lg bg-signal-500/8 border border-signal-500/20 flex items-center justify-center">
-                    <Mail className="w-4 h-4 text-signal-600" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-xs text-base-400">Email</p>
-                    <p className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">{identity.links.email}</p>
-                  </div>
-                </a>
-              )}
+              <a
+                href={`mailto:${identity.links.email}`}
+                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:shadow-card transition-all duration-150 group"
+              >
+                <span className="w-8 h-8 rounded-lg bg-signal-500/8 border border-signal-500/20 flex items-center justify-center">
+                  <Mail className="w-4 h-4 text-signal-600" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-xs text-base-400">Email</p>
+                  <p className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">{identity.links.email}</p>
+                </div>
+              </a>
               <a
                 href={identity.links.linkedin}
                 target="_blank"

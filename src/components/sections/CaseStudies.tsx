@@ -244,7 +244,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
 export function CaseStudies() {
   return (
     <SectionWrapper
-      id={SECTION_IDS.projects}
+      id={SECTION_IDS.caseStudies}
       label="Case Studies"
       className="bg-base-100"
     >

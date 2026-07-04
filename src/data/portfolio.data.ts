@@ -34,7 +34,7 @@ RAG platform on GitHub.`,
     linkedin: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
     portfolio: 'https://sheikhsarvar.github.io/portfolio/',
     pyragCore: 'https://github.com/SheikhSarvar/pyrag-core',
-    email:    'TODO: add email',
+    email:    'sheikhgulamsarvar@gmail.com',
     // calendar: 'TODO: add Calendly/Cal.com link',
   },
 } as const
@@ -314,9 +314,9 @@ export const certifications: Array<{
 
 export const seo = {
   siteName:    'Gulam Sarvar',
-  siteUrl:     'https://sheikhsarvar.github.io/portfolio',
-  title:       'Gulam Sarvar | Agentic AI & LLM Systems Engineer',
-  description: 'Agentic AI & LLM Systems Engineer. Built production voice AI (Kickcall) running 150–200 calls/day at <2s latency. Open-source author of PyRAG Core. Specialising in LangGraph, LiveKit, RAG, and FastAPI.',
+  siteUrl:     'https://sheikhsarvar.github.io/portfolio/',
+  title:       'Gulam Sarvar | Sheikh Gulam Sarvar | Agentic AI & LLM Systems Engineer',
+  description: 'Gulam Sarvar, also known as Sheikh Gulam Sarvar, Sheikh Sarvar, and Sarvar. Agentic AI & LLM Systems Engineer. Built production voice AI (Kickcall) running 150-200 calls/day at <2s latency. Open-source author of PyRAG Core. Specialising in LangGraph, LiveKit, RAG, and FastAPI.',
   keywords:    [
     'Agentic AI',
     'LLM Systems Engineer',
@@ -332,3 +332,4 @@ export const seo = {
   author:      'Gulam Sarvar',
   twitterHandle: '@TODO',  // TODO: add if applicable
 }
+

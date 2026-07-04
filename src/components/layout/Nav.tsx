@@ -1,46 +1,32 @@
 /**
  * Nav.tsx
- * ─────────────────────────────────────────────────────────────────
- * Sticky navigation bar.
- *
- * Behaviour:
- * - Transparent at top of page
- * - Glass morphism once user scrolls > 60px
- * - Active link highlights the current section via IntersectionObserver
- * - "Open to work" badge on desktop
- * - Resume download button
- * - Hamburger → slide-down drawer on mobile
- * - Keyboard accessible (focus trap in drawer)
- * ─────────────────────────────────────────────────────────────────
+ * Sticky navigation bar for the single-page portfolio.
  */
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { NAV_ITEMS, SECTION_IDS } from '../../lib/constants'
-import { useActiveSection } from '../../hooks'
 import { identity } from '../../data/portfolio.data'
 import { staggerContainer, fadeUp } from '../../lib/motion'
+import { scrollToSection, normalizeSectionId } from '../../lib/navigation'
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`
 
-export function Nav() {
+interface NavProps {
+  currentSection?: string
+}
+
+export function Nav({ currentSection }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled,   setScrolled]   = useState(false)
-  const drawerRef = useRef<HTMLDivElement>(null)
-
-  const sectionIds  = Object.values(SECTION_IDS)
-  const activeId    = useActiveSection(sectionIds)
-
-  // Track scroll for glass effect
+  const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close drawer on escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileOpen(false)
@@ -49,17 +35,18 @@ export function Nav() {
     return () => document.removeEventListener('keydown', onKey)
   }, [])
 
-  // Lock body scroll when drawer open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  const activeSection = currentSection || SECTION_IDS.hero
+  const isOnHero = activeSection === SECTION_IDS.hero
+  const usesDarkBg = scrolled || !isOnHero
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
-    // Smooth scroll to section
-    const id = href.replace('#', '')
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSection(href)
   }
 
   return (
@@ -68,7 +55,7 @@ export function Nav() {
         role="banner"
         className={cn(
           'fixed top-0 left-0 right-0 z-[30] transition-all duration-300',
-          scrolled
+          usesDarkBg
             ? 'glass border-b border-base-200/60 py-3'
             : 'bg-transparent py-5',
         )}
@@ -77,14 +64,12 @@ export function Nav() {
           className="container-wide flex items-center justify-between"
           aria-label="Main navigation"
         >
-          {/* Logo / wordmark */}
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); handleNavClick('#hero') }}
             className="flex items-center gap-2 group focus-visible:outline-offset-4"
             aria-label="Home"
           >
-            {/* Monogram mark */}
             <span
               className={cn(
                 'w-8 h-8 rounded-lg flex items-center justify-center',
@@ -100,7 +85,7 @@ export function Nav() {
             <span
               className={cn(
                 'font-display font-semibold text-sm tracking-tight',
-                scrolled ? 'text-base-800' : 'text-white',
+                usesDarkBg ? 'text-base-800' : 'text-white',
                 'transition-colors duration-200',
               )}
             >
@@ -108,14 +93,13 @@ export function Nav() {
             </span>
           </a>
 
-          {/* Desktop nav links */}
           <ul
             className="hidden md:flex items-center gap-1"
             role="list"
           >
             {NAV_ITEMS.map(({ label, href }) => {
-              const sectionId = href.replace('#', '')
-              const isActive  = activeId === sectionId
+              const targetSection = normalizeSectionId(href)
+              const isActive = activeSection === targetSection
               return (
                 <li key={href}>
                   <a
@@ -126,10 +110,10 @@ export function Nav() {
                       'transition-colors duration-150',
                       'focus-visible:outline-offset-2',
                       isActive
-                        ? scrolled
+                        ? usesDarkBg
                           ? 'text-base-800'
                           : 'text-white'
-                        : scrolled
+                        : usesDarkBg
                           ? 'text-base-500 hover:text-base-700'
                           : 'text-white/70 hover:text-white',
                     )}
@@ -150,16 +134,13 @@ export function Nav() {
             })}
           </ul>
 
-          {/* Desktop right actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Open to work badge */}
             {identity.available && (
               <span className="badge-available text-[11px]">
                 Open to work
               </span>
             )}
 
-            {/* Social icons */}
             <a
               href={identity.links.github}
               target="_blank"
@@ -167,7 +148,7 @@ export function Nav() {
               aria-label="GitHub profile"
               className={cn(
                 'p-1.5 rounded-md transition-colors duration-150',
-                scrolled
+                usesDarkBg
                   ? 'text-base-400 hover:text-base-700'
                   : 'text-white/60 hover:text-white',
               )}
@@ -181,7 +162,7 @@ export function Nav() {
               aria-label="LinkedIn profile"
               className={cn(
                 'p-1.5 rounded-md transition-colors duration-150',
-                scrolled
+                usesDarkBg
                   ? 'text-base-400 hover:text-base-700'
                   : 'text-white/60 hover:text-white',
               )}
@@ -189,7 +170,6 @@ export function Nav() {
               <Linkedin className="w-4 h-4" aria-hidden="true" />
             </a>
 
-            {/* Resume */}
             <a
               href={resumeHref}
               download
@@ -207,13 +187,12 @@ export function Nav() {
             </a>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
             className={cn(
               'md:hidden p-2 rounded-md transition-colors duration-150',
-              scrolled ? 'text-base-700' : 'text-white',
+              usesDarkBg ? 'text-base-700' : 'text-white',
             )}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -227,11 +206,9 @@ export function Nav() {
         </nav>
       </header>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -243,11 +220,9 @@ export function Nav() {
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
             <motion.div
               key="drawer"
               id="mobile-nav-drawer"
-              ref={drawerRef}
               role="dialog"
               aria-label="Mobile navigation"
               aria-modal="true"
@@ -269,8 +244,8 @@ export function Nav() {
                 role="list"
               >
                 {NAV_ITEMS.map(({ label, href }) => {
-                  const sectionId = href.replace('#', '')
-                  const isActive  = activeId === sectionId
+                  const targetSection = normalizeSectionId(href)
+                  const isActive = activeSection === targetSection
                   return (
                     <motion.li key={href} variants={fadeUp}>
                       <a

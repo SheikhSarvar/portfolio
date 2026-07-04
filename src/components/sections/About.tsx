@@ -1,20 +1,7 @@
-/**
- * About.tsx
- * ─────────────────────────────────────────────────────────────────
- * Layout (desktop):
- * ┌─────────────────────────┬─────────────────────┐
- * │  Heading + bio text     │  Stat cards (2x2)   │
- * │  Core strengths list    │  Philosophy quote   │
- * └─────────────────────────┴─────────────────────┘
- *
- * All numbers come from verified production data only.
- * ─────────────────────────────────────────────────────────────────
- */
-
 import { motion } from 'framer-motion'
-import { SectionWrapper }    from '../layout/SectionWrapper'
-import { FadeIn }            from '../animations/FadeIn'
-import { StaggerChildren }   from '../animations/StaggerChildren'
+import { SectionWrapper } from '../layout/SectionWrapper'
+import { FadeIn } from '../animations/FadeIn'
+import { StaggerChildren } from '../animations/StaggerChildren'
 import { experience } from '../../data/portfolio.data'
 import { ABOUT_STATS, SECTION_IDS } from '../../lib/constants'
 import { fadeUp, scaleIn } from '../../lib/motion'
@@ -25,34 +12,34 @@ import {
 
 const CORE_STRENGTHS = [
   {
-    icon:  Cpu,
+    icon: Cpu,
     label: 'Agentic AI Systems',
-    desc:  'LangGraph multi-agent workflows, tool orchestration, stateful pipelines.',
+    desc: 'LangGraph multi-agent workflows, tool orchestration, stateful pipelines.',
   },
   {
-    icon:  Mic,
+    icon: Mic,
     label: 'Voice AI & Real-time',
-    desc:  'WebRTC/LiveKit STT→LLM→TTS pipelines, <2s end-to-end latency.',
+    desc: 'WebRTC/LiveKit STT->LLM->TTS pipelines, <2s end-to-end latency.',
   },
   {
-    icon:  Database,
+    icon: Database,
     label: 'RAG Architecture',
-    desc:  'Hybrid dense+sparse retrieval, cross-encoder reranking, Qdrant/Pinecone.',
+    desc: 'Hybrid dense+sparse retrieval, cross-encoder reranking, Qdrant/Pinecone.',
   },
   {
-    icon:  Code2,
+    icon: Code2,
     label: 'Full-Stack Development',
-    desc:  'FastAPI backends, React frontends, Docker-containerised services.',
+    desc: 'FastAPI backends, React frontends, Docker-containerised services.',
   },
   {
-    icon:  Layers,
+    icon: Layers,
     label: 'System Design',
-    desc:  'Production-grade distributed systems with Redis session state.',
+    desc: 'Production-grade distributed systems with Redis session state.',
   },
   {
-    icon:  GitBranch,
+    icon: GitBranch,
     label: 'Open Source',
-    desc:  'Author of PyRAG Core — MIT-licensed RAG platform, 143 unit tests.',
+    desc: 'Author of PyRAG Core - MIT-licensed RAG platform, 143 unit tests.',
   },
 ]
 
@@ -63,10 +50,7 @@ export function About() {
       label="About"
       className="bg-base-50"
     >
-      {/* ── Two-column grid ───────────────────────────────────── */}
       <div className="grid lg:grid-cols-[1fr_380px] gap-16 lg:gap-24 items-start">
-
-        {/* LEFT: Text content */}
         <div>
           <FadeIn>
             <h2 className={cn(
@@ -83,23 +67,26 @@ export function About() {
             <div className="space-y-4 text-base-600 leading-relaxed mb-10 max-w-[58ch]">
               <p>
                 I'm an AI/LLM engineer at Bluebash (Mohali, India), working on
-                systems where latency, reliability, and accuracy aren't theoretical —
-                they're what determines whether a customer call succeeds or fails.
+                systems where latency, reliability, and accuracy are what decide
+                whether a customer call succeeds or fails.
               </p>
               <p>
                 I built Kickcall from scratch: a real-time voice AI pipeline
-                handling 150–200 calls per day at under 2 seconds end-to-end latency.
+                handling 150-200 calls per day at under 2 seconds end-to-end latency.
                 I also lead RAG system design for legal and healthcare clients,
-                where retrieval precision isn't optional.
+                where retrieval precision is not optional.
               </p>
               <p>
-                Outside of work, I maintain PyRAG Core — a FastAPI/LangGraph RAG
-                platform — and contribute bug reports to open-source tools I depend on.
+                Outside of work, I maintain PyRAG Core - a FastAPI/LangGraph RAG
+                platform - and contribute bug reports to open-source tools I depend on.
+              </p>
+              <p>
+                You may also find me listed as Sheikh Gulam Sarvar, Sheikh Sarvar,
+                or simply Sarvar.
               </p>
             </div>
           </FadeIn>
 
-          {/* Core strengths grid */}
           <FadeIn delay={0.15}>
             <h3 className="text-xs font-mono font-medium tracking-widest uppercase text-base-400 mb-5">
               Core strengths
@@ -137,10 +124,7 @@ export function About() {
           </StaggerChildren>
         </div>
 
-        {/* RIGHT: Stats + philosophy */}
         <div className="space-y-6 lg:sticky lg:top-28">
-
-          {/* Stat cards */}
           <StaggerChildren className="grid grid-cols-2 gap-3">
             {ABOUT_STATS.map(({ value, label }) => (
               <motion.div
@@ -166,7 +150,6 @@ export function About() {
             ))}
           </StaggerChildren>
 
-          {/* Working philosophy */}
           <FadeIn delay={0.3}>
             <div
               className={cn(
@@ -184,18 +167,20 @@ export function About() {
             </div>
           </FadeIn>
 
-          {/* Current role pill */}
           <FadeIn delay={0.35}>
             <div className="flex items-start gap-3 p-4 rounded-xl border border-base-200 bg-white">
               <div className="shrink-0 mt-0.5">
-                <span className="w-2 h-2 rounded-full bg-signal-500 block" style={{ animation: 'glowPulse 2s ease-in-out infinite' }} />
+                <span
+                  className="w-2 h-2 rounded-full bg-signal-500 block"
+                  style={{ animation: 'glowPulse 2s ease-in-out infinite' }}
+                />
               </div>
               <div>
                 <p className="text-sm font-semibold text-base-700">
                   {experience[0]?.role}
                 </p>
                 <p className="text-xs text-base-500 mt-0.5">
-                  {experience[0]?.company} · {experience[0]?.startDate} – {experience[0]?.endDate}
+                  {experience[0]?.company} · {experience[0]?.startDate} - {experience[0]?.endDate}
                 </p>
               </div>
             </div>

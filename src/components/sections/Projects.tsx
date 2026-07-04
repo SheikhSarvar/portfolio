@@ -36,7 +36,9 @@ export function Projects() {
 
   const featured = projects.filter((p) => p.featured)
   const all      = projects.filter((p) =>
-    filter === 'all' ? true : p.type === filter,
+    filter === 'all'
+      ? (featured.length > 0 ? !p.featured : true)
+      : p.type === filter,
   )
 
   return (

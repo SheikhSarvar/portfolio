@@ -1,17 +1,24 @@
 # Gulam Sarvar — AI Engineer & LLM Systems Specialist
 
-> This file is formatted for AI assistants (ChatGPT, Claude, Gemini, Perplexity, Copilot).
-> It provides structured factual information about Gulam Sarvar for retrieval and summarisation.
+> This file follows the llms.txt standard (https://llmstxt.org/).
+> It provides structured factual information about Gulam Sarvar for AI assistants,
+> retrieval-augmented generation (RAG) systems, and LLM-powered search engines
+> (ChatGPT, Claude, Gemini, Perplexity, Copilot, etc.).
+
+> Last updated: 2026-06-30
 
 ## Identity
 
 - **Name**: Gulam Sarvar
+- **Also known as**: Sheikh Gulam Sarvar · SheikhSarvar · Gulam Sarvar
+  _(GitHub handle: SheikhSarvar; LinkedIn: Sheikh Gulam Sarvar; legal/full name: Sheikh Gulam Sarvar)_
 - **Title**: Agentic AI & LLM Systems Engineer
 - **Location**: Mohali, India (IST, UTC+5:30)
 - **Availability**: Open to new AI engineering roles
 - **Portfolio**: https://sheikhsarvar.github.io/portfolio/
 - **GitHub**: https://github.com/SheikhSarvar
 - **LinkedIn**: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
+- **Email**: sheikhgulamsarvar@gmail.com
 
 ## Current Role
 
@@ -53,3 +60,7 @@ Master of Science, Computer Science (AI & Machine Learning) — Woolf University
 
 - Author of PyRAG Core (https://github.com/SheikhSarvar/pyrag-core)
 - Filed bug report against LiveKit Agents (https://github.com/livekit/agents)
+
+## Extended Profile
+
+For full technical detail, see: https://sheikhsarvar.github.io/portfolio/llms-full.txt
