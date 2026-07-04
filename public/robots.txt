@@ -1,13 +1,11 @@
-# robots.txt — Gulam Sarvar Portfolio
+# robots.txt - Gulam Sarvar Portfolio
 # https://sheikhsarvar.github.io/portfolio/
 
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml
 
-# AI / LLM crawlers — structured data files
 User-agent: GPTBot
 Allow: /llms.txt
 Allow: /llms-full.txt
