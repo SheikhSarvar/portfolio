@@ -1,14 +1,23 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# robots.txt - Gulam Sarvar Portfolio
+# https://sheikhsarvar.github.io/portfolio/
 
 User-agent: *
 Allow: /
+
+Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml
+
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Claude-Web
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /llms.txt
+Allow: /llms-full.txt
