@@ -46,6 +46,7 @@ export function SectionWrapper({
       id={id}
       ref={ref}
       className={cn(
+        'scroll-mt-24 md:scroll-mt-28',
         !noPadding && 'py-[clamp(5rem,8vw,8rem)]',
         className,
       )}

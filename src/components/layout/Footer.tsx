@@ -5,6 +5,7 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { identity } from '../../data/portfolio.data'
 import { NAV_ITEMS } from '../../lib/constants'
+import { scrollToSection } from '../../lib/navigation'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -17,8 +18,6 @@ export function Footer() {
     >
       <div className="container-wide py-12">
         <div className="grid sm:grid-cols-3 gap-8 mb-10">
-
-          {/* Brand */}
           <div>
             <p className="font-display font-bold text-base-800 mb-2">
               {identity.name}
@@ -28,39 +27,28 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
           <nav aria-label="Footer navigation">
             <p className="text-[10px] font-mono uppercase tracking-widest text-base-400 mb-3">
               Navigation
             </p>
             <ul className="space-y-2" role="list">
-              {NAV_ITEMS.map(({ label, href }) => {
-                const getRouteFromHref = (h: string) => {
-                  if (h === '#' || h === '#hero') return '/'
-                  if (h === '#projects') return '/project'
-                  return `/${h.replace('#', '')}`
-                }
-                const targetRoute = getRouteFromHref(href)
-                return (
-                  <li key={href}>
-                    <a
-                      href={`#${targetRoute}`}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        window.location.hash = `#${targetRoute}`
-                        window.scrollTo({ top: 0, behavior: 'instant' })
-                      }}
-                      className="text-sm text-base-500 hover:text-base-800 transition-colors"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                )
-              })}
+              {NAV_ITEMS.map(({ label, href }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToSection(href)
+                    }}
+                    className="text-sm text-base-500 hover:text-base-800 transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
 
-          {/* Socials */}
           <div>
             <p className="text-[10px] font-mono uppercase tracking-widest text-base-400 mb-3">
               Connect
@@ -98,7 +86,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-base-200">
           <p className="text-xs text-base-400">
             © {year} {identity.name}. All rights reserved.

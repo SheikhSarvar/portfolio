@@ -5,17 +5,16 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <!--
-    NOTE: This is a React SPA with hash-based client routing.
-    Search engines cannot crawl #hash fragment URLs — they all resolve
-    to the same index.html. The canonical entry point is the root URL.
-    All page content (About, Skills, Experience, Projects, Contact) is
-    accessible from this single URL via client-side rendering.
+    NOTE: This is a React single-page app with client-side section scrolling.
+    The canonical entry point is the root URL, and the full portfolio content
+    is rendered from that page.
   -->
   <url>
     <loc>https://sheikhsarvar.github.io/portfolio/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 </urlset>
+

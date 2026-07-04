@@ -1,71 +1,32 @@
 /**
  * Nav.tsx
- * ─────────────────────────────────────────────────────────────────
- * Sticky navigation bar.
- *
- * Behaviour:
- * - Transparent at top of page
- * - Glass morphism once user scrolls > 60px
- * - Active link highlights the current section via IntersectionObserver
- * - "Open to work" badge on desktop
- * - Resume download button
- * - Hamburger → slide-down drawer on mobile
- * - Keyboard accessible (focus trap in drawer)
- * ─────────────────────────────────────────────────────────────────
+ * Sticky navigation bar for the single-page portfolio.
  */
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { NAV_ITEMS, SECTION_IDS } from '../../lib/constants'
 import { identity } from '../../data/portfolio.data'
 import { staggerContainer, fadeUp } from '../../lib/motion'
+import { scrollToSection, normalizeSectionId } from '../../lib/navigation'
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`
 
 interface NavProps {
-  currentRoute?: string
+  currentSection?: string
 }
 
-export function Nav({ currentRoute: propRoute }: NavProps) {
+export function Nav({ currentSection }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled,   setScrolled]   = useState(false)
-  const drawerRef = useRef<HTMLDivElement>(null)
-
-  const getRoute = () => {
-    const hash = window.location.hash
-    if (hash.startsWith('#/')) return hash.substring(1)
-    if (hash.startsWith('#')) {
-      const pageId = hash.substring(1)
-      if (pageId === 'hero') return '/'
-      return `/${pageId}`
-    }
-    return '/'
-  }
-
-  const [currentRoute, setCurrentRoute] = useState(getRoute)
-
-  useEffect(() => {
-    if (propRoute) {
-      setCurrentRoute(propRoute)
-      return
-    }
-    const handleHash = () => {
-      setCurrentRoute(getRoute())
-    }
-    window.addEventListener('hashchange', handleHash)
-    return () => window.removeEventListener('hashchange', handleHash)
-  }, [propRoute])
-
-  // Track scroll for glass effect
+  const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close drawer on escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileOpen(false)
@@ -74,29 +35,19 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
     return () => document.removeEventListener('keydown', onKey)
   }, [])
 
-  // Lock body scroll when drawer open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  // Map href to route
-  const getRouteFromHref = (href: string) => {
-    if (href === '#' || href === '#hero') return '/'
-    if (href === `#${SECTION_IDS.projects}`) return '/project'
-    return `/${href.replace('#', '')}`
-  }
+  const activeSection = currentSection || SECTION_IDS.hero
+  const isOnHero = activeSection === SECTION_IDS.hero
+  const usesDarkBg = scrolled || !isOnHero
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
-    const targetRoute = getRouteFromHref(href)
-    window.location.hash = `#${targetRoute}`
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    scrollToSection(href)
   }
-
-  // On non-hero pages the background is always light — always use dark nav styling
-  const isOnHero = currentRoute === '/'
-  const usesDarkBg = scrolled || !isOnHero
 
   return (
     <>
@@ -113,14 +64,12 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
           className="container-wide flex items-center justify-between"
           aria-label="Main navigation"
         >
-          {/* Logo / wordmark */}
           <a
-            href="#/"
+            href="#hero"
             onClick={(e) => { e.preventDefault(); handleNavClick('#hero') }}
             className="flex items-center gap-2 group focus-visible:outline-offset-4"
             aria-label="Home"
           >
-            {/* Monogram mark */}
             <span
               className={cn(
                 'w-8 h-8 rounded-lg flex items-center justify-center',
@@ -144,18 +93,17 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
             </span>
           </a>
 
-          {/* Desktop nav links */}
           <ul
             className="hidden md:flex items-center gap-1"
             role="list"
           >
             {NAV_ITEMS.map(({ label, href }) => {
-              const targetRoute = getRouteFromHref(href)
-              const isActive  = currentRoute === targetRoute
+              const targetSection = normalizeSectionId(href)
+              const isActive = activeSection === targetSection
               return (
                 <li key={href}>
                   <a
-                    href={`#${targetRoute}`}
+                    href={href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(href) }}
                     className={cn(
                       'relative px-3 py-1.5 rounded-md text-sm font-medium',
@@ -186,16 +134,13 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
             })}
           </ul>
 
-          {/* Desktop right actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Open to work badge */}
             {identity.available && (
               <span className="badge-available text-[11px]">
                 Open to work
               </span>
             )}
 
-            {/* Social icons */}
             <a
               href={identity.links.github}
               target="_blank"
@@ -225,7 +170,6 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
               <Linkedin className="w-4 h-4" aria-hidden="true" />
             </a>
 
-            {/* Resume */}
             <a
               href={resumeHref}
               download
@@ -243,7 +187,6 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
             </a>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
@@ -263,11 +206,9 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
         </nav>
       </header>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -279,11 +220,9 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
             <motion.div
               key="drawer"
               id="mobile-nav-drawer"
-              ref={drawerRef}
               role="dialog"
               aria-label="Mobile navigation"
               aria-modal="true"
@@ -305,12 +244,12 @@ export function Nav({ currentRoute: propRoute }: NavProps) {
                 role="list"
               >
                 {NAV_ITEMS.map(({ label, href }) => {
-                  const targetRoute = getRouteFromHref(href)
-                  const isActive  = currentRoute === targetRoute
+                  const targetSection = normalizeSectionId(href)
+                  const isActive = activeSection === targetSection
                   return (
                     <motion.li key={href} variants={fadeUp}>
                       <a
-                        href={`#${targetRoute}`}
+                        href={href}
                         onClick={(e) => { e.preventDefault(); handleNavClick(href) }}
                         className={cn(
                           'block px-4 py-3 rounded-xl text-base font-medium',
