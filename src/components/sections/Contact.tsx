@@ -51,12 +51,12 @@ function InputField({
 }) {
   const base = cn(
     'w-full px-4 py-3 rounded-xl text-sm',
-    'border bg-white text-base-700',
-    'placeholder:text-base-300',
+    'border bg-white text-base-800',
+    'placeholder:text-base-400',
     'transition-all duration-150',
     'focus:outline-none focus:ring-2',
     error
-      ? 'border-red-300 focus:ring-red-200'
+      ? 'border-red-500/50 focus:ring-red-500/20'
       : 'border-base-200 focus:border-signal-500/50 focus:ring-signal-500/20',
   )
 
@@ -153,7 +153,7 @@ export function Contact() {
     <SectionWrapper
       id={SECTION_IDS.contact}
       label="Contact"
-      className="bg-base-100"
+      className="bg-transparent"
     >
       {/* Heading */}
       <FadeIn className="mb-14">
@@ -178,42 +178,42 @@ export function Contact() {
             <div className="space-y-2">
               <a
                 href={`mailto:${identity.links.email}`}
-                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:shadow-card transition-all duration-150 group"
+                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:bg-base-50 transition-all duration-150 group"
               >
-                <span className="w-8 h-8 rounded-lg bg-signal-500/8 border border-signal-500/20 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-lg bg-signal-500/10 border border-signal-500/20 flex items-center justify-center">
                   <Mail className="w-4 h-4 text-signal-600" aria-hidden="true" />
                 </span>
                 <div>
                   <p className="text-xs text-base-400">Email</p>
-                  <p className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">{identity.links.email}</p>
+                  <p className="text-sm font-medium text-base-800 group-hover:text-signal-700 transition-colors">{identity.links.email}</p>
                 </div>
               </a>
               <a
                 href={identity.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:shadow-card transition-all duration-150 group"
+                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:bg-base-50 transition-all duration-150 group"
               >
-                <span className="w-8 h-8 rounded-lg bg-signal-500/8 border border-signal-500/20 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-lg bg-signal-500/10 border border-signal-500/20 flex items-center justify-center">
                   <Linkedin className="w-4 h-4 text-signal-600" aria-hidden="true" />
                 </span>
                 <div>
                   <p className="text-xs text-base-400">LinkedIn</p>
-                  <p className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">sheikh-gulam-sarvar</p>
+                  <p className="text-sm font-medium text-base-800 group-hover:text-signal-700 transition-colors">sheikh-gulam-sarvar</p>
                 </div>
               </a>
               <a
                 href={identity.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:shadow-card transition-all duration-150 group"
+                className="flex items-center gap-3 p-3 rounded-xl border border-base-200 bg-white hover:border-signal-500/35 hover:bg-base-50 transition-all duration-150 group"
               >
-                <span className="w-8 h-8 rounded-lg bg-signal-500/8 border border-signal-500/20 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-lg bg-signal-500/10 border border-signal-500/20 flex items-center justify-center">
                   <Github className="w-4 h-4 text-signal-600" aria-hidden="true" />
                 </span>
                 <div>
                   <p className="text-xs text-base-400">GitHub</p>
-                  <p className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">SheikhSarvar</p>
+                  <p className="text-sm font-medium text-base-800 group-hover:text-signal-700 transition-colors">SheikhSarvar</p>
                 </div>
               </a>
             </div>
@@ -226,8 +226,8 @@ export function Contact() {
               download
               className={cn(
                 'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
-                'text-sm font-medium border border-signal-500/40',
-                'text-signal-600 hover:bg-signal-500/8',
+                'text-sm font-medium border border-signal-500/30',
+                'text-signal-700 hover:bg-signal-500/10',
                 'transition-all duration-150',
               )}
               aria-label="Download resume PDF"
@@ -239,7 +239,7 @@ export function Contact() {
 
           {/* Availability pill */}
           {identity.available && (
-            <div className="flex items-center gap-2 p-4 rounded-xl bg-signal-500/6 border border-signal-500/20">
+            <div className="flex items-center gap-2 p-4 rounded-xl bg-signal-500/10 border border-signal-500/20">
               <span className="w-2 h-2 rounded-full bg-signal-500 shrink-0" style={{ animation: 'glowPulse 2s ease-in-out infinite' }} />
               <p className="text-sm text-signal-700 font-medium">Currently open to new opportunities</p>
             </div>
@@ -254,13 +254,13 @@ export function Contact() {
               animate={{ opacity: 1, scale: 1 }}
               className="flex flex-col items-center justify-center py-16 text-center gap-4"
             >
-              <CheckCircle2 className="w-12 h-12 text-signal-500" aria-hidden="true" />
+              <CheckCircle2 className="w-12 h-12 text-signal-600" aria-hidden="true" />
               <h3 className="font-display font-bold text-base-800 text-xl">Message sent!</h3>
               <p className="text-base-500 text-sm">I'll get back to you within 48 hours.</p>
               <button
                 type="button"
                 onClick={() => setStatus('idle')}
-                className="mt-2 text-xs text-base-400 underline underline-offset-2 hover:text-base-600 transition-colors"
+                className="mt-2 text-xs text-base-400 underline underline-offset-2 hover:text-base-700 transition-colors"
               >
                 Send another message
               </button>

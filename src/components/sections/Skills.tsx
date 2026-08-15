@@ -62,7 +62,7 @@ function SkillChip({
         'flex items-center justify-between gap-3',
         'px-4 py-3 rounded-xl',
         'border border-base-200 bg-white',
-        'hover:border-signal-500/35 hover:shadow-accent',
+        'hover:border-signal-500/35 hover:bg-base-50',
         'transition-all duration-200 group cursor-default',
       )}
     >
@@ -107,7 +107,7 @@ export function Skills() {
     <SectionWrapper
       id={SECTION_IDS.skills}
       label="Skills"
-      className="bg-base-100"
+      className="bg-transparent"
     >
       {/* Heading */}
       <FadeIn className="mb-12">
@@ -146,14 +146,14 @@ export function Skills() {
               'relative px-4 py-2 rounded-lg text-sm font-medium',
               'transition-all duration-150 focus-visible:outline-offset-2',
               activeTab === idx
-                ? 'text-signal-700 bg-white border border-signal-500/30 shadow-accent'
-                : 'text-base-500 hover:text-base-700 hover:bg-white/60 border border-transparent',
+                ? 'text-signal-700 bg-white border border-signal-500/25 shadow-accent'
+                : 'text-base-400 hover:text-base-700 hover:bg-base-100 border border-transparent',
             )}
           >
             {activeTab === idx && (
               <motion.span
                 layoutId="skills-tab-bg"
-                className="absolute inset-0 rounded-lg bg-white border border-signal-500/30"
+                className="absolute inset-0 rounded-lg bg-white border border-signal-500/25"
                 transition={{ type: 'spring', duration: 0.35 }}
                 aria-hidden="true"
               />

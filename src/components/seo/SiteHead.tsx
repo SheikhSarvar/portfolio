@@ -3,7 +3,7 @@ import { identity, seo } from '../../data/portfolio.data'
 
 const ogImage = `${seo.siteUrl}og-image.png`
 
-export function SiteHead() {
+export function SiteHead({ themeColor }: { themeColor: string }) {
   return (
     <Helmet prioritizeSeoTags>
       <html lang="en" />
@@ -16,7 +16,7 @@ export function SiteHead() {
       <link rel="me" href={identity.links.github} />
       <link rel="me" href={identity.links.linkedin} />
       <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-      <meta name="theme-color" content="#00E5B4" />
+      <meta name="theme-color" content={themeColor} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <meta property="og:type" content="website" />

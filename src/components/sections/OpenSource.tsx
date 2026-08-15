@@ -12,8 +12,8 @@ import { cn }              from '../../lib/utils'
 import { Github, Bug, ArrowUpRight, Star } from 'lucide-react'
 
 const TYPE_META = {
-  project:    { icon: Star, label: 'Project',     color: 'text-signal-600 bg-signal-500/8 border-signal-500/20' },
-  'bug-report': { icon: Bug,  label: 'Bug Report', color: 'text-amber-600 bg-amber-50 border-amber-200' },
+  project:    { icon: Star, label: 'Project',     color: 'text-signal-400 bg-signal-500/10 border-signal-500/20' },
+  'bug-report': { icon: Bug,  label: 'Bug Report', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
 }
 
 export function OpenSource() {
@@ -21,7 +21,7 @@ export function OpenSource() {
     <SectionWrapper
       id="open-source"
       label="Open Source"
-      className="bg-base-50"
+      className="bg-transparent"
     >
       <FadeIn className="mb-12">
         <h2 className={cn(
@@ -49,7 +49,7 @@ export function OpenSource() {
               className={cn(
                 'group flex flex-col p-5 rounded-2xl',
                 'border border-base-200 bg-white',
-                'hover:border-signal-500/35 hover:shadow-card-hover',
+                'hover:border-signal-500/35 hover:bg-base-50',
                 'transition-all duration-200',
               )}
               aria-label={`${item.title} — open in GitHub`}
@@ -58,11 +58,11 @@ export function OpenSource() {
                 <div className={cn('w-8 h-8 rounded-lg flex items-center justify-center border shrink-0', meta.color)}>
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-base-300 group-hover:text-signal-500 transition-colors" aria-hidden="true" />
+                <ArrowUpRight className="w-4 h-4 text-base-300 group-hover:text-signal-600 transition-colors" aria-hidden="true" />
               </div>
 
               <p className="text-[10px] font-mono text-base-400 mb-1">{item.repo}</p>
-              <p className="text-sm font-semibold text-base-700 group-hover:text-signal-700 transition-colors mb-2 leading-snug">
+              <p className="text-sm font-semibold text-base-800 group-hover:text-signal-700 transition-colors mb-2 leading-snug">
                 {item.title}
               </p>
               <p className="text-xs text-base-500 leading-relaxed flex-1">{item.description}</p>
@@ -83,8 +83,8 @@ export function OpenSource() {
           rel="noopener noreferrer"
           className={cn(
             'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
-            'text-sm font-medium border border-base-300',
-            'text-base-600 hover:border-signal-500/40 hover:text-signal-700',
+            'text-sm font-medium border border-base-200',
+            'text-base-500 hover:border-signal-500/40 hover:text-signal-700',
             'transition-all duration-150',
           )}
         >

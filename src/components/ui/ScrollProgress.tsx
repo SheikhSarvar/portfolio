@@ -23,7 +23,7 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 right-0 h-[2px] origin-left z-[70]"
       style={{
         scaleX,
-        background: 'linear-gradient(90deg, #00E5B4, #3BFFD0)',
+        background: 'linear-gradient(90deg, #2dd4bf, #9ff5e9)',
       }}
       aria-hidden="true"
     />

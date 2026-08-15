@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './styles/globals.css'
 
 import { Nav } from './components/layout/Nav'
@@ -12,12 +12,15 @@ import { Experience } from './components/sections/Experience'
 import { Projects } from './components/sections/Projects'
 import { CaseStudies } from './components/sections/CaseStudies'
 import { OpenSource } from './components/sections/OpenSource'
+import { Testimonials } from './components/sections/Testimonials'
 import { Contact } from './components/sections/Contact'
 import { SECTION_IDS } from './lib/constants'
 import { normalizeSectionId } from './lib/navigation'
 import { useActiveSection } from './hooks'
 
 export default function App() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
   const sectionIds = [
     SECTION_IDS.hero,
     SECTION_IDS.about,
@@ -26,10 +29,25 @@ export default function App() {
     SECTION_IDS.projects,
     SECTION_IDS.caseStudies,
     'open-source',
+    'recommendations',
     SECTION_IDS.contact,
   ]
 
   const currentSection = useActiveSection(sectionIds)
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem('portfolio-theme')
+    const initialTheme = stored === 'light' || stored === 'dark'
+      ? stored
+      : 'light'
+
+    setTheme(initialTheme)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    window.localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const hash = normalizeSectionId(window.location.hash)
@@ -43,9 +61,11 @@ export default function App() {
     })
   }, [])
 
+  const themeColor = useMemo(() => (theme === 'dark' ? '#07111d' : '#f8fafc'), [theme])
+
   return (
     <>
-      <SiteHead />
+      <SiteHead themeColor={themeColor} />
       <ScrollProgress />
 
       <a
@@ -59,26 +79,32 @@ export default function App() {
           'fixed top-4 left-4 z-[80]',
           'px-4 py-2 rounded-lg bg-signal-500 text-depth-900',
           'text-sm font-semibold shadow-accent',
+          'border border-signal-300/30',
           'focus:outline-none focus:ring-2 focus:ring-signal-400 focus:ring-offset-2',
         ].join(' ')}
       >
         Skip to main content
       </a>
 
-      <Nav currentSection={currentSection} />
+      <Nav
+        currentSection={currentSection}
+        theme={theme}
+        onToggleTheme={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
+      />
 
-      <main id="main-content" tabIndex={-1} className="focus:outline-none min-h-[70vh]">
-        <Hero />
+      <main id="main-content" tabIndex={-1} className="relative z-10 focus:outline-none min-h-[70vh]">
+        <Hero theme={theme} />
         <About />
         <Skills />
         <Experience />
         <Projects />
         <CaseStudies />
         <OpenSource />
+        <Testimonials />
         <Contact />
       </main>
 
-      <Footer />
+      <Footer theme={theme} />
     </>
   )
 }

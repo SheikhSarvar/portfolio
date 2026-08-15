@@ -32,15 +32,24 @@ import { cn }                from '../../lib/utils'
 import { scrollToSection }   from '../../lib/navigation'
 import { fadeUp, fadeIn, staggerContainer, scaleIn } from '../../lib/motion'
 
-export function Hero() {
+interface HeroProps {
+  theme: 'light' | 'dark'
+}
+
+export function Hero({ theme }: HeroProps) {
+  const isDarkTheme = theme === 'dark'
+
   return (
       <section
       id={SECTION_IDS.hero}
-      className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden"
+      className={cn(
+        'relative min-h-[100dvh] flex flex-col justify-center overflow-hidden',
+        isDarkTheme ? 'bg-depth-950' : 'bg-transparent',
+      )}
       aria-label="Introduction"
     >
       {/* Aurora mesh background */}
-      <AuroraBackground intensity={0.55} />
+      <AuroraBackground intensity={isDarkTheme ? 0.18 : 0.08} theme={theme} />
 
       {/* Frosted glass content panel */}
       <div className="relative z-10 container-wide flex flex-col items-start justify-center min-h-[100dvh] pb-16 pt-24">
@@ -58,7 +67,7 @@ export function Hero() {
               className={cn(
                 'inline-flex items-center gap-2 px-3 py-1.5 rounded-full',
                 'text-[11px] font-mono font-medium tracking-widest uppercase',
-                'bg-signal-500/10 border border-signal-500/25 text-signal-400',
+                'bg-signal-500/10 border border-signal-500/20 text-signal-700',
               )}
             >
               <span
@@ -74,9 +83,10 @@ export function Hero() {
           <motion.h1
             variants={fadeUp}
             className={cn(
-              'font-display font-bold text-white mb-3',
+              'font-display font-bold mb-3',
               'text-[clamp(2.75rem,6vw,4.5rem)]',
               'leading-[1.1] tracking-[-0.03em]',
+              isDarkTheme ? 'text-white' : 'text-slate-950',
             )}
           >
             {identity.name}
@@ -91,18 +101,16 @@ export function Hero() {
               'leading-tight tracking-tight',
             )}
           >
-            <TypewriterText
-              words={HERO_ROLES}
-              className="text-gradient"
-            />
+            <TypewriterText words={HERO_ROLES} className={isDarkTheme ? 'text-gradient' : 'text-signal-700'} />
           </motion.div>
 
           {/* Bio */}
           <motion.p
             variants={fadeUp}
             className={cn(
-              'text-white/60 text-base leading-relaxed mb-8',
+                'text-base leading-relaxed mb-8',
               'max-w-[52ch]',
+              isDarkTheme ? 'text-white/72' : 'text-slate-600',
             )}
           >
             Building production AI systems — voice pipelines, multi-agent RAG,
@@ -111,7 +119,10 @@ export function Hero() {
               href="https://bluebash.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/80 underline underline-offset-2 hover:text-signal-400 transition-colors"
+              className={cn(
+                'underline underline-offset-2 transition-colors',
+                isDarkTheme ? 'text-white/85 hover:text-signal-300' : 'text-slate-800 hover:text-signal-700',
+              )}
             >
               Bluebash
             </a>
@@ -121,7 +132,10 @@ export function Hero() {
               href={identity.links.pyragCore}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/80 underline underline-offset-2 hover:text-signal-400 transition-colors"
+              className={cn(
+                'underline underline-offset-2 transition-colors',
+                isDarkTheme ? 'text-white/85 hover:text-signal-300' : 'text-slate-800 hover:text-signal-700',
+              )}
             >
               PyRAG Core
             </a>
@@ -160,8 +174,9 @@ export function Hero() {
               className={cn(
                 'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
                 'text-sm font-semibold',
-                'border border-white/20 text-white/80',
-                'hover:border-white/40 hover:text-white hover:bg-white/5',
+                isDarkTheme
+                  ? 'border border-base-200/20 text-white/80 hover:border-signal-500/30 hover:text-white hover:bg-white/5'
+                  : 'border border-slate-300 text-slate-700 hover:border-signal-500/30 hover:text-slate-950 hover:bg-white',
                 'active:scale-[0.98]',
                 'transition-all duration-150',
               )}
@@ -175,21 +190,24 @@ export function Hero() {
           {/* Location + socials row */}
           <motion.div
             variants={fadeIn}
-            className="flex flex-wrap items-center gap-4 text-white/40 text-sm"
+            className={cn(
+              'flex flex-wrap items-center gap-4 text-sm',
+              isDarkTheme ? 'text-white/55' : 'text-slate-600',
+            )}
           >
             <span className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
               {identity.location}
             </span>
 
-            <span className="w-px h-4 bg-white/15" aria-hidden="true" />
+            <span className="w-px h-4 bg-base-200" aria-hidden="true" />
 
             <a
               href={identity.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="flex items-center gap-1.5 hover:text-white/80 transition-colors"
+              className="flex items-center gap-1.5 hover:text-slate-900 transition-colors"
             >
               <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
               LinkedIn
@@ -200,7 +218,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="flex items-center gap-1.5 hover:text-white/80 transition-colors"
+              className="flex items-center gap-1.5 hover:text-slate-900 transition-colors"
             >
               <Github className="w-3.5 h-3.5" aria-hidden="true" />
               GitHub
@@ -216,7 +234,7 @@ export function Hero() {
           transition={{ delay: 1.2, duration: 0.8 }}
         >
           <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-white/25 shrink-0 mr-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-base-400 shrink-0 mr-1">
               Stack
             </span>
             {[
@@ -227,8 +245,10 @@ export function Hero() {
                 key={t}
                 className={cn(
                   'shrink-0 px-2.5 py-1 rounded-md',
-                  'text-[11px] font-mono text-white/40',
-                  'border border-white/10 bg-white/[0.04]',
+                  'text-[11px] font-mono',
+                  isDarkTheme
+                    ? 'text-white/55 border border-white/10 bg-white/5'
+                    : 'text-slate-600 border border-slate-200 bg-white/90',
                 )}
               >
                 {t}
@@ -245,7 +265,8 @@ export function Hero() {
         aria-label="Scroll to about section"
         className={cn(
           'absolute bottom-6 left-1/2 -translate-x-1/2 z-10',
-          'text-white/30 hover:text-white/60 transition-colors',
+          isDarkTheme ? 'text-white/45 hover:text-white' : 'text-slate-500 hover:text-slate-900',
+          'transition-colors',
         )}
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}

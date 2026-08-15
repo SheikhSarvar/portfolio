@@ -53,12 +53,12 @@ function SubBlock({
     <motion.div
       variants={fadeUp}
       className={cn(
-        'p-5 rounded-xl border border-base-200 bg-base-50',
-        'hover:border-signal-500/25 hover:bg-white',
+        'p-5 rounded-xl border border-base-200 bg-white',
+        'hover:border-signal-500/25 hover:bg-base-50',
         'transition-all duration-200 group',
       )}
     >
-      <p className="text-sm font-semibold text-base-700 mb-2 group-hover:text-signal-700 transition-colors">
+      <p className="text-sm font-semibold text-base-800 mb-2 group-hover:text-signal-700 transition-colors">
         {title}
       </p>
       <p className="text-xs text-base-500 leading-relaxed mb-3">{summary}</p>
@@ -97,7 +97,7 @@ export function Experience() {
     <SectionWrapper
       id={SECTION_IDS.experience}
       label="Experience"
-      className="bg-base-50"
+      className="bg-transparent"
     >
       {/* Heading */}
       <FadeIn className="mb-14">
@@ -154,7 +154,7 @@ export function Experience() {
                   <span className={cn(
                     'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full',
                     'text-[11px] font-mono font-medium',
-                    'bg-signal-500/8 border border-signal-500/20 text-signal-600',
+                    'bg-signal-500/10 border border-signal-500/20 text-signal-700',
                   )}>
                     <span className="w-1.5 h-1.5 rounded-full bg-signal-500" />
                     {experience[0].startDate} – {experience[0].endDate}

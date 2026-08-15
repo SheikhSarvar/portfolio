@@ -20,13 +20,16 @@ interface AuroraBackgroundProps {
   className?: string
   /** Intensity 0–1. Controls blob opacity. Default 0.6 */
   intensity?: number
+  theme?: 'light' | 'dark'
 }
 
 export function AuroraBackground({
   className = '',
   intensity = 0.6,
+  theme = 'dark',
 }: AuroraBackgroundProps) {
   const reduced = useReducedMotion()
+  const isDarkTheme = theme === 'dark'
 
   return (
     <div
@@ -55,18 +58,20 @@ export function AuroraBackground({
           inset: 0;
           overflow: hidden;
           z-index: 0;
-          background: #050D1A;
+          background: ${isDarkTheme
+            ? '#050D1A'
+            : 'linear-gradient(180deg, #f8fbfd 0%, #eef4f8 48%, #e7eef5 100%)'};
         }
 
         /* SVG noise filter for grain texture */
         .aurora-noise {
           position: absolute;
           inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='${isDarkTheme ? '0.035' : '0.022'}'/%3E%3C/svg%3E");
           background-size: 256px 256px;
           z-index: 4;
           pointer-events: none;
-          opacity: 0.4;
+          opacity: ${isDarkTheme ? '0.4' : '0.22'};
         }
 
         .aurora-blob {
@@ -75,7 +80,7 @@ export function AuroraBackground({
           filter: blur(80px);
           opacity: var(--aurora-opacity, 0.6);
           will-change: transform;
-          mix-blend-mode: screen;
+          mix-blend-mode: ${isDarkTheme ? 'screen' : 'multiply'};
         }
 
         /* Blob 1: mint-teal, large, slow drift NW→SE */
@@ -83,8 +88,8 @@ export function AuroraBackground({
           width: 70vw;
           height: 60vh;
           background: radial-gradient(ellipse at center,
-            #00E5B4 0%,
-            #009A78 40%,
+            ${isDarkTheme ? '#00E5B4' : '#95efe2'} 0%,
+            ${isDarkTheme ? '#009A78' : '#55e3d1'} 40%,
             transparent 70%
           );
           top: -10%;
@@ -97,8 +102,8 @@ export function AuroraBackground({
           width: 55vw;
           height: 50vh;
           background: radial-gradient(ellipse at center,
-            #0EA5E9 0%,
-            #0369A1 35%,
+            ${isDarkTheme ? '#0EA5E9' : '#7dd3fc'} 0%,
+            ${isDarkTheme ? '#0369A1' : '#38bdf8'} 35%,
             transparent 70%
           );
           bottom: -5%;
@@ -111,8 +116,8 @@ export function AuroraBackground({
           width: 35vw;
           height: 35vh;
           background: radial-gradient(ellipse at center,
-            #7FFFDA 0%,
-            #00E5B4 30%,
+            ${isDarkTheme ? '#7FFFDA' : '#cffafe'} 0%,
+            ${isDarkTheme ? '#00E5B4' : '#5eead4'} 30%,
             transparent 70%
           );
           top: 40%;
@@ -146,12 +151,12 @@ export function AuroraBackground({
           inset: 0;
           background: radial-gradient(
             ellipse at 30% 40%,
-            rgb(0 229 180 / 0.15) 0%,
+            ${isDarkTheme ? 'rgb(0 229 180 / 0.15)' : 'rgb(45 212 191 / 0.1)'} 0%,
             transparent 60%
           ),
           radial-gradient(
             ellipse at 70% 60%,
-            rgb(14 165 233 / 0.1) 0%,
+            ${isDarkTheme ? 'rgb(14 165 233 / 0.1)' : 'rgb(59 130 246 / 0.07)'} 0%,
             transparent 60%
           );
         }

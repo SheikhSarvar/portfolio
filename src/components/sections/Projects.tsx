@@ -45,7 +45,7 @@ export function Projects() {
     <SectionWrapper
       id={SECTION_IDS.projects}
       label="Projects"
-      className="bg-base-100"
+      className="bg-transparent"
     >
       {/* Heading */}
       <FadeIn className="mb-10">
@@ -71,8 +71,8 @@ export function Projects() {
             className={cn(
               'px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-150',
               filter === value
-                ? 'bg-base-800 text-white'
-                : 'text-base-500 hover:text-base-700 bg-white border border-base-200',
+                ? 'bg-signal-500 text-depth-900'
+                : 'text-base-500 hover:text-base-800 bg-white border border-base-200',
             )}
             aria-pressed={filter === value}
           >
@@ -119,7 +119,7 @@ export function Projects() {
           {all.length === 0 && (
             <motion.p
               variants={fadeUp}
-              className="text-center text-base-400 py-16 text-sm"
+              className="text-center text-base-500 py-16 text-sm"
             >
               No projects in this category yet.
             </motion.p>
@@ -135,8 +135,8 @@ export function Projects() {
           rel="noopener noreferrer"
           className={cn(
             'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
-            'text-sm font-medium border border-base-300',
-            'text-base-600 hover:border-signal-500/40 hover:text-signal-700',
+            'text-sm font-medium border border-base-200',
+            'text-base-500 hover:border-signal-500/40 hover:text-signal-700',
             'transition-all duration-150',
           )}
         >
