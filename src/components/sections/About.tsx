@@ -48,7 +48,7 @@ export function About() {
     <SectionWrapper
       id={SECTION_IDS.about}
       label="About"
-      className="bg-base-50"
+      className="bg-transparent"
     >
       <div className="grid lg:grid-cols-[1fr_380px] gap-16 lg:gap-24 items-start">
         <div>
@@ -101,14 +101,14 @@ export function About() {
                 className={cn(
                   'flex gap-3 p-4 rounded-xl',
                   'border border-base-200 bg-white',
-                  'hover:border-signal-500/30 hover:shadow-card',
+                  'hover:border-signal-500/30 hover:bg-base-50',
                   'transition-all duration-200 group',
                 )}
               >
                 <div
                   className={cn(
                     'shrink-0 w-8 h-8 rounded-lg flex items-center justify-center',
-                    'bg-signal-500/8 border border-signal-500/15',
+                    'bg-signal-500/10 border border-signal-500/15',
                     'group-hover:bg-signal-500/15 transition-colors duration-200',
                   )}
                   aria-hidden="true"
@@ -116,7 +116,7 @@ export function About() {
                   <Icon className="w-4 h-4 text-signal-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-base-700 mb-0.5">{label}</p>
+                  <p className="text-sm font-semibold text-base-800 mb-0.5">{label}</p>
                   <p className="text-xs text-base-500 leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
@@ -154,7 +154,7 @@ export function About() {
             <div
               className={cn(
                 'p-6 rounded-2xl',
-                'border border-signal-500/20 bg-signal-500/4',
+                'border border-signal-500/15 bg-signal-500/5',
               )}
             >
               <p className="text-xs font-mono uppercase tracking-widest text-signal-600 mb-3">
@@ -176,7 +176,7 @@ export function About() {
                 />
               </div>
               <div>
-                <p className="text-sm font-semibold text-base-700">
+                <p className="text-sm font-semibold text-base-800">
                   {experience[0]?.role}
                 </p>
                 <p className="text-xs text-base-500 mt-0.5">

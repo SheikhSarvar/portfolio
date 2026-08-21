@@ -18,17 +18,17 @@ export const NAV_ITEMS = [
 
 /** Typewriter strings for Hero headline */
 export const HERO_ROLES = [
-  'AI Engineer',
-  'Voice AI Builder',
-  'RAG Systems',
-  'LangGraph Expert',
-  'Open Source Dev',
+  'Production AI Systems',
+  'Voice AI Pipelines',
+  'Multi-Agent RAG',
+  'LangGraph Architectures',
+  'Open Source Tools',
 ] as const
 
 /** Stat cards shown in About section */
 export const ABOUT_STATS = [
   { value: '2+',    label: 'Years prod AI'    },
-  { value: '150+',  label: 'Calls/day (live)' },
+  { value: '500+',  label: 'Inbound calls daily' },
   { value: '143',   label: 'Unit tests (PyRAG)' },
   { value: '<2s',   label: 'E2E voice latency' },
 ] as const

@@ -37,7 +37,7 @@ const CASE_STUDIES: CaseStudy[] = [
     client:  'Bluebash (Internal Product)',
     domain:  'Voice AI / Telecommunications',
     icon:    Mic,
-    accentClass: 'text-signal-600 bg-signal-500/8 border-signal-500/20',
+    accentClass: 'text-signal-400 bg-signal-500/10 border-signal-500/20',
     problem:
       'Bluebash needed a production-grade voice AI product capable of handling outbound and inbound calls at scale, with latency low enough that callers could not distinguish it from a human agent. Existing off-the-shelf solutions were either too expensive, too high-latency, or lacked the customisability required for business logic integration.',
     solution:
@@ -69,7 +69,7 @@ const CASE_STUDIES: CaseStudy[] = [
     client:  'Legal & Healthcare Clients (via Bluebash)',
     domain:  'Legal Tech / Healthcare AI',
     icon:    Database,
-    accentClass: 'text-blue-600 bg-blue-50 border-blue-200',
+    accentClass: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
     problem:
       'Legal and healthcare clients needed document intelligence systems that could answer precise questions over large corpora of regulatory documents, contracts, and clinical guidelines. Naive dense-only RAG produced too many hallucinations and missed exact-match retrieval on technical terminology (drug names, clause identifiers, statute numbers).',
     solution:
@@ -106,8 +106,8 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
       variants={scaleIn}
       className={cn(
         'rounded-2xl border border-base-200 bg-white overflow-hidden',
-        'transition-shadow duration-200',
-        expanded ? 'shadow-card-hover' : 'shadow-card',
+        'transition-all duration-200',
+        expanded ? 'bg-base-50 border-signal-200' : 'hover:bg-base-50 hover:border-signal-200',
       )}
       aria-label={`Case study: ${cs.title}`}
     >
@@ -122,7 +122,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
               <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-base-400">
                 Case Study
               </span>
-              <span className="text-base-200">·</span>
+              <span className="text-base-300">·</span>
               <span className="text-[10px] font-mono text-base-400">{cs.domain}</span>
             </div>
             <h3 className="font-display font-bold text-base-800 text-lg leading-tight">{cs.title}</h3>
@@ -139,9 +139,9 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
         {/* Outcomes preview */}
         <div className="grid grid-cols-2 gap-2 mb-5">
           {cs.outcomes.slice(0, 2).map((o) => (
-            <div key={o} className="flex items-start gap-2 p-3 rounded-lg bg-base-50 border border-base-100">
+            <div key={o} className="flex items-start gap-2 p-3 rounded-lg bg-base-50 border border-base-200">
               <CheckCircle2 className="w-3.5 h-3.5 text-signal-500 shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-xs text-base-600 leading-snug">{o}</span>
+              <span className="text-xs text-base-700 leading-snug">{o}</span>
             </div>
           ))}
         </div>
@@ -160,8 +160,8 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
         onClick={() => setExpanded((v) => !v)}
         className={cn(
           'w-full flex items-center justify-between px-7 py-3',
-          'text-xs font-medium text-base-500 hover:text-base-700',
-          'border-t border-base-100 bg-base-50/50 hover:bg-base-50',
+          'text-xs font-medium text-base-500 hover:text-base-800',
+          'border-t border-base-200 bg-base-50 hover:bg-white',
           'transition-colors duration-150',
         )}
         aria-expanded={expanded}
@@ -185,7 +185,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
             transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-7 pb-7 pt-4 space-y-6 border-t border-base-100">
+            <div className="px-7 pb-7 pt-4 space-y-6 border-t border-base-200">
 
               {/* Solution */}
               <div>
@@ -226,7 +226,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
                 <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-3">Lessons Learned</p>
                 <ul className="space-y-2" aria-label="Lessons learned">
                   {cs.lessons.map((l) => (
-                    <li key={l} className="flex items-start gap-2 p-3 rounded-lg bg-amber-50 border border-amber-100 text-xs text-amber-900 leading-relaxed">
+                    <li key={l} className="flex items-start gap-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
                       <span className="shrink-0 mt-0.5" aria-hidden="true">💡</span>
                       {l}
                     </li>
@@ -246,7 +246,7 @@ export function CaseStudies() {
     <SectionWrapper
       id={SECTION_IDS.caseStudies}
       label="Case Studies"
-      className="bg-base-100"
+      className="bg-transparent"
     >
       <FadeIn className="mb-12">
         <h2 className={cn(
