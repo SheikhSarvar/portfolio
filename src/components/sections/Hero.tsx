@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, MapPin, ExternalLink, Cpu, Mic, Terminal } from 'lucide-react'
-import { HeroBackground } from '../animations/HeroBackground'
+import { ArrowDown, Github, ExternalLink, Mic } from 'lucide-react'
 import { TypewriterText } from '../animations/TypewriterText'
 import { identity } from '../../data/portfolio.data'
 import { HERO_ROLES, SECTION_IDS } from '../../lib/constants'
