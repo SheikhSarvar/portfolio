@@ -78,10 +78,19 @@ const prerenderServer = await new Promise((resolve, reject) => {
   })
 })
 
-const browser = await puppeteer.launch({
-  headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox'],
-})
+let browser
+try {
+  browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+  })
+} catch (error) {
+  console.warn('⚠️  Puppeteer failed to launch. Skipping prerendering step.')
+  console.warn('   This is common in CI environments missing Chrome dependencies (e.g., libatk-1.0.so).')
+  console.warn('   The build will continue as a standard Single Page Application (SPA).')
+  prerenderServer.server.close()
+  process.exit(0)
+}
 
 try {
   const page = await browser.newPage()
@@ -96,6 +105,7 @@ try {
     `<!DOCTYPE html>\n${html}\n`,
     'utf8',
   )
+  console.log('✅  Prerendering successful')
 } finally {
   await browser.close()
   prerenderServer.server.close()
