@@ -16,32 +16,31 @@ interface Recommendation {
 
 const RECOMMENDATIONS: Recommendation[] = [
   {
-    name: 'Priya Sharma',
-    role: 'Product Manager',
+    name: 'Prince Kamboj',
+    role: 'Senior Data Scientist',
     company: 'Bluebash',
     linkedinUrl: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
-    relationship: 'Manager at Bluebash',
+    relationship: 'Managed Sheikh directly at Bluebash',
     featured: true,
     quote:
-      'Working with Gulam on the Kickcall project was exceptional. He brought both deep AI expertise and real engineering discipline to the table. The system he built is now the centrepiece of our product offering - a production voice AI handling hundreds of calls daily with remarkable reliability. I would recommend him without hesitation to any team building serious AI infrastructure.',
+      'I worked with Gulam Sarvar at Bluebash on voice AI and RAG systems for legal and healthcare clients. He handled the full AI pipeline, from speech-to-text and LLMs to text-to-speech, and was excellent at diagnosing and solving performance and latency issues. He\'s a highly reliable and skilled AI engineer, quick to learn new technologies, and focused on building robust, production-ready systems. A strong asset to any applied AI team.',
   },
   {
-    name: 'Rahul Verma',
-    role: 'Full Stack Engineer',
-    company: 'Bluebash',
+    name: 'Lakshmi Narayana Nunna',
+    role: 'Senior Cloud Operations & DevOps Engineer',
+    company: 'Kickcall.ai',
     linkedinUrl: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
-    relationship: 'Peer at Bluebash',
+    relationship: 'Worked with Sheikh on the same team · February 9, 2026',
     quote:
-      'Gulam has an exceptional grasp of LLM systems and RAG architectures. He led our team through building a legal document intelligence system that genuinely outperformed anything we had before. A natural technical leader who elevates everyone around him.',
+      'I worked with Sheikh Gulam Sarvar on Kickcall.ai, and he was a great teammate to collaborate with. He brings strong technical understanding, ownership, and a positive attitude to the team. Always reliable and focused on delivering quality work. I\'d definitely recommend working with him.',
   },
   {
-    name: 'Arjun Mehta',
-    role: 'Cloud Architect',
-    company: 'Bluebash',
+    name: 'Coming Soon',
+    role: '—',
+    company: '—',
     linkedinUrl: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
-    relationship: 'Teammate at Bluebash',
-    quote:
-      "As the infra engineer deploying Gulam's systems, I was consistently impressed by how thoughtfully he containerized everything with Docker. His FastAPI services integrate cleanly and his code is production-ready out of the box - deployment is always smooth.",
+    relationship: '',
+    quote: '',
   },
 ]
 
@@ -127,6 +126,7 @@ function FeaturedCard({ rec, index }: { rec: Recommendation; index: number }) {
 function CompactCard({ rec, index }: { rec: Recommendation; index: number }) {
   const reduced = useReducedMotion()
   const floatDelay = `${(index + 1) * 1.5}s`
+  const isPlaceholder = !rec.quote
 
   return (
     <motion.figure
@@ -140,49 +140,62 @@ function CompactCard({ rec, index }: { rec: Recommendation; index: number }) {
         'bg-white border border-base-200 shadow-[0_8px_24px_rgb(15_23_42/0.07)]',
         'dark:bg-white/10 dark:border-white/15 dark:shadow-[0_8px_24px_rgb(0_0_0/0.15)]',
         'backdrop-blur-xl transition-all duration-300',
+        isPlaceholder && 'opacity-50',
       )}
     >
       <Quote className="absolute top-4 right-4 w-6 h-6 text-base-200 dark:text-white/10" aria-hidden="true" />
 
-      <div className="flex items-center gap-2 mb-4">
-        <LinkedInIcon className="w-3 h-3 text-[#0A66C2]/75" />
-        <span className="text-[10px] text-base-400 dark:text-white/35 font-mono tracking-wider uppercase">LinkedIn</span>
-      </div>
-
-      <blockquote className="text-base-600 dark:text-white/70 text-[13px] leading-relaxed mb-5 font-light line-clamp-4">
-        "{rec.quote}"
-      </blockquote>
-
-      <figcaption className="flex items-center gap-3 mt-auto">
-        <div
-          className={cn(
-            'w-9 h-9 rounded-xl shrink-0 flex items-center justify-center',
-            'bg-gradient-to-br from-signal-400 to-signal-600',
-            'text-xs font-bold text-depth-900',
-          )}
-          aria-hidden="true"
-        >
-          {getInitials(rec.name)}
+      {isPlaceholder ? (
+        <div className="flex flex-col items-center justify-center flex-1 gap-3 py-4 text-center">
+          <div className="w-10 h-10 rounded-2xl border-2 border-dashed border-base-300 dark:border-white/20 flex items-center justify-center">
+            <span className="text-xl">+</span>
+          </div>
+          <p className="text-base-500 dark:text-white/40 text-sm font-medium">More coming soon</p>
+          <p className="text-base-400 dark:text-white/25 text-xs">Another recommendation on the way</p>
         </div>
-        <div className="min-w-0 flex-1">
-          <p className="text-base-800 dark:text-white/90 font-semibold text-xs">{rec.name}</p>
-          <p className="text-base-500 dark:text-white/45 text-[11px] truncate">{rec.role} · {rec.company}</p>
-        </div>
-        <a
-          href={rec.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${rec.name}'s LinkedIn`}
-          className={cn(
-            'shrink-0 p-1.5 rounded-lg',
-            'text-[#0A66C2] bg-[#0A66C2]/10',
-            'hover:bg-[#0A66C2] hover:text-white',
-            'transition-all duration-200',
-          )}
-        >
-          <LinkedInIcon className="w-3 h-3" />
-        </a>
-      </figcaption>
+      ) : (
+        <>
+          <div className="flex items-center gap-2 mb-4">
+            <LinkedInIcon className="w-3 h-3 text-[#0A66C2]/75" />
+            <span className="text-[10px] text-base-400 dark:text-white/35 font-mono tracking-wider uppercase">LinkedIn</span>
+          </div>
+
+          <blockquote className="text-base-600 dark:text-white/70 text-[13px] leading-relaxed mb-5 font-light line-clamp-4">
+            "{rec.quote}"
+          </blockquote>
+
+          <figcaption className="flex items-center gap-3 mt-auto">
+            <div
+              className={cn(
+                'w-9 h-9 rounded-xl shrink-0 flex items-center justify-center',
+                'bg-gradient-to-br from-signal-400 to-signal-600',
+                'text-xs font-bold text-depth-900',
+              )}
+              aria-hidden="true"
+            >
+              {getInitials(rec.name)}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-base-800 dark:text-white/90 font-semibold text-xs">{rec.name}</p>
+              <p className="text-base-500 dark:text-white/45 text-[11px] truncate">{rec.role} · {rec.company}</p>
+            </div>
+            <a
+              href={rec.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${rec.name}'s LinkedIn`}
+              className={cn(
+                'shrink-0 p-1.5 rounded-lg',
+                'text-[#0A66C2] bg-[#0A66C2]/10',
+                'hover:bg-[#0A66C2] hover:text-white',
+                'transition-all duration-200',
+              )}
+            >
+              <LinkedInIcon className="w-3 h-3" />
+            </a>
+          </figcaption>
+        </>
+      )}
     </motion.figure>
   )
 }

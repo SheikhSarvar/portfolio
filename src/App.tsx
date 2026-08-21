@@ -5,6 +5,7 @@ import { Nav } from './components/layout/Nav'
 import { Footer } from './components/layout/Footer'
 import { ScrollProgress } from './components/ui/ScrollProgress'
 import { SiteHead } from './components/seo/SiteHead'
+import { HeroBackground } from './components/animations/HeroBackground'
 import { Hero } from './components/sections/Hero'
 import { About } from './components/sections/About'
 import { Skills } from './components/sections/Skills'
@@ -67,6 +68,9 @@ export default function App() {
     <>
       <SiteHead themeColor={themeColor} />
       <ScrollProgress />
+
+      {/* Global particle + aurora background — fixed, spans entire site */}
+      <HeroBackground theme={theme} />
 
       <a
         href="#main-content"
