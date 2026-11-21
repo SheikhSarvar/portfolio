@@ -102,7 +102,7 @@ export function Footer({ theme }: FooterProps) {
           : 'flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-slate-200'
         }>
           <p className={isDarkTheme ? 'text-xs text-white/35' : 'text-xs text-slate-500'}>
-            (c) {year} {identity.name}. All rights reserved.
+            (c) {year} {identity.name} · Bengaluru, India. All rights reserved.
           </p>
           <p className={isDarkTheme ? 'text-xs text-white/35' : 'text-xs text-slate-500'}>
             Built with React, TypeScript, Tailwind, and Framer Motion

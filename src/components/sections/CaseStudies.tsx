@@ -1,6 +1,6 @@
 /**
- * CaseStudies.tsx — Phase 4
- * Premium consulting-style case study cards for production AI work.
+ * CaseStudies.tsx
+ * Premium consulting-style case study cards for production AI work by Gulam Sarvar.
  */
 
 import { useState } from 'react'
@@ -9,10 +9,10 @@ import { SectionWrapper }  from '../layout/SectionWrapper'
 import { FadeIn }          from '../animations/FadeIn'
 import { StaggerChildren } from '../animations/StaggerChildren'
 import { SECTION_IDS }     from '../../lib/constants'
-import { scaleIn } from '../../lib/motion'
+import { scaleIn }         from '../../lib/motion'
 import { cn }              from '../../lib/utils'
 import {
-  Mic, Database, ChevronDown, ChevronUp, CheckCircle2,
+  Mic, Database, ChevronDown, ChevronUp, CheckCircle2, Workflow,
 } from 'lucide-react'
 
 type CaseStudy = {
@@ -32,9 +32,41 @@ type CaseStudy = {
 
 const CASE_STUDIES: CaseStudy[] = [
   {
+    id:      'omniflow',
+    title:   'OmniFlow — Autonomous Agentic & Workflow Platform',
+    client:  'EatEasy (Enterprise Platform)',
+    domain:  'Enterprise Agentic Systems / Telephony Automation',
+    icon:    Workflow,
+    accentClass: 'text-signal-400 bg-signal-500/10 border-signal-500/20',
+    problem:
+      'Modern enterprises require seamless automation across disparate business logic, arbitrary decision graphs, and omnichannel conversational interactions. Existing solutions either lack durable orchestration for long-running processes, drop context on service restarts, or cannot reliably bridge real-time voice telephony with multi-agent task execution.',
+    solution:
+      'Architected OmniFlow — a universal agentic workflow platform unifying n8n-style graph automation, bi-directional voice telephony (inbound IVR customer support and outbound conversational campaigns via 3CX & WebRTC), and durable state machines powered by Temporal.io. Workflows survive process failures with zero state loss, while multi-agent workers interact dynamically with Oracle and vector databases.',
+    architecture: [
+      'Temporal.io durable workflow engine with deterministic event-sourcing and zero state loss',
+      'Universal graph-based workflow engine executing arbitrary triggers, actions, and decision branches (n8n-style)',
+      '3CX PBX & WebRTC voice bridge supporting inbound call routing and automated outbound conversational campaigns (<1.5s latency)',
+      'Multi-agent cognitive orchestration via LangGraph with dynamic tool synthesis and memory',
+      'High-throughput transactional auditing and logging on Oracle with vector search integration',
+      'Distributed worker mesh containerized with Docker and scaled horizontally',
+    ],
+    tech: ['Temporal.io', '3CX', 'Python', 'FastAPI', 'LangGraph', 'Oracle', 'LiveKit', 'WebRTC', 'Docker', 'Redis'],
+    outcomes: [
+      'Universal orchestration: handles arbitrary enterprise workflows and custom agent tools',
+      'Real-time telephony: inbound customer support + outbound campaigns with <1.5s voice turnaround',
+      '100% durable state retention with automatic failure recovery and zero loss',
+      'Unified enterprise stack across Temporal, 3CX, Oracle, and modern LLM agents',
+    ],
+    lessons: [
+      'Durable execution (Temporal.io) eliminates the need for fragile distributed locking and manual retry crons.',
+      'Integrating 3CX SIP trunks with WebRTC pipelines provides enterprise telecom reliability with sub-1.5s voice synthesis.',
+      'Decoupling agent cognitive decisions from workflow activity execution guarantees safety and auditability in enterprise operations.',
+    ],
+  },
+  {
     id:      'kickcall',
-    title:   'Real-Time Voice AI Pipeline',
-    client:  'Bluebash (Internal Product)',
+    title:   'Real-Time Voice AI Pipeline (Kickcall)',
+    client:  'Bluebash (Commercial Product)',
     domain:  'Voice AI / Telecommunications',
     icon:    Mic,
     accentClass: 'text-signal-400 bg-signal-500/10 border-signal-500/20',
@@ -105,9 +137,9 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
     <motion.article
       variants={scaleIn}
       className={cn(
-        'rounded-2xl border border-base-200 bg-white overflow-hidden',
-        'transition-all duration-200',
-        expanded ? 'bg-base-50 border-signal-200' : 'hover:bg-base-50 hover:border-signal-200',
+        'rounded-2xl border border-base-200 bg-white shadow-sm overflow-hidden',
+        'transition-all duration-300',
+        expanded ? 'bg-base-50/70 border-signal-500/30 shadow-md' : 'hover:bg-base-50/50 hover:border-signal-500/30 hover:shadow-md',
       )}
       aria-label={`Case study: ${cs.title}`}
     >
@@ -118,121 +150,91 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
             <Icon className="w-5 h-5" aria-hidden="true" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex flex-wrap items-center gap-2 mb-1">
-              <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-base-400">
-                Case Study
-              </span>
-              <span className="text-base-300">·</span>
-              <span className="text-[10px] font-mono text-base-400">{cs.domain}</span>
-            </div>
-            <h3 className="font-display font-bold text-base-800 text-lg leading-tight">{cs.title}</h3>
-            <p className="text-xs text-base-500 mt-0.5">{cs.client}</p>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-base-500 block mb-1">
+              {cs.domain} · {cs.client}
+            </span>
+            <h3 className="text-xl font-display font-bold text-base-800 leading-tight">
+              {cs.title}
+            </h3>
           </div>
         </div>
 
-        {/* Problem */}
-        <div className="mb-4">
-          <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-2">Business Problem</p>
-          <p className="text-sm text-base-600 leading-relaxed">{cs.problem}</p>
+        {/* Problem & Solution summary */}
+        <div className="space-y-3 text-sm text-base-600 mb-5 leading-relaxed">
+          <p><strong className="text-base-800 font-semibold">The Problem: </strong>{cs.problem}</p>
+          <p><strong className="text-base-800 font-semibold">The Solution: </strong>{cs.solution}</p>
         </div>
 
-        {/* Outcomes preview */}
-        <div className="grid grid-cols-2 gap-2 mb-5">
-          {cs.outcomes.slice(0, 2).map((o) => (
-            <div key={o} className="flex items-start gap-2 p-3 rounded-lg bg-base-50 border border-base-200">
-              <CheckCircle2 className="w-3.5 h-3.5 text-signal-500 shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-xs text-base-700 leading-snug">{o}</span>
-            </div>
-          ))}
+        {/* Outcomes */}
+        <div className="p-4 rounded-xl bg-signal-500/5 border border-signal-500/15 mb-5">
+          <p className="text-[11px] font-mono uppercase tracking-wider text-signal-700 font-semibold mb-2.5">
+            Key Outcomes
+          </p>
+          <ul className="space-y-1.5" role="list">
+            {cs.outcomes.map((o) => (
+              <li key={o} className="flex items-start gap-2 text-xs text-base-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-signal-600 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>{o}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Tech chips */}
-        <div className="flex flex-wrap gap-1.5">
+        {/* Tech strip */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {cs.tech.map((t) => (
             <span key={t} className="chip">{t}</span>
           ))}
         </div>
+
+        {/* Toggle details */}
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="flex items-center gap-1.5 text-xs font-semibold text-signal-600 hover:text-signal-700 transition-colors pt-2 border-t border-base-200 w-full"
+          aria-expanded={expanded}
+        >
+          <span>{expanded ? 'Hide Deep Dive' : 'View Architecture & Lessons Learned'}</span>
+          {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+        </button>
       </div>
 
-      {/* Expand toggle */}
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        className={cn(
-          'w-full flex items-center justify-between px-7 py-3',
-          'text-xs font-medium text-base-500 hover:text-base-800',
-          'border-t border-base-200 bg-base-50 hover:bg-white',
-          'transition-colors duration-150',
-        )}
-        aria-expanded={expanded}
-        aria-controls={`cs-detail-${cs.id}`}
-      >
-        <span>{expanded ? 'Show less' : 'Full case study — architecture, lessons learned'}</span>
-        {expanded
-          ? <ChevronUp className="w-4 h-4" aria-hidden="true" />
-          : <ChevronDown className="w-4 h-4" aria-hidden="true" />
-        }
-      </button>
-
-      {/* Expanded detail */}
-      <AnimatePresence initial={false}>
+      {/* Expandable details */}
+      <AnimatePresence>
         {expanded && (
           <motion.div
-            id={`cs-detail-${cs.id}`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }}
-            className="overflow-hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="px-7 pb-6 pt-2 border-t border-base-200 bg-base-50/50 space-y-5"
           >
-            <div className="px-7 pb-7 pt-4 space-y-6 border-t border-base-200">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-wider text-base-500 font-semibold mb-2">
+                Architecture Breakdown
+              </p>
+              <ul className="space-y-1.5" role="list">
+                {cs.architecture.map((a) => (
+                  <li key={a} className="flex items-start gap-2 text-xs text-base-600">
+                    <span className="text-signal-500 shrink-0 mt-0.5">❯</span>
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              {/* Solution */}
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-2">AI Solution</p>
-                <p className="text-sm text-base-600 leading-relaxed">{cs.solution}</p>
-              </div>
-
-              {/* Architecture */}
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-3">Architecture</p>
-                <ol className="space-y-2" aria-label="Architecture steps">
-                  {cs.architecture.map((step, i) => (
-                    <li key={step} className="flex items-start gap-3 text-sm text-base-600">
-                      <span className="shrink-0 w-5 h-5 rounded-full bg-signal-500/10 border border-signal-500/20 text-signal-700 text-[10px] font-mono font-bold flex items-center justify-center mt-0.5">
-                        {i + 1}
-                      </span>
-                      {step}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {/* All outcomes */}
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-3">Outcomes</p>
-                <ul className="space-y-1.5" aria-label="Outcomes">
-                  {cs.outcomes.map((o) => (
-                    <li key={o} className="flex items-start gap-2 text-sm text-base-600">
-                      <span className="text-signal-500 shrink-0 mt-0.5" aria-hidden="true">▸</span>
-                      {o}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Lessons */}
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-widest text-base-400 mb-3">Lessons Learned</p>
-                <ul className="space-y-2" aria-label="Lessons learned">
-                  {cs.lessons.map((l) => (
-                    <li key={l} className="flex items-start gap-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
-                      <span className="shrink-0 mt-0.5" aria-hidden="true">💡</span>
-                      {l}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div>
+              <p className="text-xs font-mono uppercase tracking-wider text-base-500 font-semibold mb-2">
+                Engineering Lessons
+              </p>
+              <ul className="space-y-1.5" role="list">
+                {cs.lessons.map((l) => (
+                  <li key={l} className="flex items-start gap-2 text-xs text-base-600">
+                    <span className="text-signal-500 shrink-0 mt-0.5">•</span>
+                    <span>{l}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.div>
         )}
@@ -251,16 +253,17 @@ export function CaseStudies() {
       <FadeIn className="mb-12">
         <h2 className={cn(
           'font-display font-bold text-base-800',
-          'text-[clamp(1.75rem,3.5vw,2.5rem)] tracking-tight leading-tight',
+          'text-[clamp(1.75rem,3.5vw,2.5rem)]',
+          'tracking-tight leading-tight',
         )}>
-          Production AI in depth
+          Engineering Case Studies
         </h2>
-        <p className="mt-3 text-base-500 max-w-[50ch]">
-          How the systems were designed, what tradeoffs were made, and what I learned.
+        <p className="mt-3 text-base-500 text-base max-w-[50ch]">
+          In-depth architectural breakdowns of production agentic engines, voice AI telephony, and domain-specific RAG systems.
         </p>
       </FadeIn>
 
-      <StaggerChildren className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <StaggerChildren className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {CASE_STUDIES.map((cs) => (
           <CaseStudyCard key={cs.id} cs={cs} />
         ))}

@@ -7,39 +7,39 @@ import { ABOUT_STATS, SECTION_IDS } from '../../lib/constants'
 import { fadeUp, scaleIn } from '../../lib/motion'
 import { cn } from '../../lib/utils'
 import {
-  Cpu, Mic, Database, Code2, GitBranch, Layers,
+  Cpu, Mic, Database, Code2, GitBranch, Workflow,
 } from 'lucide-react'
 
 const CORE_STRENGTHS = [
   {
-    icon: Cpu,
-    label: 'Agentic AI Systems',
-    desc: 'LangGraph multi-agent workflows, tool orchestration, stateful pipelines.',
+    icon: Workflow,
+    label: 'Agentic Workflow Platforms',
+    desc: 'Temporal.io durable execution, arbitrary DAG graphs (n8n-style), multi-agent task execution.',
   },
   {
     icon: Mic,
-    label: 'Voice AI & Real-time',
-    desc: 'WebRTC/LiveKit STT->LLM->TTS pipelines, <2s end-to-end latency.',
+    label: 'Voice AI & 3CX Telephony',
+    desc: 'Real-time inbound IVR and outbound conversational campaigns via 3CX and WebRTC (<1.5s latency).',
   },
   {
     icon: Database,
-    label: 'RAG Architecture',
-    desc: 'Hybrid dense+sparse retrieval, cross-encoder reranking, Qdrant/Pinecone.',
+    label: 'Enterprise Data & Oracle',
+    desc: 'High-throughput transactional schemas on Oracle, Redis session stores, and vector backends.',
+  },
+  {
+    icon: Cpu,
+    label: 'RAG & Cognitive Systems',
+    desc: 'Hybrid dense+sparse retrieval, cross-encoder reranking, Qdrant/Pinecone architecture.',
   },
   {
     icon: Code2,
-    label: 'Full-Stack Development',
-    desc: 'FastAPI backends, React frontends, Docker-containerised services.',
-  },
-  {
-    icon: Layers,
-    label: 'System Design',
-    desc: 'Production-grade distributed systems with Redis session state.',
+    label: 'Production Full-Stack Systems',
+    desc: 'FastAPI backends, asynchronous worker queues, React frontends, Dockerized microservices.',
   },
   {
     icon: GitBranch,
-    label: 'Open Source',
-    desc: 'Author of PyRAG Core - MIT-licensed RAG platform, 143 unit tests.',
+    label: 'Open Source Tooling',
+    desc: 'Author of PyRAG Core — MIT-licensed RAG platform with 143 unit tests on GitHub.',
   },
 ]
 
@@ -47,7 +47,7 @@ export function About() {
   return (
     <SectionWrapper
       id={SECTION_IDS.about}
-      label="About"
+      label="About Gulam Sarvar"
       className="bg-transparent"
     >
       <div className="grid lg:grid-cols-[1fr_380px] gap-16 lg:gap-24 items-start">
@@ -58,7 +58,7 @@ export function About() {
               'text-[clamp(2rem,4vw,2.75rem)]',
               'tracking-tight leading-[1.1]',
             )}>
-              Building AI that runs{' '}
+              Building autonomous AI that runs{' '}
               <span className="text-gradient">in production</span>
             </h2>
           </FadeIn>
@@ -66,30 +66,35 @@ export function About() {
           <FadeIn delay={0.1}>
             <div className="space-y-4 text-base-600 leading-relaxed mb-10 max-w-[58ch]">
               <p>
-                I'm an AI/LLM engineer at Bluebash (Mohali, India), working on
-                systems where latency, reliability, and accuracy are what decide
-                whether a customer call succeeds or fails.
+                I am <strong className="font-semibold text-base-800">Gulam Sarvar</strong>, an AI Engineer
+                based in <strong className="font-semibold text-base-800">Bengaluru, India</strong> working at <strong className="font-semibold text-base-800">EatEasy</strong>, specializing in the architecture
+                of enterprise-grade agentic platforms, durable workflow engines, and real-time voice AI systems.
               </p>
               <p>
-                I built Kickcall from scratch: a real-time voice AI pipeline
-                handling 150-200 calls per day at under 2 seconds end-to-end latency.
-                I also lead RAG system design for legal and healthcare clients,
-                where retrieval precision is not optional.
+                At EatEasy, I design scalable agentic automation platforms that unify arbitrary graph-based workflows
+                (akin to n8n) with autonomous multi-agent cognition. My systems leverage{' '}
+                <a
+                  href="https://temporal.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-signal-700 underline underline-offset-4 hover:text-signal-800"
+                >
+                  Temporal.io
+                </a>{' '}
+                for bulletproof, fault-tolerant state orchestration, integrate bi-directional voice telephony (inbound call handling and outbound campaigns) with <strong className="font-semibold text-base-800">3CX</strong> and WebRTC, and scale persistence across enterprise <strong className="font-semibold text-base-800">Oracle</strong> and vector databases.
               </p>
               <p>
-                Outside of work, I maintain PyRAG Core - a FastAPI/LangGraph RAG
-                platform - and contribute bug reports to open-source tools I depend on.
+                Previously at <strong className="font-semibold text-base-800">Bluebash Pvt Ltd</strong>, I built <strong className="font-semibold text-base-800">Kickcall</strong> from scratch — a commercial real-time voice AI pipeline processing 150–200 calls daily with sub-2-second latency — and directed technical teams delivering high-precision RAG architectures in legal and healthcare domains.
               </p>
               <p>
-                You may also find me listed as Sheikh Gulam Sarvar, Sheikh Sarvar,
-                or simply Sarvar.
+                Outside enterprise engineering, I author and maintain <strong className="font-semibold text-base-800">PyRAG Core</strong>, an open-source Python/FastAPI/LangGraph platform, and contribute upstream improvements to core developer tooling.
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.15}>
             <h3 className="text-xs font-mono font-medium tracking-widest uppercase text-base-400 mb-5">
-              Core strengths
+              Core Engineering Focus
             </h3>
           </FadeIn>
 
@@ -99,24 +104,26 @@ export function About() {
                 key={label}
                 variants={fadeUp}
                 className={cn(
-                  'flex gap-3 p-4 rounded-xl',
-                  'border border-base-200 bg-white',
-                  'hover:border-signal-500/30 hover:bg-base-50',
+                  'flex gap-3.5 p-4 rounded-xl',
+                  'border border-base-200 bg-white shadow-sm',
+                  'hover:border-signal-500/35 hover:bg-base-50 hover:shadow-md',
                   'transition-all duration-200 group',
                 )}
               >
                 <div
                   className={cn(
-                    'shrink-0 w-8 h-8 rounded-lg flex items-center justify-center',
-                    'bg-signal-500/10 border border-signal-500/15',
-                    'group-hover:bg-signal-500/15 transition-colors duration-200',
+                    'shrink-0 w-9 h-9 rounded-lg flex items-center justify-center',
+                    'bg-signal-500/10 border border-signal-500/20',
+                    'group-hover:bg-signal-500/20 group-hover:scale-105 transition-all duration-200',
                   )}
                   aria-hidden="true"
                 >
                   <Icon className="w-4 h-4 text-signal-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-base-800 mb-0.5">{label}</p>
+                  <p className="text-sm font-semibold text-base-800 mb-1 group-hover:text-signal-700 transition-colors">
+                    {label}
+                  </p>
                   <p className="text-xs text-base-500 leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
@@ -131,15 +138,15 @@ export function About() {
                 key={label}
                 variants={scaleIn}
                 className={cn(
-                  'p-5 rounded-2xl border border-base-200 bg-white',
-                  'hover:border-signal-500/30 hover:shadow-accent',
+                  'p-5 rounded-2xl border border-base-200 bg-white shadow-sm',
+                  'hover:border-signal-500/35 hover:shadow-accent',
                   'transition-all duration-200 group',
                 )}
               >
                 <p
                   className={cn(
                     'font-display font-bold text-base-800 mb-1',
-                    'text-[clamp(1.5rem,3vw,2rem)] tracking-tight leading-none',
+                    'text-[clamp(1.25rem,2.5vw,1.75rem)] tracking-tight leading-none',
                     'group-hover:text-gradient',
                   )}
                 >
@@ -154,33 +161,32 @@ export function About() {
             <div
               className={cn(
                 'p-6 rounded-2xl',
-                'border border-signal-500/15 bg-signal-500/5',
+                'border border-signal-500/20 bg-signal-500/5 backdrop-blur-sm',
               )}
             >
-              <p className="text-xs font-mono uppercase tracking-widest text-signal-600 mb-3">
-                Working philosophy
+              <p className="text-xs font-mono uppercase tracking-widest text-signal-600 mb-2">
+                Engineering Principle
               </p>
-              <blockquote className="text-base-700 text-sm leading-relaxed">
-                "Ship simple, measure everything, improve with evidence.
-                Production beats benchmarks every time."
+              <blockquote className="text-base-700 text-sm leading-relaxed italic">
+                "Durable execution beats fragile scripts. Real-time latency beats synthetic benchmarks. Ship resilient systems that run continuously without human intervention."
               </blockquote>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.35}>
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-base-200 bg-white">
-              <div className="shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-base-200 bg-white shadow-sm">
+              <div className="shrink-0 mt-1">
                 <span
-                  className="w-2 h-2 rounded-full bg-signal-500 block"
+                  className="w-2.5 h-2.5 rounded-full bg-signal-500 block"
                   style={{ animation: 'glowPulse 2s ease-in-out infinite' }}
                 />
               </div>
               <div>
                 <p className="text-sm font-semibold text-base-800">
-                  {experience[0]?.role}
+                  {experience[0]?.role} · {experience[0]?.company}
                 </p>
                 <p className="text-xs text-base-500 mt-0.5">
-                  {experience[0]?.company} · {experience[0]?.startDate} - {experience[0]?.endDate}
+                  {experience[0]?.startDate} – {experience[0]?.endDate} · {experience[0]?.location}
                 </p>
               </div>
             </div>

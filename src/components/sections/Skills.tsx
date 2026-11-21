@@ -1,14 +1,8 @@
 /**
  * Skills.tsx
  * ─────────────────────────────────────────────────────────────────
- * Tab interface cycling through skill categories.
+ * Tab interface cycling through skill categories for Gulam Sarvar.
  * Each skill shows a production/proficient/familiar level indicator.
- *
- * Interaction:
- * - Tab bar (keyboard navigable via arrow keys per ARIA spec)
- * - Active tab content fades/slides in
- * - Skill chips glow on hover with accent shadow
- * - Level legend at bottom of panel
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -19,15 +13,16 @@ import { FadeIn }          from '../animations/FadeIn'
 import { StaggerChildren } from '../animations/StaggerChildren'
 import { skills }          from '../../data/portfolio.data'
 import { SECTION_IDS }     from '../../lib/constants'
-import { fadeUp } from '../../lib/motion'
+import { fadeUp }          from '../../lib/motion'
 import { cn }              from '../../lib/utils'
+import { ExternalLink }    from 'lucide-react'
 import type { SkillLevel } from '../../data/portfolio.data'
 
 // Level metadata
 const LEVEL_META: Record<SkillLevel, { label: string; dots: number; color: string }> = {
-  production: { label: 'Production',  dots: 3, color: 'bg-signal-500' },
-  proficient: { label: 'Proficient',  dots: 2, color: 'bg-signal-500/60' },
-  familiar:   { label: 'Familiar',    dots: 1, color: 'bg-base-300' },
+  production: { label: 'Production Tested', dots: 3, color: 'bg-signal-500' },
+  proficient: { label: 'Proficient',        dots: 2, color: 'bg-signal-500/60' },
+  familiar:   { label: 'Familiar',          dots: 1, color: 'bg-base-300' },
 }
 
 function LevelDots({ level }: { level: SkillLevel }) {
@@ -50,10 +45,47 @@ function LevelDots({ level }: { level: SkillLevel }) {
 function SkillChip({
   name,
   level,
+  url,
 }: {
   name: string
   level: SkillLevel
+  url?: string
 }) {
+  const content = (
+    <>
+      <div className="flex items-center gap-2">
+        <span className="text-sm font-medium text-base-800 group-hover:text-signal-700 transition-colors">
+          {name}
+        </span>
+        {url && (
+          <ExternalLink className="w-3.5 h-3.5 text-signal-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+        )}
+      </div>
+      <LevelDots level={level} />
+    </>
+  )
+
+  if (url) {
+    return (
+      <motion.a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        variants={fadeUp}
+        whileHover={{ y: -2 }}
+        className={cn(
+          'flex items-center justify-between gap-3',
+          'px-4 py-3 rounded-xl',
+          'border border-base-200 bg-white shadow-sm',
+          'hover:border-signal-500/40 hover:bg-base-50 hover:shadow-md',
+          'transition-all duration-200 group cursor-pointer',
+        )}
+      >
+        {content}
+      </motion.a>
+    )
+  }
+
   return (
     <motion.div
       variants={fadeUp}
@@ -61,15 +93,12 @@ function SkillChip({
       className={cn(
         'flex items-center justify-between gap-3',
         'px-4 py-3 rounded-xl',
-        'border border-base-200 bg-white',
-        'hover:border-signal-500/35 hover:bg-base-50',
+        'border border-base-200 bg-white shadow-sm',
+        'hover:border-signal-500/35 hover:bg-base-50 hover:shadow-md',
         'transition-all duration-200 group cursor-default',
       )}
     >
-      <span className="text-sm font-medium text-base-700 group-hover:text-signal-700 transition-colors">
-        {name}
-      </span>
-      <LevelDots level={level} />
+      {content}
     </motion.div>
   )
 }
@@ -78,7 +107,6 @@ export function Skills() {
   const [activeTab, setActiveTab] = useState(0)
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
 
-  // Arrow-key navigation per ARIA Tabs pattern
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent, idx: number) => {
       if (e.key === 'ArrowRight') {
@@ -101,12 +129,12 @@ export function Skills() {
     [],
   )
 
-  const active = skills[activeTab]
+  const active = skills[activeTab] || skills[0]
 
   return (
     <SectionWrapper
       id={SECTION_IDS.skills}
-      label="Skills"
+      label="Skills & Technologies"
       className="bg-transparent"
     >
       {/* Heading */}
@@ -116,11 +144,10 @@ export function Skills() {
           'text-[clamp(1.75rem,3.5vw,2.5rem)]',
           'tracking-tight leading-tight',
         )}>
-          Tools I build with
+          Technical Skills &amp; Stack
         </h2>
-        <p className="mt-3 text-base-500 text-base max-w-[48ch]">
-          Filtered by what I've used in production. "Familiar" means implemented
-          — not just read about.
+        <p className="mt-3 text-base-500 text-base max-w-[50ch]">
+          Battle-tested in live production: distributed workflow engines, enterprise telephony, high-concurrency databases, and real-time voice AI.
         </p>
       </FadeIn>
 
@@ -130,7 +157,7 @@ export function Skills() {
         aria-label="Skill categories"
         className="flex flex-wrap gap-2 mb-8"
       >
-        {skills.map(({ id, label }, idx) => (
+        {skills.map(({ id, label, skills: categorySkills }, idx) => (
           <button
             key={id}
             type="button"
@@ -143,22 +170,28 @@ export function Skills() {
             onClick={() => setActiveTab(idx)}
             onKeyDown={(e) => handleKeyDown(e, idx)}
             className={cn(
-              'relative px-4 py-2 rounded-lg text-sm font-medium',
-              'transition-all duration-150 focus-visible:outline-offset-2',
+              'relative px-4 py-2 rounded-xl text-xs sm:text-sm font-medium',
+              'transition-all duration-150 focus-visible:outline-offset-2 flex items-center gap-2',
               activeTab === idx
-                ? 'text-signal-700 bg-white border border-signal-500/25 shadow-accent'
-                : 'text-base-400 hover:text-base-700 hover:bg-base-100 border border-transparent',
+                ? 'text-signal-700 bg-white border border-signal-500/30 shadow-sm'
+                : 'text-base-500 hover:text-base-800 hover:bg-base-100 border border-transparent',
             )}
           >
             {activeTab === idx && (
               <motion.span
                 layoutId="skills-tab-bg"
-                className="absolute inset-0 rounded-lg bg-white border border-signal-500/25"
+                className="absolute inset-0 rounded-xl bg-white border border-signal-500/30 shadow-sm"
                 transition={{ type: 'spring', duration: 0.35 }}
                 aria-hidden="true"
               />
             )}
             <span className="relative">{label}</span>
+            <span className={cn(
+              'relative px-1.5 py-0.5 rounded-full text-[10px] font-mono',
+              activeTab === idx ? 'bg-signal-500/15 text-signal-700' : 'bg-base-200 text-base-500'
+            )}>
+              {categorySkills.length}
+            </span>
           </button>
         ))}
       </div>
@@ -179,8 +212,8 @@ export function Skills() {
             speed="fast"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
           >
-            {active.skills.map(({ name, level }) => (
-              <SkillChip key={name} name={name} level={level} />
+            {active.skills.map(({ name, level, url }) => (
+              <SkillChip key={name} name={name} level={level} url={url} />
             ))}
           </StaggerChildren>
         </motion.div>
@@ -188,7 +221,7 @@ export function Skills() {
 
       {/* Level legend */}
       <FadeIn delay={0.3} className="mt-10 pt-6 border-t border-base-200">
-        <div className="flex flex-wrap gap-5">
+        <div className="flex flex-wrap items-center gap-6">
           {(Object.entries(LEVEL_META) as [SkillLevel, typeof LEVEL_META[SkillLevel]][]).map(
             ([level, { label, dots, color }]) => (
               <div key={level} className="flex items-center gap-2 text-xs text-base-500">

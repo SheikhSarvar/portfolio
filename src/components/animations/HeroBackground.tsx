@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo } from 'react'
-import Particles, { initParticlesEngine } from '@tsparticles/react'
+import { useMemo, useCallback } from 'react'
+import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { type ISourceOptions, type Engine } from '@tsparticles/engine'
 import { loadFull } from 'tsparticles'
 import { useReducedMotion } from '../../hooks'
@@ -11,16 +11,11 @@ interface HeroBackgroundProps {
 }
 
 export function HeroBackground({ theme }: HeroBackgroundProps) {
-  const [init, setInit] = useState(false)
   const reduced = useReducedMotion()
   const isDark = theme === 'dark'
 
-  useEffect(() => {
-    initParticlesEngine(async (engine: Engine) => {
-      await loadFull(engine)
-    }).then(() => {
-      setInit(true)
-    })
+  const initParticles = useCallback(async (engine: Engine) => {
+    await loadFull(engine)
   }, [])
 
   const options: ISourceOptions = useMemo(
@@ -69,7 +64,7 @@ export function HeroBackground({ theme }: HeroBackgroundProps) {
           density: {
             enable: true,
             width: 1000,
-            height: 1000
+            height: 1000,
           },
           value: 60,
         },
@@ -95,15 +90,15 @@ export function HeroBackground({ theme }: HeroBackgroundProps) {
     )}>
       {/* Base Aurora Background */}
       <AuroraBackground intensity={isDark ? 0.35 : 0.15} theme={theme} className="!absolute" />
-      
+
       {/* Particle Constellation Network */}
-      {init && (
+      <ParticlesProvider init={initParticles}>
         <Particles
           id="tsparticles-hero"
           options={options}
           className="absolute inset-0 z-10 opacity-70"
         />
-      )}
+      </ParticlesProvider>
     </div>
   )
 }

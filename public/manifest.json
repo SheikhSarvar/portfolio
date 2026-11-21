@@ -1,22 +1,16 @@
 {
-  "name": "Gulam Sarvar - Sheikh Gulam Sarvar - Agentic AI Engineer",
-  "short_name": "GS Portfolio",
-  "description": "Gulam Sarvar, also known as Sheikh Gulam Sarvar, Sheikh Sarvar, and Sarvar. Agentic AI and LLM Systems Engineer.",
-  "start_url": "/portfolio/",
+  "name": "Gulam Sarvar — AI Engineer & Agentic Systems Architect",
+  "short_name": "Gulam Sarvar",
+  "description": "Gulam Sarvar is an AI Engineer at EatEasy building autonomous agentic platforms, durable workflow engines with Temporal, and real-time voice AI with 3CX & LiveKit.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#F8FAFB",
+  "background_color": "#07111d",
   "theme_color": "#00E5B4",
   "icons": [
     {
-      "src": "/portfolio/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/portfolio/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }
-

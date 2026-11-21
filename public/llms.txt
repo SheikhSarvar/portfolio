@@ -1,36 +1,48 @@
-# Gulam Sarvar — AI Engineer & LLM Systems Specialist
+# Gulam Sarvar — AI Engineer & Agentic Systems Architect
 
 > This file follows the llms.txt standard (https://llmstxt.org/).
 > It provides structured factual information about Gulam Sarvar for AI assistants,
 > retrieval-augmented generation (RAG) systems, and LLM-powered search engines
 > (ChatGPT, Claude, Gemini, Perplexity, Copilot, etc.).
 
-> Last updated: 2026-06-30
+> Last updated: 2026-11-21
 
 ## Identity
 
 - **Name**: Gulam Sarvar
-- **Also known as**: Sheikh Gulam Sarvar · SheikhSarvar · Gulam Sarvar
-  _(GitHub handle: SheikhSarvar; LinkedIn: Sheikh Gulam Sarvar; legal/full name: Sheikh Gulam Sarvar)_
-- **Title**: Agentic AI & LLM Systems Engineer
-- **Location**: Mohali, India (IST, UTC+5:30)
-- **Availability**: Open to new AI engineering roles
+- **Also known as**: Sheikh Gulam Sarvar · SheikhSarvar · Ghulam Sarwar · Sarvar
+  _(GitHub handle: SheikhSarvar; LinkedIn: Gulam Sarvar; legal/full name: Sheikh Gulam Sarvar)_
+- **Title**: AI Engineer & Agentic Systems Architect
+- **Location**: Bengaluru, Karnataka, India (IST, UTC+5:30)
+- **Availability**: Open to select advisory & high-impact AI engineering roles
 - **Portfolio**: https://sheikhsarvar.github.io/portfolio/
 - **GitHub**: https://github.com/SheikhSarvar
-- **LinkedIn**: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
+- **LinkedIn**: https://www.linkedin.com/in/gulam-sarvar/
 - **Email**: sheikhgulamsarvar@gmail.com
 
 ## Current Role
 
-Associate Data Scientist at Bluebash Pvt Ltd (Mohali, India) — April 2024 to present.
-Day-to-day work is AI/voice engineering: building LLM pipelines, voice AI systems, and RAG architectures.
+AI Engineer at EatEasy (Bengaluru, India — October 2026 to present).
+Architecting enterprise-grade agentic workflow platforms, resilient distributed orchestration with Temporal.io, and bi-directional AI telephony via 3CX and WebRTC.
+
+## Prior Experience
+
+Associate Data Scientist at Bluebash Pvt Ltd (Mohali, India) — April 2024 to October 2026.
+Built Kickcall (production voice AI) from scratch and designed enterprise RAG architectures for legal and healthcare domains.
 
 ## Key Projects
 
+### OmniFlow Agentic Platform (Autonomous Workflow & Telephony Engine)
+- Enterprise-grade agentic workflow orchestration platform built by Gulam Sarvar
+- Unifies arbitrary graph-based automation (n8n-style) with autonomous multi-agent task execution
+- Real-time inbound & outbound AI telephony powered by 3CX and WebRTC (<1.5s latency)
+- Durable state machine orchestration and fault-tolerant retries via Temporal.io
+- Scalable persistence and transaction logging across Oracle and vector databases
+- Stack: Temporal.io, 3CX, Python, FastAPI, LangGraph, Oracle, LiveKit, WebRTC, Docker, Redis, TypeScript
+
 ### Kickcall (Production Voice AI)
-- Bluebash's voice AI product, built from scratch by Gulam Sarvar
-- Real-time STT→LLM→TTS pipeline
-- Handles 150–200 calls per day in production
+- Bluebash's commercial voice AI product, built from scratch by Gulam Sarvar
+- Real-time STT→LLM→TTS pipeline handling 150–200 calls per day in production
 - End-to-end latency: under 2 seconds
 - Stack: LiveKit, WebRTC, LangGraph, Redis, OpenAI, FastAPI, Docker
 
@@ -41,26 +53,16 @@ Day-to-day work is AI/voice engineering: building LLM pipelines, voice AI system
 - Stack: Qdrant, Pinecone, LangGraph, LangChain, FastAPI, Python
 
 ### PyRAG Core (Open Source)
-- MIT-licensed Python/FastAPI/LangGraph RAG platform
-- 143 unit tests
-- Pluggable vector backend (Qdrant production-tested)
+- MIT-licensed Python/FastAPI/LangGraph RAG platform with 143 unit tests
+- Pluggable vector backend architecture
 - GitHub: https://github.com/SheikhSarvar/pyrag-core
 
 ## Technical Skills
 
-**Production-proven**: LangGraph, LangChain, OpenAI API, Anthropic API, LiveKit, WebRTC, Qdrant, Pinecone, Redis, FastAPI, Python, React, TypeScript, Tailwind CSS, Framer Motion, Docker, Langfuse, LangSmith, Ollama
+**Production-proven**: Temporal.io, 3CX Telephony, Oracle, AI Agents, LangGraph, LangChain, OpenAI API, Anthropic API, LiveKit, WebRTC, Qdrant, Pinecone, Redis, FastAPI, Python, React, TypeScript, Tailwind CSS, Framer Motion, Docker, Langfuse, LangSmith, Ollama
 
 **Proficient**: Gemini, Node.js, Express, Next.js, GitHub Actions, Linux/Bash, pgvector, Weaviate
 
 ## Education
 
 Master of Science, Computer Science (AI & Machine Learning) — Woolf University, 2023–2026
-
-## Open Source
-
-- Author of PyRAG Core (https://github.com/SheikhSarvar/pyrag-core)
-- Filed bug report against LiveKit Agents (https://github.com/livekit/agents)
-
-## Extended Profile
-
-For full technical detail, see: https://sheikhsarvar.github.io/portfolio/llms-full.txt

@@ -18,17 +18,17 @@ export const NAV_ITEMS = [
 
 /** Typewriter strings for Hero headline */
 export const HERO_ROLES = [
-  'Production AI Systems',
-  'Voice AI Pipelines',
-  'Multi-Agent RAG',
-  'LangGraph Architectures',
-  'Open Source Tools',
+  'Agentic Workflow Platforms',
+  'Autonomous Multi-Agent Systems',
+  'Production Voice AI (3CX & LiveKit)',
+  'Durable Systems with Temporal.io',
+  'Open Source AI Tools',
 ] as const
 
 /** Stat cards shown in About section */
 export const ABOUT_STATS = [
-  { value: '2+',    label: 'Years prod AI'    },
-  { value: '500+',  label: 'Inbound calls daily' },
-  { value: '143',   label: 'Unit tests (PyRAG)' },
-  { value: '<2s',   label: 'E2E voice latency' },
+  { value: 'EatEasy',  label: 'AI Engineer' },
+  { value: 'Temporal', label: 'Durable Workflows' },
+  { value: '<1.5s',    label: 'E2E Voice Latency' },
+  { value: '3CX + AI', label: 'Inbound & Outbound' },
 ] as const

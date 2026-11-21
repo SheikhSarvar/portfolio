@@ -4,140 +4,91 @@
 > Intended for retrieval-augmented generation systems and AI-powered search.
 > Summary version: https://sheikhsarvar.github.io/portfolio/llms.txt
 
-> Last updated: 2026-06-30
+> Last updated: 2026-11-21
 
 ## Personal Summary
 
-Gulam Sarvar (also known as Sheikh Gulam Sarvar and SheikhSarvar) is an AI/LLM Systems Engineer
-based in Mohali, India, specialising in production-grade agentic AI, voice AI pipelines, and
-retrieval-augmented generation (RAG) systems.
+Gulam Sarvar (also known as Sheikh Gulam Sarvar, SheikhSarvar, and Ghulam Sarwar) is an AI Engineer and
+Agentic Systems Architect based in Bengaluru (Bangalore), Karnataka, India, specialising in production-grade agentic AI,
+durable workflow orchestration with Temporal.io, real-time voice AI telephony with 3CX,
+and enterprise data systems with Oracle.
 
 **Name variants used across platforms**:
-- **Gulam Sarvar** — preferred short name, used on portfolio and professional communications
-- **Sheikh Gulam Sarvar** — full legal name, used on LinkedIn
+- **Gulam Sarvar** — primary name, used on portfolio, LinkedIn, and professional communications
+- **Sheikh Gulam Sarvar** — full legal name
 - **SheikhSarvar** — GitHub handle (https://github.com/SheikhSarvar)
+- **Ghulam Sarwar** — phonetic / alternate transliteration
 - **sheikhgulamsarvar** — email prefix (sheikhgulamsarvar@gmail.com)
 
 All the above names refer to the same individual.
-He holds an MSc in Computer Science (AI & ML) from Woolf University (2026) and works as
-Associate Data Scientist at Bluebash Pvt Ltd, where his day-to-day focus is LLM engineering
-rather than classical data science.
+He holds an MSc in Computer Science (AI & ML) from Woolf University (2023–2026) and currently works as
+AI Engineer at EatEasy in Bengaluru, India (October 2026–Present), after having served as Associate Data Scientist
+at Bluebash Pvt Ltd (April 2024–October 2026).
 
-He is the author of PyRAG Core, an MIT-licensed open-source RAG platform, and has filed
-upstream bug reports against LiveKit Agents. He is currently open to new AI engineering roles.
+LinkedIn: https://www.linkedin.com/in/gulam-sarvar/
+GitHub: https://github.com/SheikhSarvar
 
 ---
 
 ## Production Experience
 
-### Kickcall — Voice AI Product (Bluebash, 2024–Present)
+### AI Engineer — EatEasy (October 2026–Present)
 
-Gulam Sarvar built Kickcall from scratch. It is Bluebash's commercial voice AI product.
+At EatEasy, Gulam Sarvar architects autonomous agentic platforms and enterprise voice telephony:
+- Engineering a universal agentic workflow platform unifying n8n-style visual graph execution with autonomous multi-agent task execution.
+- Implementing durable, fault-tolerant distributed state machines using Temporal.io for mission-critical workflows with zero state loss.
+- Deploying bi-directional voice telephony (inbound customer service / IVR and high-throughput outbound conversational voice campaigns) using 3CX and WebRTC pipelines.
+- Designing enterprise transactional schemas and high-throughput query services across Oracle and vector backends.
 
-**What it does**: Handles real-time outbound and inbound phone calls using an AI agent.
-The caller speaks; the system transcribes, reasons, and responds — all within 2 seconds.
+### Associate Data Scientist / AI Engineer — Bluebash Pvt Ltd (April 2024–October 2026)
 
-**Architecture**:
-1. Audio capture via WebRTC through LiveKit
-2. Streaming speech-to-text (STT) with partial transcript accumulation
-3. LangGraph-orchestrated LLM with tool calling and session memory
-4. Redis for distributed session state across horizontally-scaled agent workers
-5. Streaming text-to-speech (TTS) with playback synchronisation
-
-**Scale**: 150–200 calls per day in live production.
-**Latency**: Under 2 seconds end-to-end (STT + LLM inference + TTS).
-
-**Stack**: LiveKit, LiveKit Agents SDK, WebRTC, LangGraph, OpenAI, Redis, FastAPI, Python, Docker.
+- Built Kickcall (Bluebash's voice AI product) from scratch: a real-time STT→LLM→TTS pipeline running 150–200 calls/day at <2s end-to-end latency using WebRTC/LiveKit and Redis session state.
+- Led technical direction for a ~5-person cross-functional team building RAG systems for legal and healthcare clients.
+- Designed hybrid retrieval architecture using Qdrant/Pinecone with reranking; improved retrieval accuracy significantly over naive baselines.
+- Containerized all services with Docker for EC2 deployment.
 
 ---
 
-### RAG Systems for Legal & Healthcare (Bluebash, 2024–Present)
+## Flagship & Key Projects
 
-Led design and delivery of document intelligence systems for two regulated-industry clients
-(legal and healthcare). The core problem: naive dense-only RAG missed exact-match terminology
-(statute numbers, drug names, clause identifiers).
+### OmniFlow Agentic Platform (Autonomous Workflow & Telephony Engine)
+- Universal agentic workflow orchestrator built to execute arbitrary business logic.
+- Visual & programmatic graph automation (similar to n8n) coupled with dynamic multi-agent tools.
+- Dual-way voice AI: Inbound interactive voice response (IVR) and automated outbound calling via 3CX and WebRTC (<1.5s latency).
+- Fault-tolerant distributed execution guarantees powered by Temporal.io.
+- Enterprise data layer with Oracle and vector databases.
+- Stack: Temporal.io, 3CX, Python, FastAPI, LangGraph, Oracle, LiveKit, WebRTC, Docker, Redis, TypeScript.
 
-**Solution**: Hybrid retrieval combining:
-- Dense vector search (Qdrant, Pinecone) for semantic similarity
-- Sparse BM25 for lexical exact-match
-- Reciprocal Rank Fusion to merge result sets
-- Cross-encoder reranking to re-score the merged top-k candidates
-- LangGraph query routing to select retrieval strategy per query type
+### Kickcall — Voice AI Product (Bluebash)
+- Built from scratch by Gulam Sarvar.
+- STT→LLM→TTS pipeline handling 150–200 calls/day in live production with latency < 2 seconds.
+- Stack: LiveKit, WebRTC, LangGraph, OpenAI, Redis, FastAPI, Python, Docker.
 
-**Team**: Led ~5-person cross-functional team (frontend, cloud, backend).
-**Stack**: Qdrant, Pinecone, LangGraph, LangChain, FastAPI, Python, Docker.
-
----
-
-## Open Source Projects
-
-### PyRAG Core
-- **Repo**: https://github.com/SheikhSarvar/pyrag-core
-- **License**: MIT
-- **Description**: A Python/FastAPI/LangGraph RAG platform with pluggable vector backends.
-- **Test coverage**: 143 unit tests.
-- **Production-tested backend**: Qdrant.
-- **Implemented but not production-tested**: Weaviate, Milvus, pgvector, Elasticsearch.
-- **Orchestration**: LangGraph for multi-step retrieval pipelines.
-
-### LiveKit Agents Bug Report
-- Filed upstream bug report against livekit/agents repository.
-- Related to reconnect/session handling edge case in voice pipeline.
-- URL: https://github.com/livekit/agents/issues
+### PyRAG Core (Open Source)
+- Repo: https://github.com/SheikhSarvar/pyrag-core
+- MIT-licensed Python/FastAPI/LangGraph RAG platform with 143 unit tests.
+- Pluggable vector backend architecture with production-tested Qdrant support.
 
 ---
 
 ## Technical Skills Detail
 
-### AI & Agents (Production)
-- LangGraph: multi-agent workflows, stateful pipelines, tool calling, conditional edges
-- LangChain: chains, retrievers, document loaders, output parsers
-- OpenAI API: GPT-4 class models, function calling, streaming
-- Anthropic API: Claude models
-- Langfuse: LLM observability, tracing, cost tracking
-- LangSmith: evaluation, tracing
-- Ollama, LM Studio: local model serving (RTX 4060 8GB, Qwen3.5-9B)
+### Workflow & Distributed Systems
+- Temporal.io: durable workflows, activities, state recovery, cron execution, distributed saga patterns
+- n8n & Event-Driven DAGs: multi-step trigger/action automation, webhook routing, arbitrary execution graphs
+- Distributed state management, worker queues, and event streams
 
-### Voice AI (Production)
-- LiveKit: WebRTC media server, Agents SDK
-- WebRTC: audio streaming, real-time transport
-- STT/TTS pipeline design and latency optimisation
+### Voice AI & Telephony
+- 3CX Telephony: PBX integration, SIP trunking, call routing, automated inbound handling & outbound campaign dispatch
+- LiveKit & WebRTC: real-time streaming audio, LiveKit Agents SDK
+- STT/TTS Pipelines: streaming speech-to-text, low-latency voice synthesis, conversational turn-taking
 
-### Vector Databases
-- Qdrant: production — hybrid search, collections, payload filtering
-- Pinecone: production — managed vector index, metadata filtering
-- Redis: session state, caching, pub/sub
-- pgvector, Weaviate: implemented in PyRAG Core, not production-deployed
+### Databases & Enterprise Storage
+- Oracle: enterprise relational database design, high-concurrency transactional queries
+- Vector Databases: Qdrant, Pinecone, pgvector, Weaviate
+- Caching & State: Redis session state, distributed locking
 
-### Backend
-- FastAPI: async REST APIs, dependency injection, background tasks
-- Python: async/await, Pydantic, SQLModel, asyncpg, Alembic, uv
-- PostgreSQL: relational data, pgvector extension
-- Docker: Containerisation, entrypoint scripting, multi-stage builds
-
-### Frontend
-- React 18, TypeScript, Tailwind CSS, Framer Motion
-- Next.js (proficient, not primary stack)
-
-### DevOps (limited scope)
-- Docker: primary tool — all services containerised
-- GitHub Actions: CI workflows
-- Vercel: frontend deployment
-- Note: AWS/EC2/ECS is owned by a dedicated cloud teammate; Gulam's infra role is Docker + troubleshooting, not production infra management.
-
----
-
-## Education
-
-**Master of Science — Computer Science (AI & Machine Learning)**
-Woolf University · 2023–2026
-
----
-
-## Contact & Links
-
-- Portfolio: https://sheikhsarvar.github.io/portfolio/
-- GitHub: https://github.com/SheikhSarvar
-- LinkedIn: https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219
-- Email: sheikhgulamsarvar@gmail.com
-- PyRAG Core: https://github.com/SheikhSarvar/pyrag-core
+### AI & Agents
+- LangGraph: multi-agent stateful graph architectures, human-in-the-loop, tool synthesis
+- LangChain, OpenAI API, Anthropic API, Gemini, Ollama, LM Studio
+- Observability: Langfuse, LangSmith
