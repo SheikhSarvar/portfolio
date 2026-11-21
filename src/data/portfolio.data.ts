@@ -32,7 +32,7 @@ Outside work, I maintain PyRAG Core, an MIT-licensed Python/FastAPI/LangGraph RA
   links: {
     github:   'https://github.com/SheikhSarvar',
     linkedin: 'https://www.linkedin.com/in/gulam-sarvar/',
-    portfolio: 'https://sheikhsarvar.github.io/portfolio/',
+    portfolio: 'https://gulamsarvar.pages.dev/',
     pyragCore: 'https://github.com/SheikhSarvar/pyrag-core',
     email:    'sheikhgulamsarvar@gmail.com',
   },
@@ -349,7 +349,7 @@ export const certifications: Array<{
 
 export const seo = {
   siteName:    'Gulam Sarvar',
-  siteUrl:     'https://sheikhsarvar.github.io/portfolio/',
+  siteUrl:     'https://gulamsarvar.pages.dev/',
   title:       'Gulam Sarvar | AI Engineer & Agentic Systems Architect — Bengaluru',
   description: 'Gulam Sarvar is an AI Engineer at EatEasy based in Bengaluru, India. Architecting autonomous agentic platforms, durable workflow engines with Temporal.io, and real-time voice AI with 3CX & LiveKit. Author of PyRAG Core.',
   keywords:    [
@@ -383,3 +383,4 @@ export const seo = {
   author:      'Gulam Sarvar',
   twitterHandle: '@SheikhSarvar',
 }
+

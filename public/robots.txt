@@ -1,10 +1,10 @@
 # robots.txt - Gulam Sarvar Portfolio
-# https://sheikhsarvar.github.io/portfolio/
+# https://gulamsarvar.pages.dev/
 
 User-agent: *
 Allow: /
 
-Sitemap: https://sheikhsarvar.github.io/portfolio/sitemap.xml
+Sitemap: https://gulamsarvar.pages.dev/sitemap.xml
 
 User-agent: GPTBot
 Allow: /llms.txt
@@ -21,3 +21,4 @@ Allow: /llms-full.txt
 User-agent: Google-Extended
 Allow: /llms.txt
 Allow: /llms-full.txt
+

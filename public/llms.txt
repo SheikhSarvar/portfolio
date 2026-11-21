@@ -15,7 +15,7 @@
 - **Title**: AI Engineer & Agentic Systems Architect
 - **Location**: Bengaluru, Karnataka, India (IST, UTC+5:30)
 - **Availability**: Open to select advisory & high-impact AI engineering roles
-- **Portfolio**: https://sheikhsarvar.github.io/portfolio/
+- **Portfolio**: https://gulamsarvar.pages.dev/
 - **GitHub**: https://github.com/SheikhSarvar
 - **LinkedIn**: https://www.linkedin.com/in/gulam-sarvar/
 - **Email**: sheikhgulamsarvar@gmail.com
@@ -66,3 +66,4 @@ Built Kickcall (production voice AI) from scratch and designed enterprise RAG ar
 ## Education
 
 Master of Science, Computer Science (AI & Machine Learning) — Woolf University, 2023–2026
+
