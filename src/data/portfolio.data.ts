@@ -14,28 +14,27 @@
 export const identity = {
   name:       'Gulam Sarvar',
   handle:     'SheikhSarvar',
-  title:      'Agentic AI & LLM Systems Engineer',
-  subtitle:   'I build production AI that ships.',
-  tagline:    'Voice AI · Multi-Agent Systems · RAG · Full Stack',
-  location:   'Mohali, India',
+  title:      'AI Engineer & Agentic Systems Architect',
+  subtitle:   'I build autonomous agentic platforms and production voice AI.',
+  tagline:    'Agentic Workflows · Voice AI · Temporal · 3CX · Oracle · Full Stack',
+  location:   'Bengaluru, India',
   timezone:   'IST (UTC+5:30)',
   available:  true,  // flip to false when not open to roles
 
-  bio: `Associate Data Scientist at Bluebash, working at the intersection
-of LLM engineering, voice AI, and production RAG systems. I built Kickcall —
-Bluebash's voice AI product — from scratch: an STT→LLM→TTS pipeline running
-150–200 calls/day at under 2 seconds end-to-end latency. I also lead RAG system
-design for legal and healthcare clients using hybrid retrieval and reranking.
-Outside work, I maintain PyRAG Core, an MIT-licensed Python/FastAPI/LangGraph
-RAG platform on GitHub.`,
+  bio: `AI Engineer at EatEasy based in Bengaluru, India, architecting autonomous agentic
+workflow platforms and enterprise voice AI infrastructure. Previously Associate Data Scientist
+at Bluebash, where I built Kickcall (voice AI product) from scratch — a real-time STT→LLM→TTS
+pipeline running 150–200 calls/day at under 2 seconds end-to-end latency — and led RAG systems
+for legal and healthcare clients. Experienced in durable distributed workflow orchestration
+with Temporal.io, bi-directional telephony via 3CX, and resilient architectures with Oracle.
+Outside work, I maintain PyRAG Core, an MIT-licensed Python/FastAPI/LangGraph RAG platform on GitHub.`,
 
   links: {
     github:   'https://github.com/SheikhSarvar',
-    linkedin: 'https://www.linkedin.com/in/sheikh-gulam-sarvar-ab3343219',
+    linkedin: 'https://www.linkedin.com/in/gulam-sarvar/',
     portfolio: 'https://sheikhsarvar.github.io/portfolio/',
     pyragCore: 'https://github.com/SheikhSarvar/pyrag-core',
     email:    'sheikhgulamsarvar@gmail.com',
-    // calendar: 'TODO: add Calendly/Cal.com link',
   },
 } as const
 
@@ -51,16 +50,31 @@ export type Experience = {
   location:     string
   highlights:   string[]
   tags:         string[]
-  logo?:        string  // path to /public/logos/
+  logo?:        string
 }
 
 export const experience: Experience[] = [
+  {
+    company:   'EatEasy',
+    role:      'AI Engineer',
+    type:      'full-time',
+    startDate: 'Oct 2026',
+    endDate:   'Present',
+    location:  'Bengaluru, India',
+    highlights: [
+      'Architecting an enterprise-grade agentic workflow platform unifying n8n-style graph automation with autonomous multi-agent task execution.',
+      'Engineering fault-tolerant distributed state orchestration with Temporal.io for zero-loss mission-critical workflows and infinite retry semantics.',
+      'Deploying real-time bi-directional telephony (inbound customer service / IVR and outbound conversational campaigns) powered by 3CX and WebRTC pipelines.',
+      'Designing enterprise transactional data pipelines and high-throughput query services across Oracle and vector backends.',
+    ],
+    tags: ['Temporal.io', '3CX', 'Oracle', 'AI Agents', 'LangGraph', 'FastAPI', 'Python', 'Voice AI'],
+  },
   {
     company:   'Bluebash Pvt Ltd',
     role:      'Associate Data Scientist',
     type:      'full-time',
     startDate: 'Apr 2024',
-    endDate:   'Present',
+    endDate:   'Oct 2026',
     location:  'Mohali, India',
     highlights: [
       'Built Kickcall (Bluebash\'s voice AI product) from scratch — STT→LLM→TTS pipeline running 150–200 calls/day at <2s end-to-end latency using WebRTC/LiveKit and Redis session state.',
@@ -70,7 +84,6 @@ export const experience: Experience[] = [
     ],
     tags: ['LangGraph', 'LiveKit', 'WebRTC', 'Qdrant', 'Pinecone', 'Redis', 'FastAPI', 'Docker'],
   },
-  // TODO: Add any prior roles from LinkedIn if applicable
 ]
 
 
@@ -84,7 +97,6 @@ export const education = [
     startYear:   2023,
     endYear:     2026,
   },
-  // TODO: Add undergraduate if applicable
 ] as const
 
 
@@ -95,7 +107,8 @@ export type SkillLevel = 'production' | 'proficient' | 'familiar'
 export type Skill = {
   name:    string
   level:   SkillLevel
-  icon?:   string  // devicon class or custom SVG path
+  icon?:   string
+  url?:    string
 }
 
 export type SkillCategory = {
@@ -107,75 +120,89 @@ export type SkillCategory = {
 export const skills: SkillCategory[] = [
   {
     id:    'ai',
-    label: 'AI & LLMs',
+    label: 'AI & Agents',
     skills: [
+      { name: 'AI Agents',          level: 'production'  },
       { name: 'LangGraph',          level: 'production'  },
       { name: 'LangChain',          level: 'production'  },
+      { name: 'RAG Systems',        level: 'production'  },
       { name: 'OpenAI API',         level: 'production'  },
       { name: 'Anthropic API',      level: 'production'  },
       { name: 'Gemini',             level: 'proficient'  },
       { name: 'Ollama',             level: 'production'  },
-      { name: 'RAG Systems',        level: 'production'  },
-      { name: 'AI Agents',          level: 'production'  },
       { name: 'LM Studio',          level: 'production'  },
       { name: 'Langfuse',           level: 'production'  },
       { name: 'LangSmith',          level: 'production'  },
     ],
   },
   {
-    id:    'voice',
-    label: 'Voice AI',
+    id:    'workflows',
+    label: 'Workflows & Orchestration',
     skills: [
-      { name: 'LiveKit',            level: 'production'  },
-      { name: 'WebRTC',             level: 'production'  },
-      { name: 'STT/TTS Pipelines', level: 'production'  },
-      { name: 'LiveKit Agents',     level: 'production'  },
+      { name: 'Temporal.io',        level: 'production', url: 'https://temporal.io/' },
+      { name: 'Agent Workflows',    level: 'production' },
+      { name: 'n8n Automation',     level: 'production' },
+      { name: 'Event-Driven DAGs',  level: 'production' },
+      { name: 'State Machines',     level: 'production' },
+    ],
+  },
+  {
+    id:    'voice',
+    label: 'Voice AI & Telephony',
+    skills: [
+      { name: '3CX Telephony',      level: 'production' },
+      { name: 'LiveKit',            level: 'production' },
+      { name: 'WebRTC',             level: 'production' },
+      { name: 'Inbound / Outbound', level: 'production' },
+      { name: 'STT/TTS Pipelines',  level: 'production' },
+      { name: 'LiveKit Agents',     level: 'production' },
     ],
   },
   {
     id:    'vector',
-    label: 'Vector & Data',
+    label: 'Databases & Storage',
     skills: [
-      { name: 'Qdrant',             level: 'production'  },
-      { name: 'Pinecone',           level: 'production'  },
-      { name: 'Redis',              level: 'production'  },
-      { name: 'PostgreSQL',         level: 'production'  },
-      { name: 'Weaviate',           level: 'familiar'    },
-      { name: 'pgvector',           level: 'familiar'    },
+      { name: 'Oracle',             level: 'production' },
+      { name: 'Qdrant',             level: 'production' },
+      { name: 'Pinecone',           level: 'production' },
+      { name: 'Redis',              level: 'production' },
+      { name: 'PostgreSQL',         level: 'production' },
+      { name: 'Weaviate',           level: 'familiar'   },
+      { name: 'pgvector',           level: 'familiar'   },
     ],
   },
   {
     id:    'backend',
-    label: 'Backend',
+    label: 'Backend & Systems',
     skills: [
-      { name: 'FastAPI',            level: 'production'  },
-      { name: 'Python',             level: 'production'  },
-      { name: 'Node.js',            level: 'proficient'  },
-      { name: 'Express',            level: 'proficient'  },
-      { name: 'asyncpg / SQLModel', level: 'production'  },
-      { name: 'Alembic',           level: 'production'  },
+      { name: 'Temporal.io',        level: 'production', url: 'https://temporal.io/' },
+      { name: 'FastAPI',            level: 'production' },
+      { name: 'Python',             level: 'production' },
+      { name: 'Node.js',            level: 'proficient' },
+      { name: 'Express',            level: 'proficient' },
+      { name: 'asyncpg / SQLModel', level: 'production' },
+      { name: 'Alembic',           level: 'production' },
     ],
   },
   {
     id:    'frontend',
     label: 'Frontend',
     skills: [
-      { name: 'React',              level: 'production'  },
-      { name: 'TypeScript',         level: 'production'  },
-      { name: 'Next.js',            level: 'proficient'  },
-      { name: 'Tailwind CSS',       level: 'production'  },
-      { name: 'Framer Motion',      level: 'production'  },
+      { name: 'React',              level: 'production' },
+      { name: 'TypeScript',         level: 'production' },
+      { name: 'Next.js',            level: 'proficient' },
+      { name: 'Tailwind CSS',       level: 'production' },
+      { name: 'Framer Motion',      level: 'production' },
     ],
   },
   {
     id:    'devops',
     label: 'DevOps & Infra',
     skills: [
-      { name: 'Docker',             level: 'production'  },
-      { name: 'GitHub Actions',     level: 'proficient'  },
-      { name: 'Vercel',             level: 'production'  },
-      { name: 'Linux / Bash',       level: 'proficient'  },
-      // NOTE: Intentionally excluded AWS/EC2 — not hands-on owner
+      { name: 'Docker',             level: 'production' },
+      { name: 'GitHub Actions',     level: 'proficient' },
+      { name: 'Vercel',             level: 'production' },
+      { name: 'Linux / Bash',       level: 'proficient' },
     ],
   },
 ]
@@ -194,10 +221,26 @@ export type Project = {
   github?:      string
   demo?:        string
   featured:     boolean
-  highlights?:  string[]  // key metrics/outcomes
+  highlights?:  string[]
 }
 
 export const projects: Project[] = [
+  {
+    id:      'omniflow',
+    name:    'OmniFlow Agentic Platform',
+    tagline: 'Universal agentic workflow orchestrator with bi-directional telephony & Temporal durability',
+    description: `An enterprise-grade autonomous agentic & workflow orchestration platform designed to handle arbitrary business processes. Unifies visual graph-based automation (similar to n8n) with dynamic multi-agent task execution, dynamic tool calling, and bi-directional telephony. Integrates inbound voice handling and outbound conversational calling powered by 3CX and WebRTC, with durable state persistence and infinite retry guarantees through Temporal.io.`,
+    type:   'product',
+    status: 'production',
+    tech:   ['Temporal.io', '3CX', 'Python', 'FastAPI', 'LangGraph', 'Oracle', 'LiveKit', 'WebRTC', 'Docker', 'Redis', 'TypeScript'],
+    featured: true,
+    highlights: [
+      'Universal workflow DAG & agentic automation (n8n-style arbitrary flows)',
+      'Inbound & outbound real-time voice calling via 3CX and WebRTC (<1.5s latency)',
+      'Durable distributed state machine orchestration with Temporal.io',
+      'Scalable multi-tenant architecture with Oracle and vector database persistence',
+    ],
+  },
   {
     id:      'kickcall',
     name:    'Kickcall',
@@ -216,7 +259,6 @@ managing session state across distributed agent instances.`,
       'Built from scratch at Bluebash',
       'Real-time WebRTC via LiveKit',
     ],
-    // No public GitHub — Bluebash-owned product
   },
   {
     id:      'pyrag-core',
@@ -269,9 +311,7 @@ with entrypoint migrations, seed, and Uvicorn startup.`,
     status:  'active',
     tech:    ['FastAPI', 'PostgreSQL', 'Redis', 'Supabase', 'Vercel', 'Docker', 'Python', 'TypeScript'],
     featured: false,
-    // TODO: add GitHub and live demo URLs when public
   },
-  // TODO: Add any other projects from existing portfolio repo
 ]
 
 
@@ -282,7 +322,6 @@ export const openSource = [
     type:  'bug-report' as const,
     repo:  'livekit/agents',
     title: 'LiveKit Agents bug report',
-    // TODO: add specific GitHub issue URL once confirmed
     url:   'https://github.com/livekit/agents/issues',
     description: 'Filed a bug report against the LiveKit Agents library related to voice pipeline behavior.',
   },
@@ -297,17 +336,13 @@ export const openSource = [
 
 
 // ── CERTIFICATIONS ────────────────────────────────────────────────
-// TODO: Add certifications from LinkedIn when confirmed
 
 export const certifications: Array<{
   name: string
   issuer: string
   date: string
   url?: string
-}> = [
-  // Example placeholder:
-  // { name: 'TODO', issuer: 'TODO', date: 'TODO' },
-]
+}> = []
 
 
 // ── META / SEO ────────────────────────────────────────────────────
@@ -315,21 +350,36 @@ export const certifications: Array<{
 export const seo = {
   siteName:    'Gulam Sarvar',
   siteUrl:     'https://sheikhsarvar.github.io/portfolio/',
-  title:       'Gulam Sarvar | Sheikh Gulam Sarvar | Agentic AI & LLM Systems Engineer',
-  description: 'Gulam Sarvar, also known as Sheikh Gulam Sarvar, Sheikh Sarvar, and Sarvar. Agentic AI & LLM Systems Engineer. Built production voice AI (Kickcall) running 150-200 calls/day at <2s latency. Open-source author of PyRAG Core. Specialising in LangGraph, LiveKit, RAG, and FastAPI.',
+  title:       'Gulam Sarvar | AI Engineer & Agentic Systems Architect — Bengaluru',
+  description: 'Gulam Sarvar is an AI Engineer at EatEasy based in Bengaluru, India. Architecting autonomous agentic platforms, durable workflow engines with Temporal.io, and real-time voice AI with 3CX & LiveKit. Author of PyRAG Core.',
   keywords:    [
+    'Gulam Sarvar',
+    'Gulam Sarvar Bengaluru',
+    'Gulam Sarvar Bangalore',
+    'Gulam Sarvar AI Engineer',
+    'Gulam Sarvar EatEasy',
+    'Gulam Sarvar LinkedIn',
+    'Gulam Sarvar Portfolio',
+    'Ghulam Sarwar',
+    'Sheikh Gulam Sarvar',
+    'Sheikh Sarvar',
+    'Sarvar',
     'Agentic AI',
+    'Temporal.io',
+    '3CX',
+    'Oracle',
     'LLM Systems Engineer',
+    'Voice AI',
     'LangGraph',
     'LiveKit',
-    'Voice AI',
-    'RAG',
+    'RAG Systems',
     'FastAPI',
     'PyRAG Core',
-    'Bluebash',
     'Multi-Agent Systems',
+    'Autonomous Workflows',
+    'EatEasy',
+    'Bluebash',
   ],
   author:      'Gulam Sarvar',
-  twitterHandle: '@TODO',  // TODO: add if applicable
+  twitterHandle: '@SheikhSarvar',
 }
-

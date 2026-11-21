@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion'
-import { Github, Lock, ArrowUpRight } from 'lucide-react'
+import { Github, Lock, ArrowUpRight, Sparkles } from 'lucide-react'
 import { cn, externalLinkProps } from '../../lib/utils'
 import { scaleIn } from '../../lib/motion'
 import type { Project } from '../../data/portfolio.data'
 
 const STATUS_STYLES: Record<Project['status'], string> = {
-  production: 'bg-signal-500/10 text-signal-700 border-signal-500/20',
-  active: 'bg-base-100 text-base-600 border-base-200',
-  archived: 'bg-base-100 text-base-500 border-base-200',
+  production: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/25',
+  active:     'bg-signal-500/10 text-signal-700 border-signal-500/20',
+  archived:   'bg-base-100 text-base-500 border-base-200',
 }
 
 const STATUS_LABELS: Record<Project['status'], string> = {
-  production: '● Live',
-  active: '● Active',
-  archived: 'Archived',
+  production: '● Live System',
+  active:     '● Active Platform',
+  archived:   'Archived',
 }
 
 interface ProjectCardProps {
@@ -30,35 +30,43 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
       variants={scaleIn}
       className={cn(
         'group relative flex flex-col',
-        'rounded-2xl border border-base-200 bg-white backdrop-blur-sm',
-        'transition-all duration-250',
-        'hover:border-signal-400/30 hover:bg-base-50',
-        featured && 'ring-1 ring-signal-500/10',
+        'rounded-2xl border border-base-200 bg-white/90 backdrop-blur-md shadow-sm',
+        'transition-all duration-300',
+        'hover:border-signal-500/40 hover:shadow-xl hover:-translate-y-1',
+        featured && 'ring-1 ring-signal-500/20 border-signal-500/25 bg-white',
       )}
       aria-label={`Project: ${name}`}
     >
-      {type === 'case-study' && (
-        <div
-          className="absolute top-4 left-4 z-10 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium tracking-wider uppercase bg-slate-100 text-signal-700"
-          aria-label="Case study"
-        >
-          Case Study
-        </div>
-      )}
-
-      {type === 'open-source' && (
-        <div
-          className="absolute top-4 left-4 z-10 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium tracking-wider uppercase bg-slate-100 text-slate-600"
-          aria-label="Open source"
-        >
-          Open Source
-        </div>
-      )}
+      {/* Badge Top Left */}
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+        {featured && (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase bg-signal-500/15 text-signal-700 border border-signal-500/30">
+            <Sparkles className="w-2.5 h-2.5" />
+            Featured
+          </span>
+        )}
+        {type === 'case-study' && (
+          <div
+            className="px-2 py-0.5 rounded-md text-[10px] font-mono font-medium tracking-wider uppercase bg-slate-100 text-signal-700 border border-slate-200"
+            aria-label="Case study"
+          >
+            Case Study
+          </div>
+        )}
+        {type === 'open-source' && (
+          <div
+            className="px-2 py-0.5 rounded-md text-[10px] font-mono font-medium tracking-wider uppercase bg-slate-100 text-slate-700 border border-slate-200"
+            aria-label="Open source"
+          >
+            Open Source
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-col flex-1 p-6">
         <div
           className="flex items-start justify-between gap-3 mb-4"
-          style={{ paddingTop: type !== 'product' ? '1.5rem' : 0 }}
+          style={{ paddingTop: (type !== 'product' || featured) ? '1.5rem' : 0 }}
         >
           <div>
             <h3 className="text-base font-display font-bold text-base-800 group-hover:text-signal-700 transition-colors leading-tight">
@@ -68,7 +76,7 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
           </div>
           <span
             className={cn(
-              'shrink-0 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium border',
+              'shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium border shadow-xs',
               STATUS_STYLES[status],
             )}
           >
@@ -77,7 +85,7 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
         </div>
 
         {expanded && (
-            <p className="text-sm text-base-600 leading-relaxed mb-4">
+          <p className="text-sm text-base-600 leading-relaxed mb-4">
             {description}
           </p>
         )}
@@ -97,10 +105,10 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
 
         <div className="flex flex-wrap gap-1.5 mb-5" aria-label="Technologies used">
           {tech.slice(0, 6).map((t) => (
-            <span key={t} className="chip">{t}</span>
+            <span key={t} className="chip font-medium">{t}</span>
           ))}
           {tech.length > 6 && (
-            <span className="chip text-base-400">+{tech.length - 6}</span>
+            <span className="chip text-base-400 font-mono text-[10px]">+{tech.length - 6}</span>
           )}
         </div>
 
@@ -110,15 +118,15 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
               href={github}
               {...externalLinkProps}
               aria-label={`View ${name} on GitHub`}
-              className="flex items-center gap-1.5 text-xs text-base-500 hover:text-signal-700 transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium text-base-600 hover:text-signal-700 transition-colors"
             >
               <Github className="w-3.5 h-3.5" aria-hidden="true" />
               GitHub
             </a>
           ) : (
-            <span className="flex items-center gap-1.5 text-xs text-base-500 cursor-default select-none">
+            <span className="flex items-center gap-1.5 text-xs text-base-400 cursor-default select-none">
               <Lock className="w-3.5 h-3.5" aria-hidden="true" />
-              Private
+              Enterprise Architecture
             </span>
           )}
 
@@ -127,7 +135,7 @@ export function ProjectCard({ project, expanded = false, featured = false }: Pro
               href={demo}
               {...externalLinkProps}
               aria-label={`View live demo of ${name}`}
-              className="flex items-center gap-1.5 text-xs text-base-500 hover:text-signal-700 transition-colors ml-auto"
+              className="flex items-center gap-1.5 text-xs font-semibold text-signal-600 hover:text-signal-700 transition-colors ml-auto"
             >
               Live Demo
               <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />

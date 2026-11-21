@@ -5,27 +5,28 @@
   "type": "module",
   "homepage": "https://sheikhsarvar.github.io/portfolio/",
   "scripts": {
-    "dev": "vite --base=/portfolio/",
+    "dev": "vite",
     "prebuild": "node scripts/generate-seo-assets.mjs",
-    "build": "tsc && vite build --base=/portfolio/ && node scripts/run-react-snap.mjs",
+    "build": "tsc && vite build --base=/",
+    "build:cf": "tsc && vite build --base=/",
+    "build:gh": "tsc && vite build --base=/portfolio/ && node scripts/run-react-snap.mjs",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build:gh && gh-pages -d dist"
   },
   "dependencies": {
-    "@tsparticles/engine": "^3.9.1",
-    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/engine": "^4.1.1",
+    "@tsparticles/react": "^4.1.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.0",
     "lucide-react": "^0.395.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^3.0.0",
-    "react-tsparticles": "^2.12.2",
     "tailwind-merge": "^2.3.0",
-    "tsparticles": "^3.9.1"
+    "tsparticles": "^4.1.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/typography": "^0.5.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -37,7 +38,7 @@
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5",
-    "vite": "^5.4.21"
+    "vite": "^8.3.8"
   },
   "reactSnap": {
     "source": "dist",
