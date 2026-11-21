@@ -18,6 +18,7 @@ import { Contact } from './components/sections/Contact'
 import { SECTION_IDS } from './lib/constants'
 import { normalizeSectionId } from './lib/navigation'
 import { useActiveSection } from './hooks'
+import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
@@ -70,7 +71,9 @@ export default function App() {
       <ScrollProgress />
 
       {/* Global particle + aurora background — fixed, spans entire site */}
-      <HeroBackground theme={theme} />
+      <ErrorBoundary fallback={null}>
+        <HeroBackground theme={theme} />
+      </ErrorBoundary>
 
       <a
         href="#main-content"
