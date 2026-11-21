@@ -11,7 +11,8 @@
     "build:cf": "tsc && vite build --base=/",
     "build:gh": "tsc && vite build --base=/portfolio/ && node scripts/run-react-snap.mjs",
     "preview": "vite preview",
-    "deploy": "npm run build:gh && gh-pages -d dist"
+    "deploy": "npm run build:gh && gh-pages -d dist",
+    "deploy:cf": "npm run build:cf && wrangler deploy"
   },
   "dependencies": {
     "@tsparticles/engine": "^4.1.1",
@@ -42,14 +43,9 @@
   },
   "reactSnap": {
     "source": "dist",
-    "include": [
-      "/"
-    ],
+    "include": ["/"],
     "crawl": false,
     "skipThirdPartyRequests": true,
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   }
 }

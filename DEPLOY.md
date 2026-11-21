@@ -62,16 +62,29 @@ The `.github/workflows/deploy.yml` file handles this automatically.
 3. Push to `main` branch
 
 Every push to `main` will:
-- Run `npm run build`
+- Run `npm run build:gh`
 - Deploy `dist/` to GitHub Pages automatically
 
 ### Manual Deploy (alternative)
 
 ```bash
-npm run build
+npm run build:gh
 npm run deploy
 # Uses gh-pages package to push dist/ to gh-pages branch
 ```
+
+---
+
+## Deploy to Cloudflare
+
+Cloudflare should use the root build, not the GitHub Pages build.
+
+```bash
+npm run build:cf
+npm run deploy:cf
+```
+
+If you deploy through Cloudflare Pages, set the build command to `npm run build:cf` and the output directory to `dist`.
 
 ---
 
@@ -129,7 +142,7 @@ Update the `<lastmod>` date in `public/sitemap.xml` when you make major content 
 ## Troubleshooting
 
 **Blank page after deploy**
-→ Check the `--base` value in `package.json` — it must match your repo name exactly, including case.
+? GitHub Pages must use `build:gh`; Cloudflare must use `build:cf` or `build`. A GitHub Pages build on Cloudflare will load the wrong asset paths and show a blank page.
 
 **Fonts not loading**
 → The preconnect tags in `index.html` handle this. If still failing, check CSP headers on your hosting.
@@ -139,3 +152,6 @@ Update the `<lastmod>` date in `public/sitemap.xml` when you make major content 
 
 **Animation janky on mobile**
 → Check if `prefers-reduced-motion` is set on the device. If not, reduce blob count in `AuroraBackground.tsx`.
+
+
+
