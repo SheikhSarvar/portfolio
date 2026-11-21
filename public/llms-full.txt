@@ -2,7 +2,7 @@
 
 > Extended version of llms.txt with richer technical detail.
 > Intended for retrieval-augmented generation systems and AI-powered search.
-> Summary version: https://sheikhsarvar.github.io/portfolio/llms.txt
+> Summary version: https://gulamsarvar.pages.dev/llms.txt
 
 > Last updated: 2026-11-21
 
@@ -92,3 +92,4 @@ At EatEasy, Gulam Sarvar architects autonomous agentic platforms and enterprise 
 - LangGraph: multi-agent stateful graph architectures, human-in-the-loop, tool synthesis
 - LangChain, OpenAI API, Anthropic API, Gemini, Ollama, LM Studio
 - Observability: Langfuse, LangSmith
+
